@@ -1,0 +1,25 @@
+.Cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width :90%;
+    margin-left: 5%;
+    
+    
+}
+
+.msg{
+    font-family: Signika;
+font-size: 46px;
+font-weight: 700;
+line-height: 77.62px;
+text-align: center;
+text-decoration-skip-ink: none;
+
+}
+.Offer{
+    margin-top:20px;
+    margin-bottom:60px;
+    min-height: 80vh;
+}

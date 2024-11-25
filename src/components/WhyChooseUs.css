@@ -23,7 +23,7 @@ font-style: normal;
 
 .title p{
     font-family: 'Signika-Light';
-    font-size: 24px;
+    font-size: 25px!important;
     margin: 2%;
     color: #797979;
 
@@ -36,7 +36,6 @@ font-style: normal;
 }
 
 .Quals {
-    background-color: aqua;
     width: 55%;
     display: flex;
     flex-wrap: wrap;
@@ -51,6 +50,33 @@ font-style: normal;
 }
 
 .Pics{
-    background-color: #21cf2c;
     width: 45%;
+    padding-left: 2%;
 }
+
+.photos{
+    display: flex;
+    justify-content: start;
+    gap:3%;
+}
+.verticalPhotos{
+    display: flex;
+    flex-direction: column;
+    gap:8%;
+    
+}
+.Pics img{
+    border-radius: 38px;
+    box-shadow: 20px 10px 40px black ;
+}
+@media (min-width: 1800px) {
+    .content{
+        margin-top: 7%;
+    }
+    .Pics{
+        width: 40%;
+    }
+    .Quals{
+        width: 60%;
+    }
+  }

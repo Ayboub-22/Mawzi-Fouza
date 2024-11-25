@@ -9,7 +9,7 @@ interface CardProps {
 // Card component with typed props
 function Card({ title, text }: CardProps) {
   return (
-    <div className="card">
+    <div className="cardFigures">
       <h2>{title}</h2>
       <p dangerouslySetInnerHTML={{ __html: text }} />
     </div>

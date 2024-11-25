@@ -1,0 +1,16 @@
+.hero1{
+    background-image: url('./assets/images/Background1.png'); 
+    /* background-color: blue; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    padding: 1.8%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}

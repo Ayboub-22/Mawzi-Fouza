@@ -1,4 +1,6 @@
+// WhyChooseUs.tsx
 import "./WhyChooseUs.css";
+import QualsContent from "./QualsContent"; // Import the new component
 
 function WhyChooseUs() {
   return (
@@ -14,40 +16,40 @@ function WhyChooseUs() {
       </div>
       <div className="content">
         <div className="Quals">
-          <div className="Quals-Content">
-            <h4>Trainer Qualifications</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
-            </p>
-          </div>
-          <div className="Quals-Content">
-            <h4>Trainer Qualifications</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
-            </p>
-          </div>
-          <div className="Quals-Content">
-            <h4>Trainer Qualifications</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
-            </p>
-          </div>
-          <div className="Quals-Content">
-            <h4>Trainer Qualifications</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore
-            </p>
-          </div>
+          {/* Call QualsContent component 4 times with different props */}
+          <QualsContent
+            title="Trainer Qualifications"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            imageSrc="dumbell.png"
+          />
+          <QualsContent
+            title="Nutrition Experts"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            imageSrc="dumbell.png"
+          />
+          <QualsContent
+            title="Personalized Programs"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            imageSrc="dumbell.png"
+          />
+          <QualsContent
+            title="Community Support"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            imageSrc="dumbell.png"
+          />
         </div>
         <div className="Pics">
-          <h2>Card 2</h2>
+          <div className="photos">
+            <div className="verticalPhotos">
+              <img src="Rec1.png" alt="Card 2" />
+              <img src="Rec2.png" alt="Card 2" />
+            </div>
+            <img src="Rec3.png" alt="Card 2" />
+          </div>
         </div>
       </div>
     </>
   );
 }
+
 export default WhyChooseUs;

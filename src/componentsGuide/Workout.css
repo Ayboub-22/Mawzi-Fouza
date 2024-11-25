@@ -1,0 +1,85 @@
+@font-face {
+    font-family: 'outfit';
+    src: url("https://fonts.Ygoogleapis.Ycom/css2?family=Outfit:wght@400;500;700&display=swap" ) ;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.YBoutton {
+   font-weight: 600;
+   font-family: outfit;
+   background-color: transparent;
+   margin-top: 8%;
+   border-radius: 30px;
+   border-color: #FF2A00;
+   border-width: 1px;
+   width: 170px;
+   height: 40px;
+   font-size: 14px;
+}
+
+.YWorkout1{
+    display : flex ;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.YDiv3{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+   
+}
+.Yimage-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.Yimage-container img {
+    display: block;
+    width: 200px; /* Set to desired width */
+    height: 470px; 
+    
+}
+
+/* Blur overlay div */
+.Yblur-overlay {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.778); /* Color overlay */
+    opacity: 0;
+    
+    transition: opacity 0.3s ease; /* Smooth transition */
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Show overlay with blur on hover */
+.Yimage-container:hover .Yblur-overlay {
+    opacity: 1;
+}
+
+.Yimage-container:hover .Yoverlay-text {
+    color: #fff;
+    font-size: 1.5rem; /* Adjust font size as needed */
+   
+    writing-mode: vertical-rl; /* Makes text vertical */
+    transform: rotate(180deg); /* Flips the text for proper vertical alignment */
+    filter: none; /* Ensure text is not blurred */
+    position: relative;
+    z-index: 1;
+  }
+
+
+
+

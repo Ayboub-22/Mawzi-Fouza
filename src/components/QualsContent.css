@@ -1,0 +1,37 @@
+@font-face {
+    font-family: 'Signika-SemiBold';
+    src: url('../assets/fonts/Signika/static/Signika-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+@font-face {
+font-family: 'Signika-Light';
+src: url('../assets/fonts/Signika/static/Signika-Light.ttf') format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+
+.Quals-Content{
+    display: flex;
+    align-items: start;
+}
+
+
+  
+  .title-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* Adds space between the image and the title */
+  }
+  
+  .Quals-Content h4 {
+    margin: 0; /* Remove default margin */
+    font-size: 27px;
+    font-family: Signika-SemiBold;
+  }
+  
+  .Quals-Content p {
+    font-size: 18px;
+    color: #797979;
+  }
+  

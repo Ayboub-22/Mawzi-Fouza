@@ -1,0 +1,97 @@
+
+.YimgSchedule{
+    padding-top: 4%;
+   
+    display : flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.YimgSchedule1{
+    height: 70vh;
+    width: 30%;
+    min-width: 30vh;
+    border-radius: 30px;
+}
+.Ymsg1_Schedule{
+    
+    width:62%;
+    margin-top: 90%;
+    margin-left: 19%;
+    margin-right: 19%;
+    height: auto;
+    background-color: #4A4A4A;
+    border-radius: 8px;
+    display : flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Ymsg2_Schedule{
+    font-family: Outfit;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.Y64px;
+    text-align: left;
+    color: #FFFFFF;
+    margin-left: 0.Y5em;
+    
+
+}
+
+.YimgSchedule{
+    display : flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+.YtimeSchedule{
+    display : flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+.YdateSchedule1{
+    background-color:#FF2A00 ;
+    margin-left: 2%;
+    border-radius: 15px;
+    margin-top: 3%;
+    
+    display: inline-flex;
+    align-items: center;
+    
+}
+.YdateSchedule2{
+    background-color:#FF2A00 ;
+    border-radius: 15px;
+    margin-top: 3%;
+    margin-right: 2%;
+    
+    display: inline-flex;
+    align-items: center;
+}
+
+.Ymsg1_Schedule h5{
+    color :black !important;
+    
+    text-align: center;
+    font-family: Outfit;
+font-size: 14px;
+font-weight: 400;
+line-height: 17.Y64px;
+
+
+}
+
+
+.Ybadge-icon {
+    margin-right: 0.Y5em;
+    font-size: 14px;             /* Icon size */
+}

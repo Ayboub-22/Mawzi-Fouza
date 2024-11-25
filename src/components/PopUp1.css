@@ -1,0 +1,285 @@
+.PopUp{
+  position :absolute;
+  background-color: rgba(5, 5, 5, 0.267);
+  height: 150vh;
+  width:100vw;
+  left: -1.45%;
+  
+  top:-0.5%;
+  z-index: 100;
+  
+}
+.close-button {
+position: absolute;
+top: 8px;
+right: 13px;
+background: transparent;
+border: none;
+font-size: 2vw !important;
+cursor: pointer;
+color: #333;
+}
+.close-button:hover {
+color: #ff0000;
+}
+
+.Form2{
+  
+  border-radius: 30px;
+  position :absolute;
+  left: 50%;
+  top: 8%;
+ 
+    width: 30% ;
+    background-color: #f8f5f5;
+    height: auto;
+    min-width: 300px !important;
+    transform: translate(-50%);
+
+}
+
+.Head{
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Head img{
+  margin-top: 4%;
+  margin-left: 3%;
+  margin-bottom: 2%;
+  width: 20% !important;
+  height: 10% !important;
+}
+
+.tit{
+  margin-top: 5%;
+  margin-right: 32%;
+  font-family: Signika;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20.1px;
+
+
+}
+
+
+
+.Form1{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+
+
+
+
+
+/* Modal Overlay */
+.modal-overlay {
+    
+    
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background: #fff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .logo {
+    width: 50px;
+  }
+  .tab-button {
+    padding: 8px 12px;
+    border: none;
+    background: #e0e0e0;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-left: 5px;
+  }
+  .tab-button.active {
+    background: #000;
+    color: #fff;
+  }
+  .close-button {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Title */
+  h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+  }
+  
+  /* Info Text */
+  p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0 0 15px;
+  }
+  
+  /* Form */
+  .sign-in-form label {
+    display: block;
+    font-size: 0.85em;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .sign-in-form input[type="email"],
+  .sign-in-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  /* Checkbox */
+  .keep-logged-in {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .keep-logged-in input {
+    margin-right: 5px;
+  }
+  .keep-logged-in label {
+    margin-top: 2%;
+    font-family: Outfit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+    
+  }
+  
+  /* Create Account Link */
+  .create-account {
+    font-size: 0.85em;
+    color: #666;
+  }
+  .create-account a {
+    color:#FF2A00;
+    font-family: Outfit;
+font-size: 18px;
+font-weight: 600;
+line-height: 27px;
+text-align: center;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+  }
+  
+  /* Submit Button */
+  .submit-button {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    width: 90%;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .submit-button:hover {
+    color:#FF2A00
+  }
+  
+.Form1 h1 {
+    font-size: 2em;
+    color: #333;
+  }
+  
+  .sign-up-form input {
+    width: 45%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  .birthdate-sex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .birt {
+    display: flex;
+    gap: 5%;
+  }
+  
+  .birthdate-sex input[type="Password"]{
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  .have-account {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .have-account a {
+    color: #FF2A00 !important;
+    cursor: pointer !important;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  .submit-button {
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+
+  
+    background: #000;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .submit-button:hover {
+    color: #FF2A00;
+  }
+  

@@ -1,0 +1,82 @@
+
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    perspective: 1000px;
+    margin-top: 6%;
+  }
+  
+  .image-container {
+    width: 283px;
+    height: 404px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.7s ease, filter 0.7s ease;
+    margin: 0 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+  }
+  
+  /* Center Image - Scaled Up */
+  .center-image {
+    width: 357px;
+    height: 503px;
+    transform: translateX(0) scale(1.1);
+    z-index: 2;
+  }
+  
+  /* Left Image - Scaled Down and Shifted Left */
+  .left-image {
+    transform: translateX(-30%) scale(0.9) /*rotateY(10deg)*/; /* Slight rotation for a 3D effect */
+    filter: blur(2px) brightness(0.6);
+    z-index: 1;
+  }
+  
+  /* Right Image - Scaled Down and Shifted Right */
+  .right-image {
+    transform: translateX(30%) scale(0.9) /*rotateY(-10deg)*/;
+    filter: blur(2px) brightness(0.6);
+    z-index: 1;
+  }
+  
+  /* Smooth transition for center text */
+  .text-overlay {
+    position: absolute;
+    top: 50%;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    width: 75%;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+    background-color: rgba(31,31,31,0.5);
+  }
+  
+  /* Hide text on side images */
+  .left-image .text-overlay,
+  .right-image .text-overlay {
+    opacity: 0;
+  }
+
+
+  @media (min-width: 1800px) {
+    .carousel-container {
+      margin-top: 6%;
+    }
+    
+    .image-container {
+      width: 353.75px;
+      height: 505px;
+    }
+    
+    .center-image {
+      width: 446.25px;
+      height: 628.75px;
+    }
+  }

@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Outfit-SemiBold';
+    src: url('../assets/fonts/Outfit/static/Outfit-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Signika';
+    src: url('../assets/fonts/Signika/static/Signika-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+.Shop{
+    background-color: #eeeeee;
+    
+}
+
+.ShopWelcome{
+    text-align: center;
+    margin: 2%;
+    font-family: Outfit-SemiBold;
+}
+
+.Shop p {
+    font-size: 28px;
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 5%;
+    text-align: center;
+    font-family: Signika;
+    color:#1F1F1F
+}
