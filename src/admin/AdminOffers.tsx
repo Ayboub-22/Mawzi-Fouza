@@ -83,8 +83,14 @@
 // export default AdminOffers;
 import "./AdminOffers.css";
 import NavAdmin from"../componentsAdmin/NavAdmin";
+import PopupOffer from "./PopupOffer";
+import { useState } from "react";
 
 const AdminOffers: React.FC = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => setShowPopup(true);
+  const handleClosePopup = () => setShowPopup(false);
     // Données des offres simulées
     const offers = [
       { id: 1, duration: "1 month", price: "150 DT", activated: false },
@@ -139,7 +145,9 @@ const AdminOffers: React.FC = () => {
           </div>
   
           {/* Bouton pour ajouter une offre */}
-          <div className="addoffpad"><button className="add-offer-button">Add offer</button></div>
+          <div className="addoffpad"><button className="add-offer-button" onClick={handleOpenPopup} >Add offer</button></div>
+          {/* Affichage de la popup */}
+        <PopupOffer show={showPopup} onClose={handleClosePopup} />
         </div>
       </div>
     );
