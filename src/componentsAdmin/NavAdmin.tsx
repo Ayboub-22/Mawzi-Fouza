@@ -9,7 +9,7 @@ function NavAdmin(){
         
         <div className="sidebar">
             <img src="..\components\logo.png" alt="Logo" className="logo" />
-            <h2>Admin Dashboardd</h2>
+            <h2>Admin Dashboard</h2>
             <nav>
                 <a href="#" className={`${
                 location.pathname === "/Admin/Admin_Statistics" ? "active" : ""
