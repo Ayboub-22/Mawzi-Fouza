@@ -1,6 +1,9 @@
 import "./PopUp1.css";
 import { usePopup } from "./PopupContext";
 
+import React from "react";
+
+
 function PopUp1() {
   const { isPopup1Visible, togglePopup, closePopup1 } = usePopup();
 

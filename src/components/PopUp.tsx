@@ -1,6 +1,8 @@
 import "./PopUp.css";
 import { usePopup } from "./PopupContext";
 
+import { useNavigate } from "react-router-dom";
+
 function getClassName(isActive: boolean): string {
   return isActive ? "boutton1 active" : " boutton1 inactive";
 }
@@ -9,6 +11,13 @@ function getClassName1(isActive: boolean): string {
 }
 
 function PopUp() {
+
+  const navigate = useNavigate(); // Hook pour naviguer vers une autre route
+
+  const handleSignUp = () => {
+    navigate("/Admin/Admin_Statistics"); // Redirige vers /Admin                           //a developper plus tard DB}
+  };
+
   const {
     isMember,
     changeStatus1,
@@ -85,7 +94,7 @@ function PopUp() {
               </div>
             )}
 
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" onClick={handleSignUp}>
               Sign in
             </button>
           </form>

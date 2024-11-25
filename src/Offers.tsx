@@ -12,7 +12,6 @@ function Offers() {
     <section className="YPage1">
       <PopupProvider>
         <NavBar />
-
         <Offer />
         <Footer />
         <PopUp />
