@@ -35,8 +35,9 @@
 }
 
 .sidebar nav a.active {
-    font-weight: normal;
-    color: white;
+    font-weight:bold;
+    font-size: 18px;
+    color: white !important;
 }
 
 .sidebar nav a .icon {

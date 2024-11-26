@@ -7,7 +7,7 @@ import MiniShop from "./MiniShop";
 import Admin_Statistics from "./Admin_Statistics";
 import AdminOffers from"./admin/AdminOffers";
 import AdminMembers from "./admin/AdminMembers";
-import AdminSubs from "./admin/Adminsubs";
+import AdminSubs from "./admin/AdminSubs";
 import AdminProd from "./admin/AdminProd";
 import AdminClasses from "./admin/AdminClasses";
 

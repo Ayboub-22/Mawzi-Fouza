@@ -16,7 +16,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/Admin_Statistics")}>
 
-                    <span className="icon"><img src="../assets/icons/bar-chart.png"  alt="icon"></img></span> 
+                    <span className="icon"><img src="../assets/icons/bar-chart.png"  ></img></span> 
                     Statistics
                     
                 </a>
@@ -25,7 +25,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminOffers")} >
 
-                    <span className="icon"><img src="../assets/icons/price-tag.png"alt="icon"></img></span> 
+                    <span className="icon"><img src="../assets/icons/price-tag.png"></img></span> 
                     Offers
 
                 </a>
@@ -35,7 +35,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminMembers")}>
 
-                    <span className="icon"><img src="../assets/icons/group-chat.png" alt="icon"></img></span> 
+                    <span className="icon"><img src="../assets/icons/group-chat.png" ></img></span> 
                     Members
                     
                 </a>
@@ -44,7 +44,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminSubs")}>
 
-                    <span className="icon"><img src="../assets/icons/subscription.png" alt="icon"></img></span> 
+                    <span className="icon"><img src="../assets/icons/subscription.png" ></img></span> 
                     Subscriptions
                     
                 </a>
@@ -52,7 +52,7 @@ function NavAdmin(){
                 location.pathname === "/Admin/AdminProd" ? "active" : ""
               }`}
               onClick={() => navigate("/Admin/AdminProd")}>
-                    <span className="icon"><img src="../assets/icons/shop.png" alt="icon"></img></span> 
+                    <span className="icon"><img src="../assets/icons/shop.png" ></img></span> 
                     Products management
                     
                 </a>
@@ -61,7 +61,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminClasses")}>
 
-                    <span className="icon"><img src="../assets/icons/gym.png" alt="icon"></img></span>
+                    <span className="icon"><img src="../assets/icons/gym.png" ></img></span>
                     Classes
                     
                 </a>
