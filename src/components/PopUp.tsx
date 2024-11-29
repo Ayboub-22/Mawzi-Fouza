@@ -1,8 +1,13 @@
 import "./PopUp.css";
 import { usePopup } from "./PopupContext";
+<<<<<<< HEAD
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"; 
+=======
+
+import { useNavigate } from "react-router-dom";
+>>>>>>> 69d2166e2f1d8d44cbf5ce310049a86b70036131
 
 function getClassName(isActive: boolean): string {
   return isActive ? "boutton1 active" : " boutton1 inactive";
@@ -14,6 +19,7 @@ function getClassName1(isActive: boolean): string {
 function PopUp() {
 
   const navigate = useNavigate(); // Hook pour naviguer vers une autre route
+<<<<<<< HEAD
   const [name,setName]=useState("");
   const [password,setPassword]=useState("");
   const [errorMessage,setErrorMessage]=useState("");
@@ -42,6 +48,11 @@ function PopUp() {
         error.response?.data?.message || "An error occurred during login."
       );
     }
+=======
+
+  const handleSignUp = () => {
+    navigate("/Admin/Admin_Statistics"); // Redirige vers /Admin                           //a developper plus tard DB}
+>>>>>>> 69d2166e2f1d8d44cbf5ce310049a86b70036131
   };
 
   const {
@@ -92,14 +103,21 @@ function PopUp() {
           <h1>Sign in</h1>
           <p>un essage quelcoque sui affiche</p>
           <form className="sign-in-form">
+<<<<<<< HEAD
             <input onChange={(e)=>setName(e.target.value)} value={name} type="email" id="email" placeholder="mail" required />
+=======
+            <input type="email" id="email" placeholder="mail" required />
+>>>>>>> 69d2166e2f1d8d44cbf5ce310049a86b70036131
 
             <input
               type="password"
               id="password"
               placeholder="Password"
+<<<<<<< HEAD
               value={password}
               onChange={(e)=>{setPassword(e.target.value)}}
+=======
+>>>>>>> 69d2166e2f1d8d44cbf5ce310049a86b70036131
               required
             />
 
@@ -122,7 +140,11 @@ function PopUp() {
               </div>
             )}
 
+<<<<<<< HEAD
             <button type="submit" className="submit-button" onClick={handleSignIn}>
+=======
+            <button type="submit" className="submit-button" onClick={handleSignUp}>
+>>>>>>> 69d2166e2f1d8d44cbf5ce310049a86b70036131
               Sign in
             </button>
           </form>

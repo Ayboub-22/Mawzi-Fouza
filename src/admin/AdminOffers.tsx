@@ -4,6 +4,7 @@ import PopupOffer from "./PopupOffer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const AdminOffers: React.FC = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
@@ -31,6 +32,7 @@ const AdminOffers: React.FC = () => {
             <h1>Offers</h1>
             {/* Bouton pour se déconnecter */}
             <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
+
           </div>
           
           {/* Tableau des offres */}
@@ -47,6 +49,7 @@ const AdminOffers: React.FC = () => {
             <tbody>
               {offers.map((offer) => (
                 <tr key={offer.id} className="table-row">
+
                   <td>{offer.id}</td>
                   <td>{offer.duration}</td>
                   <td>{offer.price}</td>
@@ -67,6 +70,7 @@ const AdminOffers: React.FC = () => {
           <div className="addoffpad"><button className="add-offer-button" onClick={handleOpenPopup} >Add offer</button></div>
           {/* Affichage de la popup */}
         <PopupOffer show={showPopup} onClose={handleClosePopup} />
+
         </div>
       </div>
     );

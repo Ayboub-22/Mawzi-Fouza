@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import logo from '../../src/assets/icons/logo.png'
 import barchart from '../assets/icons/bar-chart.png'
+
 function NavAdmin(){
     const navigate = useNavigate();
     const location = useLocation();
@@ -11,14 +12,15 @@ function NavAdmin(){
         
         <div className="sidebar">
             <img src={logo} alt="Logo" className="logo" />
+
             <h2>Admin Dashboard</h2>
             <nav>
                 <a href="#" className={`${
                 location.pathname === "/Admin/Admin_Statistics" ? "active" : ""
               }`}
-              onClick={() => navigate("/Admin/Admin_Statistics")}>
-
+              onClick={() => navigate("/Admin/Admin_Statistics")}>ù
                     <span className="icon"><img src={barchart}  ></img></span> 
+
                     Statistics
                     
                 </a>
@@ -37,7 +39,9 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminMembers")}>
 
+
                     <span className="icon"><img src="../assets/icons/group-chat.png" ></img></span> 
+
                     Members
                     
                 </a>
@@ -46,7 +50,9 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminSubs")}>
 
+
                     <span className="icon"><img src="../assets/icons/subscription.png" ></img></span> 
+
                     Subscriptions
                     
                 </a>
@@ -55,6 +61,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminProd")}>
                     <span className="icon"><img src="../assets/icons/shop.png" ></img></span> 
+
                     Products management
                     
                 </a>
@@ -62,8 +69,8 @@ function NavAdmin(){
                 location.pathname === "/Admin/AdminClasses" ? "active" : ""
               }`}
               onClick={() => navigate("/Admin/AdminClasses")}>
-
                     <span className="icon"><img src="../assets/icons/gym.png" ></img></span>
+
                     Classes
                     
                 </a>
