@@ -1,8 +1,16 @@
 import "./AdminProd.css";
 import NavAdmin from "../componentsAdmin/NavAdmin";
 import { useState } from "react";
+import PopupAddProduct from "./PopupAddProduct";
+import { useNavigate } from "react-router-dom";
 
 const AdminProd: React.FC = () => {
+
+  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => setShowPopup(true);
+  const handleClosePopup = () => setShowPopup(false);
   // Données des produits simulées
   const initialProducts = [
     { id: 1, name: "Whey Protein Mexico", designation: "WPM", price: "90,000 DT", category: "PROTEIN SUPPLEMENTS" },
@@ -31,7 +39,7 @@ const AdminProd: React.FC = () => {
         <div className="part1">
           <h1>Products</h1>
           {/* Bouton pour se déconnecter */}
-          <button className="logout-button">Logout</button>
+          <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
         </div>
 
         {/* Tableau des produits */}
@@ -44,24 +52,23 @@ const AdminProd: React.FC = () => {
                 <th>DESIGNATION</th>
                 <th>PRICE</th>
                 <th>CATEGORY</th>
-                <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
               {products.map((product) => (
-                <tr key={product.id}>
+                <tr key={product.id} className="table-row">
                   <td>{product.id}</td>
                   <td>{product.name}</td>
                   <td>{product.designation}</td>
                   <td>{product.price}</td>
-                  <td>{product.category}</td>
                   <td>
-                    <button
-                      className="delete-button"
-                      onClick={() => handleDelete(product.id)}
-                    >
-                      🗑️
-                    </button>
+                    <div className="div-category">
+                    <div className="div-prod">{product.category}</div>
+                    <div className="d-span">
+                    <span className="d-icon"><img src="../assets/icons/price-tag.png"></img></span>   {/*le chemin a changer*/}
+                    <span className="d-icon"><img src="../assets/icons/price-tag.png"></img></span>   {/*le chemin a changer*/}
+                    </div>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -71,7 +78,8 @@ const AdminProd: React.FC = () => {
 
         {/* Bouton pour ajouter un produit */}
         <div className="addprodpad">
-          <button className="add-product-button">Add product</button>
+          <button className="add-product-button" onClick={handleOpenPopup}>Add product</button>
+          <PopupAddProduct show={showPopup} onClose={handleClosePopup} />
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 import './NavAdmin.css';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import logo from '../../src/assets/icons/logo.png'
+import barchart from '../assets/icons/bar-chart.png'
 function NavAdmin(){
     const navigate = useNavigate();
     const location = useLocation();
@@ -8,7 +10,7 @@ function NavAdmin(){
     return(
         
         <div className="sidebar">
-            <img src="..\components\logo.png" alt="Logo" className="logo" />
+            <img src={logo} alt="Logo" className="logo" />
             <h2>Admin Dashboard</h2>
             <nav>
                 <a href="#" className={`${
@@ -16,7 +18,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/Admin_Statistics")}>
 
-                    <span className="icon"><img src="../assets/icons/bar-chart.png"  ></img></span> 
+                    <span className="icon"><img src={barchart}  ></img></span> 
                     Statistics
                     
                 </a>

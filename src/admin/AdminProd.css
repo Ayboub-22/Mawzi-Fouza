@@ -149,13 +149,13 @@
         background-color: #f9f9f9;
       }
       
-      .delete-button {
+      /* .delete-button {
         background: none;
         border: none;
         color: red;
         cursor: pointer;
         font-size: 18px;
-      }
+      } */
       
       .add-product-button {
         background-color: #000;
@@ -166,4 +166,28 @@
         cursor: pointer;
         margin-top: 10px;
       }
-        
+
+      .div-category{
+        display: flex;
+      }
+      .d-icon {
+        width: 20px;
+        height: 20px;
+        background-color: #f9f9f9;
+        border-radius: 50%;
+        margin-right: 10px;
+        cursor: pointer;
+        display: none; 
+    }
+    .d-span{
+      background-color: #000;
+      margin-left:10%
+    }
+    .div-prod{
+      width:70%
+    }
+     .table-row:hover .d-icon {
+      display: inline-block; 
+    } 
+
+    

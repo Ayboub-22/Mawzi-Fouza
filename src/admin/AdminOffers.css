@@ -108,4 +108,6 @@
   }
 
 
-  
+  .table-row:hover {                                 /*a faire dans les autres tables*/
+    background-color: #f9f9f9;
+  }

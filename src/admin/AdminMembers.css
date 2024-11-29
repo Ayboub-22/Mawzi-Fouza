@@ -38,6 +38,9 @@
       justify-content:space-between;
       margin-bottom: 3%;
     }
+    .divlogout{
+      padding-bottom: 5%;
+    }
     .tablepad{
       padding-left: 8%;
       padding-right: 8%;
@@ -115,15 +118,31 @@
         background-color: #f9f9f9;
       }
       
+    
+      
+      .table-row:hover .delete-icon {
+        display: inline-block; /* L'icône devient visible lorsque la ligne est survolée */
+      }
       .delete-icon {
+        width: 20px;
+        height: 20px;
+        background-color: #f9f9f9;
+        border-radius: 50%;
+        margin-right: 10px;
         cursor: pointer;
-        color: red;
-        font-size: 18px;
-      }
-      
-      .delete-icon:hover {
-        color: darkred;
-      }
-      
+        display: none;
+        
+    }
+  
+    .div-adh{
+      display:flex;
+    }
+    .div-check{
+      margin-left: 10%;
+    } 
+    .div-span{
+      margin-left:30%
+
+    }
 
     

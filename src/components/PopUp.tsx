@@ -1,7 +1,8 @@
 import "./PopUp.css";
 import { usePopup } from "./PopupContext";
-
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react"; 
 
 function getClassName(isActive: boolean): string {
   return isActive ? "boutton1 active" : " boutton1 inactive";
@@ -13,9 +14,34 @@ function getClassName1(isActive: boolean): string {
 function PopUp() {
 
   const navigate = useNavigate(); // Hook pour naviguer vers une autre route
+  const [name,setName]=useState("");
+  const [password,setPassword]=useState("");
+  const [errorMessage,setErrorMessage]=useState("");
 
-  const handleSignUp = () => {
-    navigate("/Admin/Admin_Statistics"); // Redirige vers /Admin                           //a developper plus tard DB}
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent form from reloading the page
+  
+    try {
+      // Send login request to the server
+      const response = await axios.post("http://localhost:3000/admin/login", {
+        name,
+        password,
+      });
+  
+      if (response.status === 200) {
+        // Successful login
+        console.log("Login successful:", response.data);
+        navigate("/Admin/Admin_Statistics"); // Redirect to the dashboard
+      } else {
+        setErrorMessage("Invalid login credentials.");
+      }
+    } catch (error: any) {
+      // Handle errors
+      console.error("Login error:", error.response?.data || error.message);
+      setErrorMessage(
+        error.response?.data?.message || "An error occurred during login."
+      );
+    }
   };
 
   const {
@@ -66,12 +92,14 @@ function PopUp() {
           <h1>Sign in</h1>
           <p>un essage quelcoque sui affiche</p>
           <form className="sign-in-form">
-            <input type="email" id="email" placeholder="mail" required />
+            <input onChange={(e)=>setName(e.target.value)} value={name} type="email" id="email" placeholder="mail" required />
 
             <input
               type="password"
               id="password"
               placeholder="Password"
+              value={password}
+              onChange={(e)=>{setPassword(e.target.value)}}
               required
             />
 
@@ -94,7 +122,7 @@ function PopUp() {
               </div>
             )}
 
-            <button type="submit" className="submit-button" onClick={handleSignUp}>
+            <button type="submit" className="submit-button" onClick={handleSignIn}>
               Sign in
             </button>
           </form>

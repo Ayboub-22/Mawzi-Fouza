@@ -1,7 +1,9 @@
 import "./AdminSubs.css";
 import NavAdmin from "../componentsAdmin/NavAdmin";
+import { useNavigate } from "react-router-dom";
 
 const AdminSubs: React.FC = () => {
+  const navigate = useNavigate();
   // Données des abonnements simulées
   const subscriptions = [
     {
@@ -80,7 +82,7 @@ const AdminSubs: React.FC = () => {
         <div className="part1">
           <h1>Subscriptions</h1>
           {/* Bouton pour se déconnecter */}
-          <button className="logout-button">Logout</button>
+          <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
         </div>
 
         {/* Tableau des abonnements */}
@@ -98,7 +100,7 @@ const AdminSubs: React.FC = () => {
             </thead>
             <tbody>
               {subscriptions.map((sub, index) => (
-                <tr key={index}>
+                <tr key={index} className="table-row">
                   <td>{sub.cin}</td>
                   <td>{sub.name}</td>
                   <td>{sub.email}</td>

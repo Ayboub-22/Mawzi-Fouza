@@ -1,8 +1,10 @@
 import "./AdminMembers.css";
 import NavAdmin from "../componentsAdmin/NavAdmin";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminMembers: React.FC = () => {
+  const navigate = useNavigate();
   // Données des membres simulées
   const initialMembers = [
     {
@@ -103,7 +105,7 @@ const AdminMembers: React.FC = () => {
             className="search-bar"
           />
           {/* Bouton de déconnexion */}
-          <button className="logout-button">Logout</button>
+          <div className="divlogout"><button className="logout-button" onClick={() => navigate("/")}>Logout</button></div>
         </div>
 
         {/* Tableau des membres */}
@@ -118,7 +120,6 @@ const AdminMembers: React.FC = () => {
                 <th>BIRTHDATE</th>
                 <th>SEX</th>
                 <th>ADHERENT</th>
-                <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
@@ -130,22 +131,21 @@ const AdminMembers: React.FC = () => {
                   <td>{member.phone}</td>
                   <td>{member.birthdate}</td>
                   <td>{member.sex}</td>
-                  <td>
+                  <td >
+                    <div className="div-adh">
+                    <div className="div-check">
                     <input
                       type="checkbox"
                       checked={member.adherent}
                       readOnly
                     />
+                    </div>
+                    <div className="div-span">
+                    <span className="delete-icon"><img src="../assets/icons/price-tag.png"></img></span>   {/*le chemin a changer*/}
+                    </div>
+                    </div>
                   </td>
-                  <td>
-                    <span
-                      className="delete-icon"
-                      onClick={() => handleDelete(member.cin)}
-                      title="Delete"
-                    >
-                      🗑️
-                    </span>
-                  </td>
+                  
                 </tr>
               ))}
             </tbody>
