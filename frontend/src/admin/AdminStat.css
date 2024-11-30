@@ -1,18 +1,33 @@
-/* CourseStats.css */
-.course-stats {
+.admin-stat-container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .admin-stat-container > * {
+    flex-shrink: 0;
+  }
+  
+  .admin-stat-container > :first-child {
+    flex: 0 0 250px; /* Largeur fixe pour NavAdmin */
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .admin-stat-container > :last-child {
+    flex: 1; /* Prend le reste de l'espace */
     padding: 20px;
-    background-color: #f5f5f5;
+    overflow-y: auto;
+  }
+  
+  .course-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .chart-container {
     width: 100%;
     max-width: 800px;
-    height: 400px;
-    margin: 0 auto;
-  }
-  
-  h2 {
-    text-align: center;
-    margin-bottom: 20px;
   }
   

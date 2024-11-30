@@ -33,7 +33,7 @@ function PopUp() {
       if (response.status === 200) {
         // Successful login
         console.log("Login successful:", response.data);
-        navigate("/Admin/Admin_Statistics"); // Redirect to the dashboard
+        navigate("/Admin/AdminStat"); // Redirect to the dashboard
       } else {
         setErrorMessage("Invalid login credentials.");
       }
