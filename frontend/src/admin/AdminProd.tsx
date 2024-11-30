@@ -1,19 +1,23 @@
+import React, { useState } from "react";
 import "./AdminProd.css";
-import NavAdmin from "../componentsAdmin/NavAdmin";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import modify from '../assets/icons/edit.png';
+import dele from '../assets/icons/delete.png';
 import PopupAddProduct from "./PopupAddProduct";
 import PopupModifyProduct from "./PopupModifyProduct";
-import { useNavigate } from "react-router-dom";
-import dele from '../assets/icons/delete.png';
-import modify from'../assets/icons/edit.png';
+import PopupConfirmDelete from "./PopupConfirmDelete"; // Import de la popup de confirmation
+import NavAdmin from "../componentsAdmin/NavAdmin";
+
 const AdminProd: React.FC = () => {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-  const [showModifyPopup, setShowModifyPopup] = useState<number | null>(null); // Gestion des pop-ups pour chaque produit
+  const [showModifyPopup, setShowModifyPopup] = useState<number | null>(null); // Pop-up pour chaque produit
+  const [showDeletePopup, setShowDeletePopup] = useState(false); // Nouveau state pour la pop-up de confirmation de suppression
+  const [productToDelete, setProductToDelete] = useState<number | null>(null); // ID du produit à supprimer
 
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
-  
+
   const handleModifyPopup = (id: number) => {
     setShowModifyPopup(id);
   };
@@ -34,8 +38,22 @@ const AdminProd: React.FC = () => {
 
   const [products, setProducts] = useState(initialProducts);
 
-  const handleDelete = (id: number) => {
-    setProducts(products.filter((product) => product.id !== id));
+  const handleDelete = () => {
+    if (productToDelete !== null) {
+      setProducts(products.filter((product) => product.id !== productToDelete));
+      setProductToDelete(null);  // Réinitialiser l'ID après la suppression
+      setShowDeletePopup(false); // Fermer la pop-up après suppression
+    }
+  };
+
+  const openDeletePopup = (id: number) => {
+    setProductToDelete(id); // Définir le produit à supprimer
+    setShowDeletePopup(true); // Ouvrir la pop-up de confirmation
+  };
+
+  const closeDeletePopup = () => {
+    setShowDeletePopup(false); // Fermer la pop-up sans supprimer
+    setProductToDelete(null); // Réinitialiser l'ID du produit
   };
 
   return (
@@ -83,7 +101,7 @@ const AdminProd: React.FC = () => {
                           <img
                             className="d-icon-img"
                             src={dele}
-                            onClick={() => handleDelete(product.id)}
+                            onClick={() => openDeletePopup(product.id)} // Ouvrir la pop-up de suppression
                           />
                         </span>
                       </div>
@@ -100,6 +118,14 @@ const AdminProd: React.FC = () => {
           <PopupAddProduct show={showPopup} onClose={handleClosePopup} />
         </div>
       </div>
+
+      {/* Pop-up de confirmation de suppression */}
+      {showDeletePopup && (
+        <PopupConfirmDelete 
+          onConfirm={handleDelete} 
+          onCancel={closeDeletePopup} // Fermer la pop-up sans supprimer
+        />
+      )}
     </div>
   );
 };
