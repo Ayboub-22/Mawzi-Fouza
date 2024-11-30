@@ -1,6 +1,8 @@
 
 .popup-overlay {
+
   /* position: fixed; */
+
   top: 0;
   left: 0;
   width: 100%;
@@ -25,10 +27,12 @@ color: #333;
 }
 
 
+
 .logo1 {
   width: 400px !important; /* Largeur fixée à 100px */
   height: auto !important;  /* Hauteur automatique */
   object-fit: contain !important; /* Garantir que l'image ne soit pas déformée */
+
 }
 
 .close-button {

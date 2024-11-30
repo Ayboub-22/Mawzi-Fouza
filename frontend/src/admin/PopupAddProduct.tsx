@@ -6,7 +6,9 @@ interface PopupAddProductProps {
   onClose: () => void; // Fonction pour fermer la popup
 }
 
+
 const PopupAddProduct: React.FC<PopupAddProductProps> = ({ show, onClose }) => {
+
   if (!show) return null; // Ne rien afficher si `show` est false
 
   return (
@@ -16,6 +18,7 @@ const PopupAddProduct: React.FC<PopupAddProductProps> = ({ show, onClose }) => {
           X
         </button>
         <div className="Head">
+
           <img src={logo} alt="Logo" className="logo1" />
         </div>
         <form className="product-form">

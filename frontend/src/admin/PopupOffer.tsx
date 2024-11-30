@@ -2,6 +2,7 @@ import React from "react";
 import "./PopupOffer.css";
 import logo from "../components/logo.png";
 
+
 interface PopupOfferProps {
   show: boolean; // Pour contrôler la visibilité de la popup
   onClose: () => void; // Fonction pour fermer la popup

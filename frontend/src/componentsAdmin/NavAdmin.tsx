@@ -22,6 +22,7 @@ function NavAdmin(){
                 <a href="#" className={`${
                 location.pathname === "/Admin/AdminStat" ? "active" : ""
               }`}
+
               onClick={() => navigate("/Admin/AdminStat")}>
                     <span className="icon"><img src={barchart} className='icon-img' ></img></span> 
 

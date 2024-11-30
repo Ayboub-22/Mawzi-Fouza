@@ -2,11 +2,14 @@ import "./PopupModifyProduct.css";
 import logo from '../../src/assets/icons/logo.png';
 
 interface PopupModifyProductProps {
+
   show: boolean; // Pour contrôler la visibilité de la popup
   onClose: () => void; // Fonction pour fermer la popup
 }
 
+
 const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, onClose }) => {
+
   if (!show) return null; // Ne rien afficher si `show` est false
 
   return (

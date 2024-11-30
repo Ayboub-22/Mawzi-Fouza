@@ -1,4 +1,5 @@
 import "./PopupClasses.css";
+
 import logo from '../../src/assets/icons/logo.png';
 
 interface PopupClassesProps {
@@ -11,6 +12,7 @@ const PopupClasses: React.FC<PopupClassesProps> = ({ show, onClose }) => {
 
   return (
     <div className="popup-overlay">
+
     <div className="popup-content">
     <button className="close-button" onClick={onClose}>
       X
@@ -58,6 +60,7 @@ const PopupClasses: React.FC<PopupClassesProps> = ({ show, onClose }) => {
     </form>
   </div>
 </div>
+
 
   );
 };

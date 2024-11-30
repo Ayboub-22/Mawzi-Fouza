@@ -18,11 +18,13 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const CourseStats: React.FC = () => {
   const courseData = [
+
     { course: "Danse Orientale", participation: 80 },
     { course: "Body Pump", participation: 70 },
     { course: "Cross Training", participation: 95 },
     { course: "Body Combat", participation: 60 },
     { course: "Six Pack", participation: 85 }
+
   ];
 
   const labels = courseData.map(course => course.course);
@@ -45,7 +47,6 @@ const CourseStats: React.FC = () => {
   const options: ChartOptions<'bar'> = {
     responsive: true,
     plugins: {
-      
       tooltip: {
         callbacks: {
           label: (context: any) => `${context.raw}%`,

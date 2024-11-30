@@ -8,8 +8,6 @@ function AdminStat() {
       <NavAdmin />
       <Chart />
   </div>
-        
-      
     );
   }
   

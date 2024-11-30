@@ -11,6 +11,7 @@
 }
 
 .logo {
+
     width: 200px;  /* Réduire la taille à 50px (ajustez selon votre besoin) */
     height: 100px; /* Maintenir les proportions */
     object-fit: contain; /* Assurer que l'image reste dans les limites sans distorsion */

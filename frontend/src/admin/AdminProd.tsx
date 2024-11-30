@@ -4,11 +4,15 @@ import { useNavigate } from "react-router-dom";
 import modify from '../assets/icons/edit.png';
 import dele from '../assets/icons/delete.png';
 import PopupAddProduct from "./PopupAddProduct";
+
 import PopupModifyProduct from "./PopupModifyProduct";
+
 import PopupConfirmDelete from "./PopupConfirmDelete"; // Import de la popup de confirmation
 import NavAdmin from "../componentsAdmin/NavAdmin";
 
+
 const AdminProd: React.FC = () => {
+
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const [showModifyPopup, setShowModifyPopup] = useState<number | null>(null); // Pop-up pour chaque produit
@@ -58,6 +62,7 @@ const AdminProd: React.FC = () => {
 
   return (
     <div className="admin-container">
+
       <NavAdmin />
       <div className="admin-content">
         <div className="part1">
@@ -105,6 +110,7 @@ const AdminProd: React.FC = () => {
                           />
                         </span>
                       </div>
+
                     </div>
                   </td>
                 </tr>
@@ -112,7 +118,6 @@ const AdminProd: React.FC = () => {
             </tbody>
           </table>
         </div>
-
         <div className="addprodpad">
           <button className="add-product-button" onClick={handleOpenPopup}>Add product</button>
           <PopupAddProduct show={showPopup} onClose={handleClosePopup} />
