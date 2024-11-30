@@ -1,0 +1,197 @@
+@font-face {
+    font-family: 'Signika';
+    src: url('../assets/fonts/Signika/static/Signika-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Signika-Light';
+    src: url('../assets/fonts/Signika/static/Signika-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Signika-SemiBold';
+    src: url('../assets/fonts/Signika/static/Signika-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  
+  
+  /* Conteneur principal */
+  .admin-container {
+      display: flex;
+      height: 100vh;
+    }
+    
+    /* Contenu principal */
+    .admin-content {
+      flex: 1;
+      padding: 50px;
+      background-color: #f5f5f5;
+    }
+    .part1{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom: 3%;
+    }
+    .tablepad{
+      padding-left: 8%;
+      padding-right: 8%;
+      margin-bottom: 3%;
+  
+    }
+  
+    
+    /* Titre principal */
+    .admin-content h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    
+    /* Tableau des offres */
+    .products-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      background-color: #ffffff;
+    }
+    
+    .products-table th,
+    .products-table td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+    
+    .products-table th {
+      background-color: #f0f0f0f0;
+      font-weight: bold;
+      color: #FF2A00;
+    }
+    
+    .products-table td input[type="checkbox"] {
+      cursor: pointer;
+    }
+    
+    /* Boutons */
+    .add-product-button,
+    .logout-button {
+      color: #ffffff; /* Button text color */
+      background-color: #000000; /* Button background color */
+      border-radius: 15px; /* Border radius for rounded corners */
+      padding: 8px 20px; /* Padding for button size */
+      border: none; /* Remove default border */
+      cursor: pointer ; /* Pointer cursor on hover */
+      transition: background-color 0.3s ease; /* Smooth color transition on hover */
+      font-size: 18px;
+      font-weight: 600;
+      font-family: Signika-SemiBold;
+      max-height:40px ;
+    }
+    
+    .add-product-button {
+      background-color: black;
+      margin-right: 10px;
+    }
+    
+    .logout-button {
+      background-color: #FF2A00 !important;
+    }
+  
+    .addprodpad{
+      padding-left: 8%;
+    }
+  
+  
+    .admin-container {
+        font-family: Arial, sans-serif;
+      }
+      
+      .part1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .logout-button {
+        padding: 8px 16px;
+        background-color: #ff3d00;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      .products-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      
+      .products-table th,
+      .products-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .products-table th {
+        background-color: #f4f4f4;
+        text-transform: uppercase;
+      }
+      
+      .products-table tr:hover {
+        background-color: #f9f9f9;
+      }
+      
+      /* .delete-button {
+        background: none;
+        border: none;
+        color: red;
+        cursor: pointer;
+        font-size: 18px;
+      } */
+      
+      .add-product-button {
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      .div-category{
+        display: flex;
+        width: 300px;
+      }
+      .d-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        display: none; 
+    }
+      .d-span{
+      margin-left:0%;
+      display:flex;
+    }
+    .d-icon-img{
+      width: 80%;
+      height: 80%;
+    }
+      .div-prod{
+      width: 250px;
+    }
+     .table-row:hover .d-icon {
+      display: inline-block; 
+    } 
+
+
+    

@@ -1,7 +1,16 @@
 import "./AdminOffers.css";
 import NavAdmin from"../componentsAdmin/NavAdmin";
+import PopupOffer from "./PopupOffer";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const AdminOffers: React.FC = () => {
+  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleOpenPopup = () => setShowPopup(true);
+  const handleClosePopup = () => setShowPopup(false);
     // Données des offres simulées
     const offers = [
       { id: 1, duration: "1 month", price: "150 DT", activated: false },
@@ -22,7 +31,8 @@ const AdminOffers: React.FC = () => {
           <div className="part1">
             <h1>Offers</h1>
             {/* Bouton pour se déconnecter */}
-            <button className="logout-button">Logout</button>
+            <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
+
           </div>
           
           {/* Tableau des offres */}
@@ -38,7 +48,8 @@ const AdminOffers: React.FC = () => {
             </thead>
             <tbody>
               {offers.map((offer) => (
-                <tr key={offer.id}>
+                <tr key={offer.id} className="table-row">
+
                   <td>{offer.id}</td>
                   <td>{offer.duration}</td>
                   <td>{offer.price}</td>
@@ -56,7 +67,10 @@ const AdminOffers: React.FC = () => {
           </div>
   
           {/* Bouton pour ajouter une offre */}
-          <div className="addoffpad"><button className="add-offer-button">Add offer</button></div>
+          <div className="addoffpad"><button className="add-offer-button" onClick={handleOpenPopup} >Add offer</button></div>
+          {/* Affichage de la popup */}
+        <PopupOffer show={showPopup} onClose={handleClosePopup} />
+
         </div>
       </div>
     );

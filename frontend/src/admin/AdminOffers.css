@@ -108,22 +108,7 @@
   }
 
 
+  .table-row:hover {                                 /*a faire dans les autres tables*/
+    background-color: #f9f9f9;
+  }
 
-  .custom-button {
-    color: #ffffff; /* Button text color */
-    background-color: #000000; /* Button background color */
-    border-radius: 15px; /* Border radius for rounded corners */
-    padding: 8px 20px; /* Padding for button size */
-    border: none; /* Remove default border */
-    cursor: pointer ; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth color transition on hover */
-    font-size: 18px;
-    font-weight: 600;
-    font-family: Signika-SemiBold;
-    max-height:50px ;
-  }
-  
-  .custom-button:hover {
-    background-color: #797979; /* Darken background color on hover */
-  }
-  
