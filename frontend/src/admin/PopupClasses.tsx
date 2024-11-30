@@ -1,8 +1,6 @@
 import "./PopupClasses.css";
-<<<<<<< HEAD
-=======
+
 import logo from '../../src/assets/icons/logo.png';
->>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
 
 interface PopupClassesProps {
   show: boolean; // Pour contrôler la visibilité de la popup
@@ -14,26 +12,7 @@ const PopupClasses: React.FC<PopupClassesProps> = ({ show, onClose }) => {
 
   return (
     <div className="popup-overlay">
-<<<<<<< HEAD
-      <div className="popup-content">
-        <button className="close-button" onClick={onClose}>
-          X
-        </button>
-        <div className="Head">
-          <img src="./Logo.png" alt="logo" />
-        </div>
-        <div className="div_offerform"><form className="offerform">
-          <div className="label"><label>Duration:</label></div>
-          <input type="text" placeholder="Enter duration" />
-          <div className="label"><label>Price:</label></div>
-          <input type="text" placeholder="Enter price" />
-          
-        </form></div>
-        <div className="div_addoffer"><button type="submit" className="addoffer" >Add Offer</button></div>
-        
-      </div>
-    </div>
-=======
+
     <div className="popup-content">
     <button className="close-button" onClick={onClose}>
       X
@@ -82,27 +61,8 @@ const PopupClasses: React.FC<PopupClassesProps> = ({ show, onClose }) => {
   </div>
 </div>
 
->>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
+
   );
 };
 
 export default PopupClasses;
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8

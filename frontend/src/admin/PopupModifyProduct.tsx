@@ -1,21 +1,15 @@
 import "./PopupModifyProduct.css";
-<<<<<<< HEAD
-
-interface PopupModifyProdProps {
-=======
 import logo from '../../src/assets/icons/logo.png';
 
 interface PopupModifyProductProps {
->>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
+
   show: boolean; // Pour contrôler la visibilité de la popup
   onClose: () => void; // Fonction pour fermer la popup
 }
 
-<<<<<<< HEAD
-const PopupModifyProduct: React.FC<PopupModifyProdProps> = ({ show, onClose }) => {
-=======
+
 const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, onClose }) => {
->>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
+
   if (!show) return null; // Ne rien afficher si `show` est false
 
   return (
@@ -25,19 +19,6 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, onClose }
           X
         </button>
         <div className="Head">
-<<<<<<< HEAD
-          <img src="./Logo.png" alt="logo" />
-        </div>
-        <div className="div_offerform"><form className="offerform">
-          <div className="label"><label>Duration:</label></div>
-          <input type="text" placeholder="Enter duration" />
-          <div className="label"><label>Price:</label></div>
-          <input type="text" placeholder="Enter price" />
-          
-        </form></div>
-        <div className="div_addoffer"><button type="submit" className="addoffer" >Add Offer</button></div>
-        
-=======
           <img src={logo} alt="Logo" className="logo1" />
         </div>
         <form className="product-form">
@@ -86,29 +67,9 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, onClose }
             <button type="submit" className="add-product-button1">Modify Product</button>
           </div>
         </form>
->>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
       </div>
     </div>
   );
 };
 
 export default PopupModifyProduct;
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
