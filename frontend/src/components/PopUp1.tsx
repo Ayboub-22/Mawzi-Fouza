@@ -1,5 +1,6 @@
 import "./PopUp1.css";
 import { usePopup } from "./PopupContext";
+import logo from "../assets/icons/logo.png";
 
 import React from "react";
 
@@ -20,7 +21,7 @@ function PopUp1() {
           ✕
         </button>
         <div className="Head">
-          <img src="./Logo.png" alt="logo" />
+        <img src={logo} alt="Logo" className="logo" />
           <div className="tit">
             <h2>Join us now !!!</h2>
           </div>

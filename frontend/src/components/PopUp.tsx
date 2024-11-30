@@ -3,6 +3,7 @@ import { usePopup } from "./PopupContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"; 
+import logo from "../assets/icons/logo.png";
 
 
 function getClassName(isActive: boolean): string {
@@ -70,7 +71,7 @@ function PopUp() {
           ✕
         </button>
         <div className="Head">
-          <img src="./Logo.png" alt="logo" />
+        <img src={logo} alt="Logo" className="logo" />
           <div className="bouttons">
             <a
               className={getClassName(isMember)}
