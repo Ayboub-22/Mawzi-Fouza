@@ -1,5 +1,7 @@
 import React from "react";
 import "./PopupOffer.css";
+import logo from "../components/logo.png";
+
 
 interface PopupOfferProps {
   show: boolean; // Pour contrôler la visibilité de la popup
@@ -16,7 +18,7 @@ const PopupOffer: React.FC<PopupOfferProps> = ({ show, onClose }) => {
           X
         </button>
         <div className="Head">
-          <img src="./Logo.png" alt="logo" />
+        <img src={logo} alt="Logo" className="logo1" />
         </div>
         <div className="div_offerform"><form className="offerform">
           <div className="label"><label>Duration:</label></div>

@@ -20,9 +20,10 @@ function NavAdmin(){
             <h2>Admin Dashboard</h2>
             <nav>
                 <a href="#" className={`${
-                location.pathname === "/Admin/Admin_Statistics" ? "active" : ""
+                location.pathname === "/Admin/AdminStat" ? "active" : ""
               }`}
-              onClick={() => navigate("/Admin/Admin_Statistics")}>
+
+              onClick={() => navigate("/Admin/AdminStat")}>
                     <span className="icon"><img src={barchart} className='icon-img' ></img></span> 
 
                     Statistics

@@ -2,6 +2,9 @@ import "./AdminProd.css";
 import NavAdmin from "../componentsAdmin/NavAdmin";
 import { useState } from "react";
 import PopupAddProduct from "./PopupAddProduct";
+
+import PopupModifyProduct from "./PopupModifyProduct";
+
 import { useNavigate } from "react-router-dom";
 import dele from '../assets/icons/delete.png';
 import modify from'../assets/icons/edit.png';
@@ -9,10 +12,18 @@ const AdminProd: React.FC = () => {
 
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
+  const [showModifyPopup, setShowModifyPopup] = useState<number | null>(null); // Gestion des pop-ups pour chaque produit
 
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
-  // Données des produits simulées
+  
+  const handleModifyPopup = (id: number) => {
+    setShowModifyPopup(id);
+  };
+  const handleCloseModifyPopup = () => {
+    setShowModifyPopup(null);
+  };
+
   const initialProducts = [
     { id: 1, name: "Whey Protein Mexico", designation: "WPM", price: "90,000 DT", category: "protein supplements" },
     { id: 2, name: "Vegan Protein Powder", designation: "VPP", price: "60,000 DT", category: "protein supplements" },
@@ -32,18 +43,14 @@ const AdminProd: React.FC = () => {
 
   return (
     <div className="admin-container">
-      {/* Barre de navigation */}
-      <NavAdmin />
 
-      {/* Contenu principal */}
+      <NavAdmin />
       <div className="admin-content">
         <div className="part1">
           <h1>Products</h1>
-          {/* Bouton pour se déconnecter */}
           <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
         </div>
 
-        {/* Tableau des produits */}
         <div className="tablepad">
           <table className="products-table">
             <thead>
@@ -64,11 +71,27 @@ const AdminProd: React.FC = () => {
                   <td>{product.price}</td>
                   <td>
                     <div className="div-category">
-                    <div className="div-prod">{product.category}</div>
-                    <div className="d-span">
-                    <span className="d-icon"><img className="d-icon-img" src={modify}></img></span>   {/*le chemin a changer*/}
-                    <span className="d-icon"><img className="d-icon-img" src={dele}></img></span>   {/*le chemin a changer*/}
-                    </div>
+                      <div className="div-prod">{product.category}</div>
+                      <div className="d-span">
+                        <span className="d-icon">
+                          <img
+                            className="d-icon-img"
+                            src={modify}
+                            onClick={() => handleModifyPopup(product.id)}
+                          />
+                          {showModifyPopup === product.id && (
+                            <PopupModifyProduct show={true} onClose={handleCloseModifyPopup} />
+                          )}
+                        </span>
+                        <span className="d-icon">
+                          <img
+                            className="d-icon-img"
+                            src={dele}
+                            onClick={() => handleDelete(product.id)}
+                          />
+                        </span>
+                      </div>
+
                     </div>
                   </td>
                 </tr>
@@ -76,8 +99,6 @@ const AdminProd: React.FC = () => {
             </tbody>
           </table>
         </div>
-
-        {/* Bouton pour ajouter un produit */}
         <div className="addprodpad">
           <button className="add-product-button" onClick={handleOpenPopup}>Add product</button>
           <PopupAddProduct show={showPopup} onClose={handleClosePopup} />

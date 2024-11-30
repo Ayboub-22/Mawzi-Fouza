@@ -1,6 +1,10 @@
 
 .popup-overlay {
+<<<<<<< HEAD
   position: fixed;
+=======
+  /* position: fixed; */
+>>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
   top: 0;
   left: 0;
   width: 100%;
@@ -25,6 +29,7 @@ color: #333;
 }
 
 
+<<<<<<< HEAD
 /* Modal Overlay */     /*yassine*/
 /* .popup-overlay {
   
@@ -50,6 +55,12 @@ color: #333;
 
 .logo {
   width: 50px;
+=======
+.logo1 {
+  width: 400px !important; /* Largeur fixée à 100px */
+  height: auto !important;  /* Hauteur automatique */
+  object-fit: contain !important; /* Garantir que l'image ne soit pas déformée */
+>>>>>>> dfab8c16c8ec2d0eb4a570113039212a1ef52dd8
 }
 
 .close-button {
