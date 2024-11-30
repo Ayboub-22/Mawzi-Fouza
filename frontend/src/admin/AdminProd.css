@@ -169,25 +169,29 @@
 
       .div-category{
         display: flex;
+        width: 300px;
       }
       .d-icon {
         width: 20px;
         height: 20px;
-        background-color: #f9f9f9;
-        border-radius: 50%;
         margin-right: 10px;
         cursor: pointer;
         display: none; 
     }
-    .d-span{
-      background-color: #000;
-      margin-left:10%
+      .d-span{
+      margin-left:0%;
+      display:flex;
     }
-    .div-prod{
-      width:70%
+    .d-icon-img{
+      width: 80%;
+      height: 80%;
+    }
+      .div-prod{
+      width: 250px;
     }
      .table-row:hover .d-icon {
       display: inline-block; 
     } 
+
 
     

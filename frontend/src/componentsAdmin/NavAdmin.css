@@ -13,6 +13,7 @@
 .logo {
     width: 100px;
     margin-bottom: 20px;
+
 }
 
 .sidebar h2 {
@@ -25,7 +26,8 @@
     text-decoration: none;
     color: #ccc;
     font-size: 16px;
-    margin: 15px 0;
+    margin: 15px 0px;
+    margin-right: -10%;
     display: flex;
     align-items: center;
 }
@@ -44,8 +46,42 @@
 .sidebar nav a .icon {
     width: 20px;
     height: 20px;
-    background-color: #888;
-    border-radius: 50%;
-    margin-right: 10px;
+    /*background-color: #888;
+    border-radius: 50%;*/
+    margin-right: 5%;
+    display: inline-block;
+}
+
+.sidebar nav a .icon-img {
+    width: 100%;
+    height: 100%;
+    margin-right: 0px;
+    margin-bottom: 80%;
+    display: inline-block;
+}
+.sidebar nav a .icon-img-grp {
+    width: 150%;
+    height: 150%;
+    margin-right: 0%;
+    margin-bottom: 100%;
+    display: inline-block;
+}
+.sidebar nav a .icon-grp {
+    width: 20px;
+    height: 20px;
+    /*background-color: #888;
+    border-radius: 50%;*/
+    margin-right: 7%;
+    margin-left: -2%;
+    margin-bottom: 4%;
+    display: inline-block;
+}
+
+
+.sidebar nav a .icon-img-shop {
+    width: 120%;
+    height: 120%;
+    margin-right: 0px;
+    margin-bottom: 90%;
     display: inline-block;
 }

@@ -70,3 +70,6 @@
   margin-right:3%;
   padding-top:1%
 }
+html{
+  scroll-behavior: smooth;
+}

@@ -2,6 +2,7 @@ import "./AdminMembers.css";
 import NavAdmin from "../componentsAdmin/NavAdmin";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import garbage from '../assets/icons/delete.png';
 
 const AdminMembers: React.FC = () => {
   const navigate = useNavigate();
@@ -141,7 +142,7 @@ const AdminMembers: React.FC = () => {
                     />
                     </div>
                     <div className="div-span">
-                    <span className="delete-icon"><img src="../assets/icons/price-tag.png"></img></span>   {/*le chemin a changer*/}
+                    <span className="delete-icon"><img src={garbage} className="delete-icon-garbage"></img></span>   {/*le chemin a changer*/}
                     </div>
                     </div>
                   </td>

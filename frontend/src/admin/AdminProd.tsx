@@ -3,7 +3,8 @@ import NavAdmin from "../componentsAdmin/NavAdmin";
 import { useState } from "react";
 import PopupAddProduct from "./PopupAddProduct";
 import { useNavigate } from "react-router-dom";
-
+import dele from '../assets/icons/delete.png';
+import modify from'../assets/icons/edit.png';
 const AdminProd: React.FC = () => {
 
   const navigate = useNavigate();
@@ -13,14 +14,14 @@ const AdminProd: React.FC = () => {
   const handleClosePopup = () => setShowPopup(false);
   // Données des produits simulées
   const initialProducts = [
-    { id: 1, name: "Whey Protein Mexico", designation: "WPM", price: "90,000 DT", category: "PROTEIN SUPPLEMENTS" },
-    { id: 2, name: "Vegan Protein Powder", designation: "VPP", price: "60,000 DT", category: "PROTEIN SUPPLEMENTS" },
-    { id: 3, name: "Organic Protein Powder", designation: "OPP", price: "70,000 DT", category: "PROTEIN SUPPLEMENTS" },
-    { id: 4, name: "T-shirt", designation: "TSH", price: "30,000 DT", category: "GYM WEAR" },
-    { id: 5, name: "Gym Tank Top", designation: "GTT", price: "70,000 DT", category: "GYM WEAR" },
-    { id: 6, name: "Gloves", designation: "GLV", price: "40,000 DT", category: "EQUIPMENTS AND ACCESSORIES" },
-    { id: 7, name: "Gym Belt", designation: "GBL", price: "50,000 DT", category: "EQUIPMENTS AND ACCESSORIES" },
-    { id: 8, name: "Gym Bag", designation: "GBG", price: "120,000 DT", category: "EQUIPMENTS AND ACCESSORIES" },
+    { id: 1, name: "Whey Protein Mexico", designation: "WPM", price: "90,000 DT", category: "protein supplements" },
+    { id: 2, name: "Vegan Protein Powder", designation: "VPP", price: "60,000 DT", category: "protein supplements" },
+    { id: 3, name: "Organic Protein Powder", designation: "OPP", price: "70,000 DT", category: "protein supplements" },
+    { id: 4, name: "T-shirt", designation: "TSH", price: "30,000 DT", category: "gym wear" },
+    { id: 5, name: "Gym Tank Top", designation: "GTT", price: "70,000 DT", category: "gym wear" },
+    { id: 6, name: "Gloves", designation: "GLV", price: "40,000 DT", category: "equipments and accessories" },
+    { id: 7, name: "Gym Belt", designation: "GBL", price: "50,000 DT", category: "equipments and accessories" },
+    { id: 8, name: "Gym Bag", designation: "GBG", price: "120,000 DT", category: "equipments and accessories" },
   ];
 
   const [products, setProducts] = useState(initialProducts);
@@ -65,8 +66,8 @@ const AdminProd: React.FC = () => {
                     <div className="div-category">
                     <div className="div-prod">{product.category}</div>
                     <div className="d-span">
-                    <span className="d-icon"><img src="../assets/icons/price-tag.png"></img></span>   {/*le chemin a changer*/}
-                    <span className="d-icon"><img src="../assets/icons/price-tag.png"></img></span>   {/*le chemin a changer*/}
+                    <span className="d-icon"><img className="d-icon-img" src={modify}></img></span>   {/*le chemin a changer*/}
+                    <span className="d-icon"><img className="d-icon-img" src={dele}></img></span>   {/*le chemin a changer*/}
                     </div>
                     </div>
                   </td>

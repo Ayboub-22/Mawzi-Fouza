@@ -133,6 +133,10 @@
         display: none;
         
     }
+    .delete-icon-garbage{
+      width:90%;
+      height:90%;
+    }
   
     .div-adh{
       display:flex;

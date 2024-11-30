@@ -1,9 +1,13 @@
 import './NavAdmin.css';
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import logo from '../../src/assets/icons/logo.png'
-import barchart from '../assets/icons/bar-chart.png'
-
+import logo from '../../src/assets/icons/logo.png';
+import barchart from '../assets/icons/bar-chart.png';
+import priccetag from '../assets/icons/price-tag.png';
+import groupchat from '../assets/icons/group-chat.png';
+import subscription from '../assets/icons/subscription.png';
+import shop from'../assets/icons/shop.png';
+import gym from '../assets/icons/gym.png';
 function NavAdmin(){
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,8 +22,8 @@ function NavAdmin(){
                 <a href="#" className={`${
                 location.pathname === "/Admin/Admin_Statistics" ? "active" : ""
               }`}
-              onClick={() => navigate("/Admin/Admin_Statistics")}>ù
-                    <span className="icon"><img src={barchart}  ></img></span> 
+              onClick={() => navigate("/Admin/Admin_Statistics")}>
+                    <span className="icon"><img src={barchart} className='icon-img' ></img></span> 
 
                     Statistics
                     
@@ -29,7 +33,7 @@ function NavAdmin(){
               }`}
               onClick={() => navigate("/Admin/AdminOffers")} >
 
-                    <span className="icon"><img src="../assets/icons/price-tag.png"></img></span> 
+                    <span className="icon"><img src={priccetag} className='icon-img'></img></span> 
                     Offers
 
                 </a>
@@ -38,10 +42,7 @@ function NavAdmin(){
                 location.pathname === "/Admin/AdminMembers" ? "active" : ""
               }`}
               onClick={() => navigate("/Admin/AdminMembers")}>
-
-
-                    <span className="icon"><img src="../assets/icons/group-chat.png" ></img></span> 
-
+                    <span className="icon-grp"><img src={groupchat} className='icon-img-grp'></img></span> 
                     Members
                     
                 </a>
@@ -51,7 +52,7 @@ function NavAdmin(){
               onClick={() => navigate("/Admin/AdminSubs")}>
 
 
-                    <span className="icon"><img src="../assets/icons/subscription.png" ></img></span> 
+                    <span className="icon"><img src={subscription} className='icon-img' ></img></span> 
 
                     Subscriptions
                     
@@ -60,7 +61,7 @@ function NavAdmin(){
                 location.pathname === "/Admin/AdminProd" ? "active" : ""
               }`}
               onClick={() => navigate("/Admin/AdminProd")}>
-                    <span className="icon"><img src="../assets/icons/shop.png" ></img></span> 
+                    <span className="icon"><img src={shop} className='icon-img-shop' ></img></span> 
 
                     Products management
                     
@@ -69,7 +70,7 @@ function NavAdmin(){
                 location.pathname === "/Admin/AdminClasses" ? "active" : ""
               }`}
               onClick={() => navigate("/Admin/AdminClasses")}>
-                    <span className="icon"><img src="../assets/icons/gym.png" ></img></span>
+                    <span className="icon"><img src={gym} className='icon-img-shop' ></img></span>
 
                     Classes
                     
