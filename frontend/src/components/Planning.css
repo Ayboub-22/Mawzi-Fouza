@@ -1,0 +1,47 @@
+.container {
+  margin: 20px auto;
+  max-width: 1000px;
+  text-align: center;
+  color: #1F1F1F;
+}
+
+h1 {
+  font-size: 63px;
+  color: #1F1F1F;
+  margin-bottom: 24px;
+  text-decoration: none;
+  font-family: 'Signika', sans-serif;
+  text-align: center;
+  font-style: oblique;
+}
+
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.schedule-table th,
+.schedule-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.schedule-table th {
+  background-color: #FF2A00;
+  color: white;
+}
+
+.schedule-table td {
+  height: 40px;
+}
+
+.schedule-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.schedule-table tr:hover {
+  background-color: #f1f1f1;
+}

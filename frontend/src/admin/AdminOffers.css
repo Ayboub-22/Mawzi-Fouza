@@ -1,0 +1,118 @@
+@font-face {
+  font-family: 'Signika';
+  src: url('../assets/fonts/Signika/static/Signika-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Signika-Light';
+  src: url('../assets/fonts/Signika/static/Signika-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Signika-SemiBold';
+  src: url('../assets/fonts/Signika/static/Signika-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+/* Conteneur principal */
+.admin-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Contenu principal */
+  .admin-content {
+    flex: 1;
+    padding: 50px;
+    background-color: #f5f5f5;
+  }
+  .part1{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom: 3%;
+  }
+  .tablepad{
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-bottom: 3%;
+
+  }
+
+  
+  /* Titre principal */
+  .admin-content h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  /* Tableau des offres */
+  .offers-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+  }
+  
+  .offers-table th,
+  .offers-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  .offers-table th {
+    background-color: #f0f0f0f0;
+    font-weight: bold;
+    color: #FF2A00;
+  }
+  
+  .offers-table td input[type="checkbox"] {
+    cursor: pointer;
+  }
+  
+  /* Boutons */
+  .add-offer-button,
+  .logout-button {
+    color: #ffffff; /* Button text color */
+    background-color: #000000; /* Button background color */
+    border-radius: 15px; /* Border radius for rounded corners */
+    padding: 8px 20px; /* Padding for button size */
+    border: none; /* Remove default border */
+    cursor: pointer ; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth color transition on hover */
+    font-size: 18px;
+    font-weight: 600;
+    font-family: Signika-SemiBold;
+    max-height:40px ;
+  }
+  
+  .add-offer-button {
+    background-color: black;
+    margin-right: 10px;
+  }
+  
+  .logout-button {
+    background-color: #FF2A00 !important;
+  }
+
+  .addoffpad{
+    padding-left: 8%;
+  }
+
+
+<<<<<<< HEAD:src/admin/AdminOffers.css
+  
+=======
+  .table-row:hover {                                 /*a faire dans les autres tables*/
+    background-color: #f9f9f9;
+  }
+
+>>>>>>> 05fc77b988e177e80ac10db2b5e5bae0531b291c:frontend/src/admin/AdminOffers.css
