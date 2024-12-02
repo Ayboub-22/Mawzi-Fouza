@@ -5,97 +5,96 @@ import modify from '../assets/icons/edit.png';
 import dele from '../assets/icons/delete.png';
 import PopupAddProduct from "./PopupAddProduct";
 import PopupModifyProduct from "./PopupModifyProduct";
-import PopupConfirmDelete from "./PopupConfirmDelete"; // Import de la popup de confirmation
+import PopupConfirmDelete from "./PopupConfirmDelete";
 import NavAdmin from "../componentsAdmin/NavAdmin";
-import axios from "axios"; // Import Axios pour les requêtes HTTP
-type Product = {
+import axios from "axios"; 
+
+// Type pour les produits
+interface Product {
   id: number;
   name: string;
   designation: string;
-  price: string;
-  category: string;
-};  //pour le typescript
+  prix: string;
+  categorie: string;
+}
 
 const AdminProd: React.FC = () => {
-
   const navigate = useNavigate();
+
+  // États pour gérer les produits et pop-ups
+  const [products, setProducts] = useState<Product[]>([]);
   const [showPopup, setShowPopup] = useState(false);
-  const [showModifyPopup, setShowModifyPopup] = useState<number | null>(null); // Pop-up pour chaque produit
-  const [showDeletePopup, setShowDeletePopup] = useState(false); // Nouveau state pour la pop-up de confirmation de suppression
-  const [productToDelete, setProductToDelete] = useState<number | null>(null); // ID du produit à supprimer
-  const [products, setProducts] = useState<Product[]>([]);  //pour le TS
- // Initialisé comme tableau vide
-  
+  const [showModifyPopup, setShowModifyPopup] = useState<number | null>(null);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [productToDelete, setProductToDelete] = useState<number | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+  // Récupération des produits
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/article/"); // URL du backend
+        const response = await axios.get("http://localhost:3000/article/");
         const transformedProducts = response.data.map((article: any) => ({
-          id: article.id, // Colonne 'id' dans la base
-          name: article.name, // Colonne 'nom' (français)
-          designation: article.designation, // Colonne 'designation' (français)
-          price: `${article.prix} DT`, // Colonne 'prix' (français)
-          category: article.categorie, // Colonne 'categorie' (français)
+          id: article.id,
+          name: article.name,
+          designation: article.designation,
+          prix: article.prix,
+          categorie: article.categorie,
         }));
-        setProducts(transformedProducts); // Mise à jour des produits
+        setProducts(transformedProducts);
       } catch (error) {
         console.error("Erreur lors de la récupération des produits :", error);
       }
     };
 
-    fetchProducts(); // Appel de la fonction lors du montage
-  }, []); // Effectue la requête une seule fois au montage du composant
-  
-  
-  const handleOpenPopup = () => setShowPopup(true);
-  const handleClosePopup = () => setShowPopup(false);
+    fetchProducts();
+  }, []);
 
-  const handleModifyPopup = (id: number) => {
-    setShowModifyPopup(id);
+  // Gestion des pop-ups
+  const handleOpenPopup = () => setShowPopup(true);
+
+  const handleModifyPopup = (product: Product) => {
+    setSelectedProduct(product);
+    setShowModifyPopup(product.id);
   };
+
   const handleCloseModifyPopup = () => {
+    setSelectedProduct(null);
     setShowModifyPopup(null);
   };
 
-  // const initialProducts = [
-  //   { id: 1, name: "Whey Protein Mexico", designation: "WPM", price: "90,000 DT", category: "protein supplements" },
-  //   { id: 2, name: "Vegan Protein Powder", designation: "VPP", price: "60,000 DT", category: "protein supplements" },
-  //   { id: 3, name: "Organic Protein Powder", designation: "OPP", price: "70,000 DT", category: "protein supplements" },
-  //   { id: 4, name: "T-shirt", designation: "TSH", price: "30,000 DT", category: "gym wear" },
-  //   { id: 5, name: "Gym Tank Top", designation: "GTT", price: "70,000 DT", category: "gym wear" },
-  //   { id: 6, name: "Gloves", designation: "GLV", price: "40,000 DT", category: "equipments and accessories" },
-  //   { id: 7, name: "Gym Belt", designation: "GBL", price: "50,000 DT", category: "equipments and accessories" },
-  //   { id: 8, name: "Gym Bag", designation: "GBG", price: "120,000 DT", category: "equipments and accessories" },
-  // ];
-
-  //const [products, setProducts] = useState(initialProducts);
-
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (productToDelete !== null) {
-      setProducts(products.filter((product) => product.id !== productToDelete));
-      setProductToDelete(null);  // Réinitialiser l'ID après la suppression
-      setShowDeletePopup(false); // Fermer la pop-up après suppression
+      try {
+        await axios.delete(`http://localhost:3000/article/${productToDelete}`);
+        setProducts(products.filter((product) => product.id !== productToDelete));
+        setProductToDelete(null);
+        setShowDeletePopup(false);
+      } catch (error) {
+        console.error("Erreur lors de la suppression :", error);
+      }
     }
   };
 
   const openDeletePopup = (id: number) => {
-    setProductToDelete(id); // Définir le produit à supprimer
-    setShowDeletePopup(true); // Ouvrir la pop-up de confirmation
+    setProductToDelete(id);
+    setShowDeletePopup(true);
   };
 
   const closeDeletePopup = () => {
-    setShowDeletePopup(false); // Fermer la pop-up sans supprimer
-    setProductToDelete(null); // Réinitialiser l'ID du produit
+    setShowDeletePopup(false);
+    setProductToDelete(null);
   };
 
   return (
     <div className="admin-container">
-
       <NavAdmin />
       <div className="admin-content">
         <div className="part1">
           <h1>Products</h1>
-          <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
+          <button className="logout-button" onClick={() => navigate("/")}>
+            Logout
+          </button>
         </div>
 
         <div className="tablepad">
@@ -115,30 +114,26 @@ const AdminProd: React.FC = () => {
                   <td>{product.id}</td>
                   <td>{product.name}</td>
                   <td>{product.designation}</td>
-                  <td>{product.price}</td>
+                  <td>{product.prix}</td>
                   <td>
                     <div className="div-category">
-                      <div className="div-prod">{product.category}</div>
+                      <div className="div-prod">{product.categorie}</div>
                       <div className="d-span">
                         <span className="d-icon">
                           <img
                             className="d-icon-img"
                             src={modify}
-                            onClick={() => handleModifyPopup(product.id)}
+                            onClick={() => handleModifyPopup(product)}
                           />
-                          {showModifyPopup === product.id && (
-                            <PopupModifyProduct show={true} onClose={handleCloseModifyPopup} />
-                          )}
                         </span>
                         <span className="d-icon">
                           <img
                             className="d-icon-img"
                             src={dele}
-                            onClick={() => openDeletePopup(product.id)} // Ouvrir la pop-up de suppression
+                            onClick={() => openDeletePopup(product.id)}
                           />
                         </span>
                       </div>
-
                     </div>
                   </td>
                 </tr>
@@ -146,19 +141,33 @@ const AdminProd: React.FC = () => {
             </tbody>
           </table>
         </div>
-        <div className="addprodpad">
-          <button className="add-product-button" onClick={handleOpenPopup}>Add product</button>
-          <PopupAddProduct show={showPopup} onClose={handleClosePopup} />
-        </div>
-      </div>
 
-      {/* Pop-up de confirmation de suppression */}
-      {showDeletePopup && (
-        <PopupConfirmDelete 
-          onConfirm={handleDelete} 
-          onCancel={closeDeletePopup} // Fermer la pop-up sans supprimer
-        />
-      )}
+        <div className="addprodpad">
+          <button className="add-product-button" onClick={handleOpenPopup}>
+            Add product
+          </button>
+        </div>
+
+        {/* Pop-up pour ajouter un produit */}
+        {showPopup && <PopupAddProduct show={showPopup}  />}
+
+        {/* Pop-up pour modifier un produit */}
+        {showModifyPopup !== null && selectedProduct && (
+          <PopupModifyProduct
+            show={true}
+            onClose={handleCloseModifyPopup}
+            product={selectedProduct}
+          />
+        )}
+
+        {/* Pop-up de confirmation de suppression */}
+        {showDeletePopup && (
+          <PopupConfirmDelete
+            onConfirm={handleDelete}
+            onCancel={closeDeletePopup}
+          />
+        )}
+      </div>
     </div>
   );
 };
