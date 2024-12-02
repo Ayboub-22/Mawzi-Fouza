@@ -18,7 +18,6 @@ const AdminOffers: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleOpenPopup = () => setShowPopup(true);
-
   // Fonction pour récupérer les offres depuis l'API
   const handleFetchOffers = async () => {
     try {

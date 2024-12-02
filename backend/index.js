@@ -12,6 +12,7 @@ const Abonnement=require('./models/abonnement.model');
 const Article=require('./models/article.model');
 const Cours=require('./models/cours.model');
 const adminRouter=require('./routes/adminRoute');
+
 const offreRouter = require('./routes/offreRoute');
 const subscriptionRoutes = require('./routes/subsRoute');
 const articleRouter=require('./routes/articleRoute');
