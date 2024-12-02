@@ -8,6 +8,7 @@ const cors= require('cors');
 const Offre = require('./models/offre.model');
 const Admin = require('./models/admin.model');
 const adminRouter=require('./routes/adminRoute');
+const offreRouter=require('./routes/offreRoute');
 app.use(express.json());
 
 app.use(
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/admin',adminRouter);
+app.use('/offre',offreRouter);
 
 
 (async () => {

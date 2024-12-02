@@ -3,6 +3,7 @@ import NavAdmin from"../componentsAdmin/NavAdmin";
 import PopupOffer from "./PopupOffer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const AdminOffers: React.FC = () => {
@@ -11,6 +12,7 @@ const AdminOffers: React.FC = () => {
 
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
+  
     // Données des offres simulées
     const offers = [
       { id: 1, duration: "1 month", price: "150 DT", activated: false },
