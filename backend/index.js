@@ -7,9 +7,17 @@ const PORT = process.env.PORT || 3000;
 const cors= require('cors');
 const Offre = require('./models/offre.model');
 const Admin = require('./models/admin.model');
+const User=require('./models/user.model');
+const Abonnement=require('./models/abonnement.model');
+const Article=require('./models/article.model');
+const Cours=require('./models/cours.model');
 const adminRouter=require('./routes/adminRoute');
-app.use(express.json());
+const offreRouter = require('./routes/offreRoute');
+const subscriptionRoutes = require('./routes/subsRoute');
+const articleRouter=require('./routes/articleRoute');
+const coursRouter=require('./routes/coursRoute');
 
+app.use(express.json());
 app.use(
     cors({
       origin: 'http://localhost:5173', // Replace with your frontend's origin
@@ -24,7 +32,10 @@ app.get('/', (req, res) => {
 });
 
 app.use('/admin',adminRouter);
-
+app.use('/Offre', offreRouter);
+app.use('/subs', subscriptionRoutes);
+app.use('/article',articleRouter);
+app.use('/cours',coursRouter);
 
 (async () => {
   try {
@@ -33,7 +44,11 @@ app.use('/admin',adminRouter);
 
     await Offre.sync(); // Creates the table if it doesn't exist
     await Admin.sync();
-
+    await User.sync();
+    await Abonnement.sync();
+    await Article.sync();
+    await Cours.sync(); 
+  
     // Start server
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);
