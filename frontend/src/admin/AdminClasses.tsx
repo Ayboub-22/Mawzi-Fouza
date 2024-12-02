@@ -1,28 +1,41 @@
 import "./AdminClasses.css"; // Fichier CSS spécifique pour le style
 import NavAdmin from "../componentsAdmin/NavAdmin";
 import PopupClasses from "./PopupClasses";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Importer Axios pour effectuer des requêtes HTTP
+
+interface Course {
+  id: number;
+  name: string;
+  day: string;
+  time: string;
+  capacity: number;
+  validity: boolean;
+}
 
 const AdminClasses: React.FC = () => {
   const navigate = useNavigate();
-
-    const [showPopup, setShowPopup] = useState(false);
+  const [classes, setClasses] = useState<Course[]>([]); // État pour stocker les cours
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleOpenPopup = () => setShowPopup(true);
   const handleClosePopup = () => setShowPopup(false);
-  // Données des classes simulées
-  const classes = [
-    { id: 1, name: "Danse Orientale", day: "Monday", time: "19h", capacity: 30, validity: false },
-    { id: 2, name: "Body Pump", day: "Tuesday", time: "21h", capacity: 25, validity: true },
-    { id: 3, name: "Cross Training", day: "Monday", time: "19h", capacity: 30, validity: false },
-    { id: 4, name: "Body Combat", day: "Friday", time: "20h30", capacity: 25, validity: true },
-    { id: 5, name: "Six Pack", day: "Wednesday", time: "19h30", capacity: 20, validity: false },
-    { id: 6, name: "Body Pump", day: "Friday", time: "17h", capacity: 25, validity: true },
-    { id: 7, name: "Six Pack", day: "Monday", time: "19h", capacity: 20, validity: true },
-    { id: 8, name: "Danse Orientale", day: "Thursday", time: "18h30", capacity: 30, validity: false },
-    { id: 9, name: "Body Combat", day: "Saturday", time: "18h", capacity: 25, validity: true },
-  ];
+
+  // Fonction pour récupérer les cours depuis le backend
+  const fetchClasses = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/cours/"); // Requête GET
+      setClasses(response.data); // Mettre à jour l'état avec les données récupérées
+    } catch (error) {
+      console.error("Erreur lors de la récupération des cours :", error);
+    }
+  };
+
+  // Charger les cours lors du montage du composant
+  useEffect(() => {
+    fetchClasses();
+  }, []);
 
   return (
     <div className="admin-container">

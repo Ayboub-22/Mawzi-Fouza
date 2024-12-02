@@ -4,7 +4,7 @@ import App from "./App";
 import Guide from "./Guide";
 import Offers from "./Offers";
 import MiniShop from "./MiniShop";
-import AdminStat from "./admin/AdminStat";
+import AdminStat from "./admin/AdminStat"
 import AdminOffers from"./admin/AdminOffers";
 import AdminMembers from "./admin/AdminMembers";
 import AdminSubs from "./admin/AdminSubs";
@@ -21,7 +21,7 @@ const Gym: React.FC = () => {
         <Route path="/Offers" element={<Offers />} />
         <Route path="/MiniShop" element={<MiniShop />} />
         {/* Routes protégées pour l'espace admin */}
-        <Route path="/Admin/AdminStat" element={<AdminStat />} />
+        <Route path="/admin/AdminStat" element={<AdminStat />} />
         <Route path="/Admin/AdminOffers" element={<AdminOffers />} />
         <Route path="/Admin/AdminMembers" element={<AdminMembers />} />
         <Route path="/Admin/AdminSubs" element={<AdminSubs />} />

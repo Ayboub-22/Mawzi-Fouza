@@ -1,0 +1,45 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background-color: #EEEEEE;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .popup-actions {
+    display: flex;
+    justify-content: space-around; /* Espacement égal entre les boutons */
+    margin-top: 40px;
+  }
+  
+  .btn-confirm, .btn-cancel {
+    color: #ffffff;
+    background-color: #0a0a0a;
+    border-radius: 15px;
+    padding: 6px 16px; /* Réduction du padding */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Taille réduite de la police */
+    font-weight: 600;
+  }
+  
+  .btn-confirm:hover {
+    background-color: #FF2A00;
+  }
+  
+  .btn-cancel:hover {
+    background-color: #FF2A00;
+  }
+  

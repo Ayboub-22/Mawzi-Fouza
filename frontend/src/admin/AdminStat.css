@@ -1,64 +1,33 @@
 .admin-stat-container {
-  display: flex;
-  height: 100vh;
-  width: 100%;
-}
-
-.admin-stat-container > * {
-  flex-shrink: 0;
-}
-
-.admin-stat-container > :first-child {
-  flex: 0 0 250px; /* Largeur fixe pour NavAdmin */
-  height: 100%;
-  overflow-y: auto;
-}
-
-.admin-stat-container > :last-child {
-  flex: 1; /* Prend le reste de l'espace */
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.course-stats {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.chart-container {
-  width: 100%;
-  max-width: 800px;
-}
-#rightside{
-  background-color: #EEEEEE;
-}
-#rightsidetop{
-  display:flex;
-  justify-content: space-between;
-  padding:50px;
-  margin-bottom: 30px;
-
+    display: flex;
+    height: 100vh;
+    width: 100%;
+  }
   
-
-}
-#nbr-membre{
-  display:flex;
-  background-color: white;
-  border-radius:15px;
-  width:170px;
-  padding-left:20px;
-  box-shadow: 2px 2px 20px gray ;
-
-}
-#img-membre{
-  width:55px;
-  height:80px;
-  margin-right:18px;
-}
-#nbr-membre label{
-  font-family: signika;
-  font-weight: bold;
-  font-size: 38px;
-  padding-top:12px;
-}
+  .admin-stat-container > * {
+    flex-shrink: 0;
+  }
+  
+  .admin-stat-container > :first-child {
+    flex: 0 0 250px; /* Largeur fixe pour NavAdmin */
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .admin-stat-container > :last-child {
+    flex: 1; /* Prend le reste de l'espace */
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .course-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .chart-container {
+    width: 100%;
+    max-width: 800px;
+  }
+  

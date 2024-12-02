@@ -3,9 +3,11 @@ import NavAdmin from "../componentsAdmin/NavAdmin";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import garbage from '../assets/icons/delete.png';
+import PopupConfirmDelete from "./PopupConfirmDelete";
 
 const AdminMembers: React.FC = () => {
   const navigate = useNavigate();
+
   // Données des membres simulées
   const initialMembers = [
     {
@@ -75,6 +77,8 @@ const AdminMembers: React.FC = () => {
 
   const [members, setMembers] = useState(initialMembers);
   const [search, setSearch] = useState("");
+  const [memberToDelete, setMemberToDelete] = useState<string | null>(null); // Ajouté pour stocker le membre à supprimer
+  const [showDeletePopup, setShowDeletePopup] = useState(false); // Etat pour gérer l'affichage de la pop-up
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -84,8 +88,25 @@ const AdminMembers: React.FC = () => {
     member.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const handleDelete = (cin: string) => {
-    setMembers(members.filter((member) => member.cin !== cin));
+  // Fonction pour ouvrir la pop-up de suppression
+  const openDeletePopup = (cin: string) => {
+    setMemberToDelete(cin);
+    setShowDeletePopup(true);
+  };
+
+  // Fonction pour fermer la pop-up sans supprimer
+  const closeDeletePopup = () => {
+    setShowDeletePopup(false);
+    setMemberToDelete(null);
+  };
+
+  // Fonction pour supprimer un membre
+  const handleDelete = () => {
+    if (memberToDelete !== null) {
+      setMembers(members.filter((member) => member.cin !== memberToDelete));
+      setMemberToDelete(null);
+      setShowDeletePopup(false);
+    }
   };
 
   return (
@@ -106,7 +127,9 @@ const AdminMembers: React.FC = () => {
             className="search-bar"
           />
           {/* Bouton de déconnexion */}
-          <div className="divlogout"><button className="logout-button" onClick={() => navigate("/")}>Logout</button></div>
+          <div className="divlogout">
+            <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
+          </div>
         </div>
 
         {/* Tableau des membres */}
@@ -132,26 +155,39 @@ const AdminMembers: React.FC = () => {
                   <td>{member.phone}</td>
                   <td>{member.birthdate}</td>
                   <td>{member.sex}</td>
-                  <td >
+                  <td>
                     <div className="div-adh">
-                    <div className="div-check">
-                    <input
-                      type="checkbox"
-                      checked={member.adherent}
-                      readOnly
-                    />
-                    </div>
-                    <div className="div-span">
-                    <span className="delete-icon"><img src={garbage} className="delete-icon-garbage"></img></span>   {/*le chemin a changer*/}
-                    </div>
+                      <div className="div-check">
+                        <input
+                          type="checkbox"
+                          checked={member.adherent}
+                          readOnly
+                        />
+                      </div>
+                      <div className="div-span">
+                        <span className="delete-icon">
+                          <img
+                            src={garbage}
+                            alt="delete"
+                            className="delete-icon-garbage"
+                            onClick={() => openDeletePopup(member.cin)} // Ajout d'une fonction de suppression
+                          />
+                        </span>
+                      </div>
                     </div>
                   </td>
-                  
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
+        {/* Pop-up de confirmation de suppression */}
+        {showDeletePopup && (
+          <PopupConfirmDelete
+            onConfirm={handleDelete} // Appeler handleDelete quand confirmée
+            onCancel={closeDeletePopup} // Fermer sans supprimer
+          />
+        )}
       </div>
     </div>
   );

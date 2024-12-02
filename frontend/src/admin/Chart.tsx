@@ -1,6 +1,5 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2'; 
-import NavAdmin from"../componentsAdmin/NavAdmin";
 import "./AdminStat.css"
 import {
   Chart as ChartJS,
@@ -19,11 +18,13 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const CourseStats: React.FC = () => {
   const courseData = [
-    { course: "React Basics", participation: 80 },
-    { course: "Advanced CSS", participation: 70 },
-    { course: "JavaScript Fundamentals", participation: 95 },
-    { course: "Node.js", participation: 60 },
-    { course: "Python for Data Science", participation: 85 }
+
+    { course: "Danse Orientale", participation: 80 },
+    { course: "Body Pump", participation: 70 },
+    { course: "Cross Training", participation: 95 },
+    { course: "Body Combat", participation: 60 },
+    { course: "Six Pack", participation: 85 }
+
   ];
 
   const labels = courseData.map(course => course.course);
@@ -33,7 +34,7 @@ const CourseStats: React.FC = () => {
     labels: labels,
     datasets: [
       {
-        label: 'Taux de Participation (%)',
+        label: 'Participation rate (%)',
         data: data,
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         borderColor: 'rgba(75, 192, 192, 1)',
