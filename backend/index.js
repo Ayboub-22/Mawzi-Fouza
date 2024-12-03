@@ -11,12 +11,16 @@ const User=require('./models/user.model');
 const Abonnement=require('./models/abonnement.model');
 const Article=require('./models/article.model');
 const Cours=require('./models/cours.model');
-const adminRouter=require('./routes/adminRoute');
+const Notif=require('./models/notif.model');
 
+const adminRouter=require('./routes/adminRoute');
 const offreRouter = require('./routes/offreRoute');
 const subscriptionRoutes = require('./routes/subsRoute');
 const articleRouter=require('./routes/articleRoute');
 const coursRouter=require('./routes/coursRoute');
+const abonnementRouter=require('./routes/abonnementRoute');
+const userRouter=require('./routes/userRoute');
+const membreRouter=require('./routes/membreRoute');
 
 app.use(express.json());
 app.use(
@@ -37,6 +41,9 @@ app.use('/Offre', offreRouter);
 app.use('/subs', subscriptionRoutes);
 app.use('/article',articleRouter);
 app.use('/cours',coursRouter);
+app.use('/user',userRouter);
+app.use('/abonnement',abonnementRouter);
+app.use('/membre',membreRouter);
 
 (async () => {
   try {
@@ -49,6 +56,7 @@ app.use('/cours',coursRouter);
     await Abonnement.sync();
     await Article.sync();
     await Cours.sync(); 
+    await Notif.sync();
   
     // Start server
     app.listen(PORT, () => {

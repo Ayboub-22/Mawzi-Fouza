@@ -1,106 +1,72 @@
+import React, { useEffect, useState } from "react";
 import "./AdminMembers.css";
 import NavAdmin from "../componentsAdmin/NavAdmin";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import garbage from '../assets/icons/delete.png';
+import garbage from "../assets/icons/delete.png";
 import PopupConfirmDelete from "./PopupConfirmDelete";
 
 const AdminMembers: React.FC = () => {
   const navigate = useNavigate();
 
-  // Données des membres simulées
-  const initialMembers = [
-    {
-      cin: "11165773",
-      name: "Cosmin Negotia",
-      email: "fabcoss49@gmail.com",
-      phone: "98656920",
-      birthdate: "Feb 23, 2003",
-      sex: "F",
-      adherent: false,
-    },
-    {
-      cin: "11125774",
-      name: "Norman Lynx",
-      email: "normalyx@gmail.com",
-      phone: "96541236",
-      birthdate: "Feb 23, 2002",
-      sex: "F",
-      adherent: false,
-    },
-    {
-      cin: "11167774",
-      name: "Andrew Collins",
-      email: "andrewcollins.me",
-      phone: "20457189",
-      birthdate: "Feb 23, 2001",
-      sex: "M",
-      adherent: true,
-    },
-    {
-      cin: "11165775",
-      name: "Emma Watson",
-      email: "emmawest@hotmail.com",
-      phone: "24712396",
-      birthdate: "Feb 23, 1997",
-      sex: "F",
-      adherent: true,
-    },
-    {
-      cin: "11165773",
-      name: "Chris Patel",
-      email: "chrispet85@mailin.ui",
-      phone: "52014756",
-      birthdate: "Feb 23, 1989",
-      sex: "M",
-      adherent: false,
-    },
-    {
-      cin: "11165779",
-      name: "Alexa Dawson",
-      email: "meg.alexadawson.com",
-      phone: "30542896",
-      birthdate: "Feb 23, 1995",
-      sex: "F",
-      adherent: false,
-    },
-    {
-      cin: "11465773",
-      name: "James Morgan",
-      email: "maesmorgan@gmail.com",
-      phone: "94215731",
-      birthdate: "Feb 23, 2004",
-      sex: "M",
-      adherent: true,
-    },
-  ];
-
-  const [members, setMembers] = useState(initialMembers);
+  // État pour stocker les membres, la recherche et les informations pour la suppression
+  const [members, setMembers] = useState<any[]>([]); // Initialisé vide, les données viendront du backend
   const [search, setSearch] = useState("");
-  const [memberToDelete, setMemberToDelete] = useState<string | null>(null); // Ajouté pour stocker le membre à supprimer
-  const [showDeletePopup, setShowDeletePopup] = useState(false); // Etat pour gérer l'affichage de la pop-up
+  const [memberToDelete, setMemberToDelete] = useState<string | null>(null);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
+  // Fonction pour récupérer les données depuis le backend
+  const fetchMembers = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/membre"); // Remplacez par l'URL réelle de votre backend
+      if (!response.ok) {
+        throw new Error("Erreur lors de la récupération des membres.");
+      }
+      const data = await response.json();
+
+      // Transformation des données pour correspondre au tableau
+      const transformedData = data.map((user: any) => ({
+        cin: user.cin,
+        name: user.name,
+        email: user.mail,
+        phone: user.tel,
+        birthdate: new Date(user.birth).toLocaleDateString(), // Formatage de la date
+        sex: user.sex,
+        adherent: user.id_abonnement !== 0, // true si `id_abonnement` est non nul
+      }));
+      setMembers(transformedData); // Mise à jour de l'état
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // Appeler `fetchMembers` lorsque le composant est monté
+  useEffect(() => {
+    fetchMembers();
+  }, []);
+
+  // Gérer la recherche
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
+  // Filtrer les membres en fonction de la recherche
   const filteredMembers = members.filter((member) =>
     member.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Fonction pour ouvrir la pop-up de suppression
+  // Ouvrir la pop-up de suppression
   const openDeletePopup = (cin: string) => {
     setMemberToDelete(cin);
     setShowDeletePopup(true);
   };
 
-  // Fonction pour fermer la pop-up sans supprimer
+  // Fermer la pop-up sans supprimer
   const closeDeletePopup = () => {
     setShowDeletePopup(false);
     setMemberToDelete(null);
   };
 
-  // Fonction pour supprimer un membre
+  // Supprimer un membre
   const handleDelete = () => {
     if (memberToDelete !== null) {
       setMembers(members.filter((member) => member.cin !== memberToDelete));
@@ -128,7 +94,9 @@ const AdminMembers: React.FC = () => {
           />
           {/* Bouton de déconnexion */}
           <div className="divlogout">
-            <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
+            <button className="logout-button" onClick={() => navigate("/")}>
+              Logout
+            </button>
           </div>
         </div>
 
@@ -170,7 +138,7 @@ const AdminMembers: React.FC = () => {
                             src={garbage}
                             alt="delete"
                             className="delete-icon-garbage"
-                            onClick={() => openDeletePopup(member.cin)} // Ajout d'une fonction de suppression
+                            onClick={() => openDeletePopup(member.cin)}
                           />
                         </span>
                       </div>
@@ -181,11 +149,12 @@ const AdminMembers: React.FC = () => {
             </tbody>
           </table>
         </div>
+
         {/* Pop-up de confirmation de suppression */}
         {showDeletePopup && (
           <PopupConfirmDelete
-            onConfirm={handleDelete} // Appeler handleDelete quand confirmée
-            onCancel={closeDeletePopup} // Fermer sans supprimer
+            onConfirm={handleDelete}
+            onCancel={closeDeletePopup}
           />
         )}
       </div>
