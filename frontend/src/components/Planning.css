@@ -45,3 +45,19 @@ h1 {
 .schedule-table tr:hover {
   background-color: #f1f1f1;
 }
+.book{
+  color: #ffffff; /* Button text color */
+  background-color: #000000; /* Button background color */
+  border-radius: 15px; /* Border radius for rounded corners */
+  padding: 8px 20px; /* Padding for button size */
+  border: none; /* Remove default border */
+  cursor: pointer ; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth color transition on hover */
+  font-size: 18px;
+  font-weight: 600;
+  font-family: Signika-SemiBold;
+  max-height:40px ;
+  margin-top: 20px;
+  background-color: #FF2A00 !important;
+  /* display: none; */
+}

@@ -1,0 +1,111 @@
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 350px; /* Réduction de la largeur */
+    max-width: 90%;
+    position: relative;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.5em; /* Taille réduite pour le bouton */
+    cursor: pointer;
+    color: #333;
+  }
+  
+  /* Cibler l'image du logo */
+  .logo1 {
+    width: 200px;  /* Réduire la taille à 50px (ajustez selon votre besoin) */
+    height: 100px; /* Maintenir les proportions */
+    object-fit: contain; /* Assurer que l'image reste dans les limites sans distorsion */
+  }
+  .product-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Réduction de l'espacement */
+  }
+  
+  .form-group {
+    flex: 1;
+    margin-right: 8px; /* Réduction de la marge */
+  }
+  
+  .form-group:last-child {
+    margin-right: 0;
+  }
+  
+  .product-form label {
+    display: block;
+    font-size: 0.9em; /* Taille réduite de la police */
+    color: #333;
+    margin-bottom: 5px;
+  }
+  
+  .product-form input[type="text"],
+  .product-form input[type="number"],
+  .product-form input[type="file"],
+  .product-form select,
+  .product-form textarea {
+    width: 100%;
+    padding: 8px; /* Réduction du padding */
+    margin-bottom: 12px; /* Réduction de l'espacement */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  .add-product-button1 {
+    color: #ffffff;
+    background-color: #FF2A00;
+    border-radius: 15px;
+    padding: 6px 16px; /* Réduction du padding */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Taille réduite de la police */
+    font-weight: 600;
+  }
+  
+  .add-product-button1:hover {
+    background-color: #0c0c0c;
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 10px; /* Réduction de l'espacement */
+  }
+  
+  .popup-content .close-button:hover {
+    color: #d32f2f;
+  }
+  
+  
