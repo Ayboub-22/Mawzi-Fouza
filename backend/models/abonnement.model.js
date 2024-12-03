@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const db = require('../db'); // Import the Sequelize instance
 const User = require('./user.model'); // Importez le modèle User
 const Offre = require('./offre.model'); // Importez le modèle Offre
+const Notif=require('./notif.model');
 
 const Abonnement = db.define('Abonnement', {
   id_abonnement: {
@@ -25,5 +26,8 @@ User.hasMany(Abonnement, { foreignKey: 'userId' });   // Un utilisateur peut avo
 // Relation avec le modèle Offre
 Abonnement.belongsTo(Offre, { foreignKey: 'offreId' }); // 'offreId' comme clé étrangère dans la table abonnement 
 Offre.hasMany(Abonnement, { foreignKey: 'offreId' });   // Une offre peut être liée à plusieurs abonnements
+
+Abonnement.hasOne(Notif, { foreignKey: 'id_abonnement' });
+Notif.belongsTo(Abonnement, { foreignKey: 'id_abonnement' });
 
 module.exports = Abonnement;
