@@ -5,8 +5,10 @@ const Abonnement = require('../models/abonnement.model'); // Modèle Abonnement
 const Offre = require('../models/offre.model'); // Modèle Offre
 const Notif=require('../models/notif.model');
 const router = express.Router();
+const sendEmailNotification = require('../utils/emailutil'); // Importer la fonction utilitaire
 
-// Récupérer la table construite (GET)
+
+// Récupérer la table construite (GET)   pour la page members
 router.get('/', async (req, res) => {
   try {
     // Obtenir la date actuelle pour les calculs
@@ -77,7 +79,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-
+//pour la page subs :table
 router.get('/subs', async (req, res) => {
   try {
     // Étape 1: Récupérer tous les utilisateurs avec leurs abonnements et offres
@@ -199,19 +201,68 @@ router.get('/subs', async (req, res) => {
   }
 });
 
-
+//pour la page subs : bouton send notifications 
 // Route pour le bouton "Send Notification"
-router.post('/subs/notify', async (req, res) => {
-  try {
-    // Mettre à jour toutes les lignes avec `notified = true`
-    await Notif.update({ notified: true }, { where: { notified: false } });
 
-    res.status(200).json({ message: 'Notifications sent successfully!' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while sending notifications.' });
-  }
+router.post('/subs/notify', async (req, res) => {
+  console.log("j'ai intercepte rqt");
+    try {
+        // Étape 1 : Récupérer les emails avec une jointure
+        const result = await Notif.findAll({
+            where: { notified: false }, // Filtrer les notifications non envoyées
+            include: [
+                {
+                    model: Abonnement,
+                    required: true, // Jointure avec Abonnement
+                    include: [
+                        {
+                            model: User,
+                            required: true, // Jointure avec User
+                            attributes: ['mail'], // Ne récupérer que l'email
+                        },
+                    ],
+                },
+            ],
+        });
+        console.log("fin etape 1");
+        // Étape 2 : Extraire les emails uniques
+        const emails = result.map((notif) => notif.Abonnement.User.mail);
+
+        if (emails.length === 0) {
+            return res.status(404).json({ message: 'No notifications to send.' });
+        }
+        console.log(emails.length);
+        console.log("fin etape 2");
+        // Étape 3 : Envoyer un email pour chaque destinataire
+        for (const email of emails) {
+            await sendEmailNotification(email);
+        }
+        console.log("fin etape 3");
+        // Étape 4 : Mettre à jour toutes les lignes avec `notified = true`
+        await Notif.update({ notified: true }, { where: { notified: false } });
+
+        res.status(200).json({ message: 'Notifications sent successfully!' });
+        console.log("d=fin de l'etape4");
+    } catch (error) {
+        console.error('Error during notification process:', error);
+        res.status(500).json({ error: 'An error occurred while sending notifications.' });
+    }
 });
+
+
+
+
+// router.put('/subs/notify', async (req, res) => {
+//   try {
+//     // Mettre à jour toutes les lignes avec `notified = true`
+//     await Notif.update({ notified: true }, { where: { notified: false } });
+
+//     res.status(200).json({ message: 'Notifications sent successfully!' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'An error occurred while sending notifications.' });
+//   }
+// });
 
 
 module.exports = router;

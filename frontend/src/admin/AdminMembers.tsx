@@ -132,7 +132,7 @@ const AdminMembers: React.FC = () => {
                           readOnly
                         />
                       </div>
-                      <div className="div-span">
+                      {/* <div className="div-span">
                         <span className="delete-icon">
                           <img
                             src={garbage}
@@ -141,7 +141,7 @@ const AdminMembers: React.FC = () => {
                             onClick={() => openDeletePopup(member.cin)}
                           />
                         </span>
-                      </div>
+                      </div> */}
                     </div>
                   </td>
                 </tr>
