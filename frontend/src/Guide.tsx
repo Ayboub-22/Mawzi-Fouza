@@ -42,40 +42,13 @@ function App() {
           message: "2023 Get Abs Challenge",
         },
         {
-          img: "/Image27.png",
+          img: "/Image22.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
         },
         {
-          img: "/Image27.png",
-          date: "14 days",
-          period: "20-40mins",
-          message: "2023 Get Abs Challenge",
-        },
-      ],
-      imgSrc: "/Message 21.png",
-    },
-    {
-      title: "Beginner Friendly",
-      description:
-        "Looking to get started on your fitness journey? Try one of these beginner-friendly programs! These have shorter time commitments or have low-impact alternatives.",
-      buttonText: "1938+ People Tried",
-      ScheduleData: [
-        {
-          img: "/Image27.png",
-          date: "14 days",
-          period: "20-40mins",
-          message: "2023 Get Abs Challenge",
-        },
-        {
-          img: "/Image27.png",
-          date: "14 days",
-          period: "20-40mins",
-          message: "2023 Get Abs Challenge",
-        },
-        {
-          img: "/Image27.png",
+          img: "/Image28.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
@@ -90,46 +63,19 @@ function App() {
       buttonText: "1938+ People Tried",
       ScheduleData: [
         {
-          img: "/Image27.png",
+          img: "/Image31.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
         },
         {
-          img: "/Image27.png",
+          img: "/Image35.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
         },
         {
-          img: "/Image27.png",
-          date: "14 days",
-          period: "20-40mins",
-          message: "2023 Get Abs Challenge",
-        },
-      ],
-      imgSrc: "/Message 21.png",
-    },
-    {
-      title: "Beginner Friendly",
-      description:
-        "Looking to get started on your fitness journey? Try one of these beginner-friendly programs! These have shorter time commitments or have low-impact alternatives.",
-      buttonText: "1938+ People Tried",
-      ScheduleData: [
-        {
-          img: "/Image27.png",
-          date: "14 days",
-          period: "20-40mins",
-          message: "2023 Get Abs Challenge",
-        },
-        {
-          img: "/Image27.png",
-          date: "14 days",
-          period: "20-40mins",
-          message: "2023 Get Abs Challenge",
-        },
-        {
-          img: "/Image27.png",
+          img: "/Image36.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
@@ -144,19 +90,73 @@ function App() {
       buttonText: "1938+ People Tried",
       ScheduleData: [
         {
-          img: "/Image27.png",
+          img: "/Image37.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
         },
         {
-          img: "/Image27.png",
+          img: "/Image38.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
         },
         {
-          img: "/Image27.png",
+          img: "/Image66.png",
+          date: "14 days",
+          period: "20-40mins",
+          message: "2023 Get Abs Challenge",
+        },
+      ],
+      imgSrc: "/Message 21.png",
+    },
+    {
+      title: "Beginner Friendly",
+      description:
+        "Looking to get started on your fitness journey? Try one of these beginner-friendly programs! These have shorter time commitments or have low-impact alternatives.",
+      buttonText: "1938+ People Tried",
+      ScheduleData: [
+        {
+          img: "/Image22.png",
+          date: "14 days",
+          period: "20-40mins",
+          message: "2023 Get Abs Challenge",
+        },
+        {
+          img: "/Image28.png",
+          date: "14 days",
+          period: "20-40mins",
+          message: "2023 Get Abs Challenge",
+        },
+        {
+          img: "/Image31.png",
+          date: "14 days",
+          period: "20-40mins",
+          message: "2023 Get Abs Challenge",
+        },
+      ],
+      imgSrc: "/Message 21.png",
+    },
+    {
+      title: "Beginner Friendly",
+      description:
+        "Looking to get started on your fitness journey? Try one of these beginner-friendly programs! These have shorter time commitments or have low-impact alternatives.",
+      buttonText: "1938+ People Tried",
+      ScheduleData: [
+        {
+          img: "/Image35.png",
+          date: "14 days",
+          period: "20-40mins",
+          message: "2023 Get Abs Challenge",
+        },
+        {
+          img: "/Image36.png",
+          date: "14 days",
+          period: "20-40mins",
+          message: "2023 Get Abs Challenge",
+        },
+        {
+          img: "/Image37.png",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",

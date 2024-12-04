@@ -20,11 +20,11 @@ function Schedule({ img, date, period, message }: Schedule1) {
       >
         <div className="Ymsg1_Schedule">
           <h5 className="YdateSchedule1 badge">
-            <img className="Ybadge-icon" src="./image 5.png" />
+            <img className="Ybadge-icon" src="./image 28.png" />
             {date}
           </h5>
           <h5 className="YdateSchedule2 badge">
-            <img className="Ybadge-icon" src="./image 6.png" />
+            <img className="Ybadge-icon" src="./image 31.png" />
             {period}
           </h5>
 
