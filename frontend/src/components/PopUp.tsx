@@ -18,35 +18,44 @@ function PopUp() {
 
   const navigate = useNavigate(); // Hook pour naviguer vers une autre route
   const [name,setName]=useState("");
+  const [mail,setEmail]=useState("");
   const [password,setPassword]=useState("");
+  const [mdp,setMdp]=useState("");
   const [errorMessage,setErrorMessage]=useState("");
 
-  const handleSignIn = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent form from reloading the page
   
-    try {
-      // Send login request to the server
-      const response = await axios.post("http://localhost:3000/admin/login", {
-        name,
-        password,
-      });
-  
-      if (response.status === 200) {
-        // Successful login
-        console.log("Login successful:", response.data);
-        navigate("/Admin/AdminStat"); // Redirect to the dashboard
-      } else {
-        setErrorMessage("Invalid login credentials.");
-      }
-    } catch (error: any) {
-      // Handle errors
-      console.error("Login error:", error.response?.data || error.message);
-      setErrorMessage(
-        error.response?.data?.message || "An error occurred during login."
-      );
-    }
 
-  };
+  // const handleSignIn = async (e: React.FormEvent) => {
+  //   e.preventDefault(); // Prevent form from reloading the page
+  
+  //   try {
+  //     // Determine API endpoint based on user role
+  //     const endpoint = isMember ? 'http://localhost:3000/user/login' : 'http://localhost:3000/admin/login';
+  //     // Determine request payload
+  //     const payload = isMember
+  //       ? { mail, mdp } // For members
+  //       : { name, password }; // For staff
+  
+  //     // Send login request to the appropriate endpoint
+  //     const response = await axios.post(endpoint, payload);
+  
+  //     if (response.status === 200) {
+  //       // Successful login
+  //       console.log("Login successful:", response.data);
+  //       const redirectPath = isMember ? "/" : "/Admin/AdminStat";
+  //       navigate(redirectPath); // Redirect based on role
+  //     } else {
+  //       setErrorMessage("Invalid login credentials.");
+  //     }
+  //   } catch (error: any) {
+  //     // // Handle errors
+  //     console.error("Login error:", error.response?.data || error.message);
+  //     setErrorMessage(
+  //       error.response?.data?.message || error.message || "An error occurred during login."
+  //     );
+  //   }
+  // };
+  
 
   const {
     isMember,
@@ -94,7 +103,7 @@ function PopUp() {
         </div>
         <div className="Form1">
           <h1>Sign in</h1>
-          <p>un essage quelcoque sui affiche</p>
+          <p>un message quelcoque sui affiche</p>
           <form className="sign-in-form">
             <input onChange={(e)=>setName(e.target.value)} value={name} type="email" id="email" placeholder="mail" required />
 
@@ -128,7 +137,7 @@ function PopUp() {
               </div>
             )}
 
-            <button type="submit" className="submit-button" onClick={handleSignIn}>
+            <button type="submit" className="submit-button" /*onClick={handleSignIn}*/ >
 
               Sign in
             </button>

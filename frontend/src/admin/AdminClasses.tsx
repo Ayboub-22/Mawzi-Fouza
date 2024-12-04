@@ -20,13 +20,14 @@ const AdminClasses: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   const handleOpenPopup = () => setShowPopup(true);
-  const handleClosePopup = () => setShowPopup(false);
 
   // Fonction pour récupérer les cours depuis le backend
   const fetchClasses = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/cours/"); // Requête GET
-      setClasses(response.data); // Mettre à jour l'état avec les données récupérées
+      const response = await axios.get("http://localhost:3000/cours"); // Requête GET
+
+      // Mettre à jour l'état avec les offres formatées
+      setClasses(response.data);    
     } catch (error) {
       console.error("Erreur lors de la récupération des cours :", error);
     }
@@ -34,8 +35,14 @@ const AdminClasses: React.FC = () => {
 
   // Charger les cours lors du montage du composant
   useEffect(() => {
-    fetchClasses();
+    fetchClasses(); // Appeler la fonction de récupération des offres au chargement du composant
   }, []);
+   // Fonction pour déconnecter l'utilisateur
+   const handleLogout = () => {
+    // Logique de déconnexion ici (par exemple vider un token)
+    navigate("/"); // Rediriger vers la page d'accueil après la déconnexion
+  };
+
 
   return (
     <div className="admin-container">
@@ -47,7 +54,7 @@ const AdminClasses: React.FC = () => {
         <div className="part1">
           <h1>Classes</h1>
           {/* Bouton pour se déconnecter */}
-          <button className="logout-button" onClick={() => navigate("/")}>Logout</button>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
 
         {/* Tableau des classes */}
@@ -88,7 +95,7 @@ const AdminClasses: React.FC = () => {
         <div className="addclasspad">
           <button className="add-class-button" onClick={handleOpenPopup}>Add Class</button>
           {/* Affichage de la popup */}
-        <PopupClasses show={showPopup} onClose={handleClosePopup} />
+        <PopupClasses show={showPopup}  />
         </div>
       </div>
     </div>

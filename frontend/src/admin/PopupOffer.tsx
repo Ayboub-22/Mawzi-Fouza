@@ -8,7 +8,9 @@ interface PopupOfferProps {
   show: boolean;
 }
 
+
 const PopupOffer: React.FC<PopupOfferProps> = ({show}) => {
+
   const navigate = useNavigate();
   const handleRefresh = () => {
     navigate(0); // Recharger la page actuelle

@@ -71,4 +71,21 @@ router.delete('/:cin', async (req, res) => {
   }
 });
 
+router.post('/login', async (req, res) => {
+  const { mail, mdp } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { mail } });
+    if(user.mdp===mdp){
+      res.status(200).json({ message: 'Welcome user', user });
+    }
+    else{
+      res.status(401).json({message: 'Wrong password'});
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to connect', error });
+  }
+});
+
 module.exports = router;

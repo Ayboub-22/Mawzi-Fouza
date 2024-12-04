@@ -8,7 +8,6 @@ router.post('/addOffer', async (req, res) => {
   const { durée, prix, validité } = req.body;
   try {
     const newOffer = await Offre.create({ durée, prix, validité});
-    
     res.status(201).json({ message: 'Offer added successfully', offer: newOffer });
   } catch (error) {
     console.error(error);
