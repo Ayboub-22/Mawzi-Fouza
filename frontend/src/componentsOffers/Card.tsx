@@ -24,8 +24,8 @@ const Card = ({ plan, prix, type, info, list }: card1) => {
 
         <p className="info">{info}</p>
         <ul className="features">
-          {list.map((item) => (
-            <li>{item}</li>
+          {list.map((item, index) => (
+            <li key={index}>{item}</li>
           ))}
         </ul>
         <div className="action">
