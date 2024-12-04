@@ -4,15 +4,70 @@ const Cours = require('../models/cours.model'); // Importez le modèle Sequelize
 
 // Créer un nouveau cours (POST)
 router.post('/addCours', async (req, res) => {
-  const { name, day, validity, time, capacity } = req.body;
+  const {
+    name,
+    day,
+    validity,
+    time,
+    capacity
+  } = req.body;
 
   try {
-    const newCours = await Cours.create({ name, day, validity, time, capacity });
+    const newCours = await Cours.create({
+      name,
+      day,
+      validity,
+      time,
+      capacity
+    });
     res.status(201).json(newCours);
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la création du cours.', error: error.message });
+    res.status(500).json({
+      message: 'Erreur lors de la création du cours.',
+      error: error.message
+    });
   }
 });
+
+router.get('/getter', async (req, res) => {
+  try {
+    // Fetch all courses from the database
+    const cours = await Cours.findAll();
+
+    // Initialize an empty schedule
+    const schedule = {
+      Monday: Array(8).fill(""),
+      Tuesday: Array(8).fill(""),
+      Wednesday: Array(8).fill(""),
+      Thursday: Array(8).fill(""),
+      Friday: Array(8).fill(""),
+      Saturday: Array(8).fill(""),
+      Sunday: Array(8).fill(""),
+    };
+
+    // Loop through the results and assign them to the correct days and periods
+    cours.forEach((cours) => {
+      const {
+        day,
+        time,
+        name
+      } = cours;
+      // Assuming your model has these fields
+
+      schedule[day][time] = name; // Adjusting to zero-based index
+
+    });
+
+    // Respond with the schedule
+    res.status(200).json(schedule);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Erreur lors de la récupération des cours.',
+      error: error.message
+    });
+  }
+});
+
 
 // Récupérer tous les cours (GET)
 router.get('/', async (req, res) => {
@@ -20,58 +75,103 @@ router.get('/', async (req, res) => {
     const cours = await Cours.findAll();
     res.status(200).json(cours);
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la récupération des cours.', error: error.message });
+    res.status(500).json({
+      message: 'Erreur lors de la récupération des cours.',
+      error: error.message
+    });
   }
 });
 
 // Récupérer un cours par ID (GET)
 router.get('/:id', async (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
 
   try {
     const cours = await Cours.findByPk(id);
     if (cours) {
       res.status(200).json(cours);
     } else {
-      res.status(404).json({ message: 'Cours non trouvé.' });
+      res.status(404).json({
+        message: 'Cours non trouvé.'
+      });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la récupération du cours.', error: error.message });
+    res.status(500).json({
+      message: 'Erreur lors de la récupération du cours.',
+      error: error.message
+    });
   }
 });
 
 // Mettre à jour un cours (PUT)
 router.put('/:id', async (req, res) => {
-  const { id } = req.params;
-  const { name, day, validity, time, capacity } = req.body;
+  const {
+    id
+  } = req.params;
+  const {
+    name,
+    day,
+    validity,
+    time,
+    capacity
+  } = req.body;
 
   try {
     const cours = await Cours.findByPk(id);
     if (cours) {
-      await cours.update({ name, day, validity, time, capacity });
+      await cours.update({
+        name,
+        day,
+        validity,
+        time,
+        capacity
+      });
       res.status(200).json(cours);
     } else {
-      res.status(404).json({ message: 'Cours non trouvé.' });
+      res.status(404).json({
+        message: 'Cours non é.'
+      });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la mise à jour du cours.', error: error.message });
+    res.status(500).json({
+      message: 'Erreur lors de la mise à jour du cours.',
+      error: error.message
+    });
   }
 });
 
+// In your '/getCours' route
+
+
+
+// Start the server
+
+
 // Supprimer un cours (DELETE)
 router.delete('/:id', async (req, res) => {
-  const { id } = req.params;
+  const {
+    id
+  } = req.params;
 
   try {
     const cours = await Cours.findByPk(id);
     if (cours) {
       await cours.destroy();
-      res.status(200).json({ message: 'Cours supprimé avec succès.' });
+      res.status(200).json({
+        message: 'Cours supprimé avec succès.'
+      });
     } else {
-      res.status(404).json({ message: 'Cours non trouvé.' });
+      res.status(404).json({
+        message: 'Cours non .'
+      });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la suppression du cours.', error: error.message });
+    res.status(500).json({
+      message: 'Erreur lors de la suppression du cours.',
+      error: error.message
+    });
   }
 });
 

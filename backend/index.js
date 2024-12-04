@@ -4,9 +4,10 @@ const db = require('./db'); // Import the database connection
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const cors= require('cors');
+const cors = require('cors');
 const Offre = require('./models/offre.model');
 const Admin = require('./models/admin.model');
+
 const User=require('./models/user.model');
 const Abonnement=require('./models/abonnement.model');
 const Article=require('./models/article.model');
@@ -24,19 +25,19 @@ const membreRouter=require('./routes/membreRoute');
 
 app.use(express.json());
 app.use(
-    cors({
-      origin: 'http://localhost:5173', // Replace with your frontend's origin
-      methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
-      credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-    })
-  );
+  cors({
+    origin: 'http://localhost:5173', // Replace with your frontend's origin
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  })
+);
 
 // Test route
 app.get('/', (req, res) => {
   res.send('Server is running...');
 });
 
-app.use('/admin',adminRouter);
+app.use('/admin', adminRouter);
 app.use('/Offre', offreRouter);
 app.use('/subs', subscriptionRoutes);
 app.use('/article',articleRouter);
@@ -44,6 +45,7 @@ app.use('/cours',coursRouter);
 app.use('/user',userRouter);
 app.use('/abonnement',abonnementRouter);
 app.use('/membre',membreRouter);
+
 
 (async () => {
   try {
@@ -57,7 +59,6 @@ app.use('/membre',membreRouter);
     await Article.sync();
     await Cours.sync(); 
     await Notif.sync();
-  
     // Start server
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);

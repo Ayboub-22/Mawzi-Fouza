@@ -1,13 +1,14 @@
 
 
 .PopUp{
-    position :absolute;
+    position :fixed;
     background-color: rgba(5, 5, 5, 0.267);
-    height: 150vh;
+    height: 100% !important; 
     width:100vw;
     left: -1.45%;
     top:-0.5%;
     z-index: 100;
+    
     
 }
 .close-button {
@@ -185,7 +186,8 @@
     color: #333;
     margin-bottom: 5px;
   }
-  .sign-in-form input[type="email"],
+  .sign-in-form input[type="mail"],
+  .sign-in-form input[type="text"],
   .sign-in-form input[type="password"] {
     width: 100%;
     padding: 10px;

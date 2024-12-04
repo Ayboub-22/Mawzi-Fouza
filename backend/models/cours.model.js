@@ -1,4 +1,6 @@
-const { DataTypes } = require('sequelize');
+const {
+  DataTypes
+} = require('sequelize');
 const db = require('../db'); // Importez votre instance Sequelize
 
 const Cours = db.define('Cours', {
@@ -20,7 +22,7 @@ const Cours = db.define('Cours', {
     allowNull: false,
   },
   time: {
-    type: DataTypes.TIME, // Pour stocker l'heure (HH:mm:ss)
+    type: DataTypes.INTEGER, // Pour stocker l'heure 
     allowNull: false,
   },
   capacity: {
@@ -28,8 +30,8 @@ const Cours = db.define('Cours', {
     allowNull: false,
   },
 }, {
-    tableName: 'cours', // Nom de la table dans la base de données
-    timestamps: false, // Désactiver les colonnes createdAt et updatedAt
-  });
+  tableName: 'cours', // Nom de la table dans la base de données
+  timestamps: false, // Désactiver les colonnes createdAt et updatedAt
+});
 
 module.exports = Cours;

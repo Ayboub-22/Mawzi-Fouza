@@ -3,7 +3,7 @@
   
   padding: 10px;
   background-color: transparent;
-  max-width: 300px;
+  max-width: 25vw;
   transition: background-color 0.4s, color 0.4s;
   min-width: 200px;
 }
