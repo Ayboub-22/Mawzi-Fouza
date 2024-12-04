@@ -1,14 +1,56 @@
 import "./PopUp1.css";
 import { usePopup } from "./PopupContext";
 import logo from "../assets/icons/logo.png";
-
-import React from "react";
-
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function PopUp1() {
+  const navigate = useNavigate(); // Navigation hook
+  const [cin, setCin] = useState("");
+  const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
+  const [tel, setTel] = useState("");
+  const [birth, setBirth] = useState("");
+  const [sex, setSex] = useState("");
+  const [mdp, setMdp] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const { isPopup1Visible, togglePopup, closePopup1 } = usePopup();
 
   if (!isPopup1Visible) return null;
+
+  const handleSignUp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage("");
+
+    try {
+      const response = await axios.post("http://localhost:3000/user/signup", {
+        cin,
+        name,
+        mail,
+        tel,
+        birth,
+        sex,
+        mdp,
+      });
+
+      if (response.status === 201) {
+        console.log("User created successfully:", response.data);
+        setErrorMessage(
+          "Signup successful! Please check your email to verify your account."
+        );
+
+        // Optionally, close the popup here
+        closePopup1();
+      }
+    } catch (error: any) {
+      console.error("Signup error:", error.response?.data || error.message);
+      setErrorMessage(
+        error.response?.data?.message || "An error occurred during signup."
+      );
+    }
+  };
 
   return (
     <div className="PopUp">
@@ -21,7 +63,7 @@ function PopUp1() {
           ✕
         </button>
         <div className="Head">
-        <img src={logo} alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className="logo" />
           <div className="tit">
             <h2>Join us now !!!</h2>
           </div>
@@ -29,55 +71,64 @@ function PopUp1() {
         <div className="Form1">
           <h1>Sign up</h1>
           <p>Join us by filling out the information below</p>
-          <form className="sign-up-form">
+          <form className="sign-up-form" onSubmit={handleSignUp}>
             <div className="birt">
               <input
                 type="email"
-                id="email"
                 placeholder="Enter your email address"
+                value={mail}
+                onChange={(e) => setMail(e.target.value)}
                 required
               />
-
               <input
                 type="text"
-                id="cin"
                 placeholder="Enter your CIN"
+                value={cin}
+                onChange={(e) => setCin(e.target.value)}
                 required
               />
             </div>
             <div className="birt">
               <input
                 type="text"
-                id="username"
                 placeholder="User Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
               <input
                 type="date"
-                id="birthdate"
                 placeholder="Birth Date"
+                value={birth}
+                onChange={(e) => setBirth(e.target.value)}
                 required
               />
             </div>
             <div className="birt">
               <input
                 type="tel"
-                id="phone"
                 placeholder="Contact Number"
+                value={tel}
+                onChange={(e) => setTel(e.target.value)}
                 required
               />
-              <input type="text" id="sex" placeholder="Sex" required />
+              <input
+                type="text"
+                placeholder="Sex"
+                value={sex}
+                onChange={(e) => setSex(e.target.value)}
+                required
+              />
             </div>
-
             <div className="birthdate-sex">
               <input
                 type="password"
-                id="password"
                 placeholder="Enter your password"
+                value={mdp}
+                onChange={(e) => setMdp(e.target.value)}
                 required
               />
             </div>
-
             <div className="have-account">
               Have an account?{" "}
               <a
@@ -89,7 +140,7 @@ function PopUp1() {
                 Sign in
               </a>
             </div>
-
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <button type="submit" className="submit-button">
               Sign up
             </button>

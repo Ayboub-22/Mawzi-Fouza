@@ -1,10 +1,16 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+>>>>>>> 64ce62dbfc79fc967d1e59bd596d41479f53954b
 import "./Planning.css";
 import { Navigate } from "react-router-dom";
 import PopupReserver from "./popupreserver";
 import axios from "axios"; // Pour les requêtes API
 
 const App = () => {
+<<<<<<< HEAD
   const [showPopup, setShowPopup] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // État pour la connexion
   const [navigateTo, setNavigateTo] = useState<string | null>(null); // Gérer la redirection
@@ -18,7 +24,50 @@ const App = () => {
     Friday: ["14H-16H", "22H-24H"],
     Saturday: ["16H-18H", "18H-20H"],
     Sunday: ["10H-12H"],
+=======
+  const [schedule, setSchedule] = useState<Record<string, string[]>>({
+    Monday: ["", "", "", "", "", "", "", ""],
+    Tuesday: ["", "", "", "", "", "", "", ""],
+    Wednesday: ["", "", "", "", "", "", "", ""],
+    Thursday: ["", "", "", "", "", "", "", ""],
+    Friday: ["", "", "", "", "", "", "", ""],
+    Saturday: ["", "", "", "", "", "", "", ""],
+    Sunday: ["", "", "", "", "", "", "", ""],
+  });
+
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
+  // Function to fetch courses from the backend
+  const fetchCourses = async () => {
+    try {
+      // Send GET request to fetch courses
+      const response = await axios.get("http://localhost:3000/cours/getter");
+
+      if (response.status === 200) {
+        // Assuming the response data is in a format where each day has a list of courses
+        const cours = response.data; // Adjust this based on the actual structure of your response
+        setSchedule(cours);
+        console.log("hedha howa");
+      } else {
+        setErrorMessage("Failed to fetch courses.");
+      }
+    } catch (error: unknown) {
+      if (axios.isAxiosError(error)) {
+        setErrorMessage(
+          error.response?.data?.message ||
+            "An error occurred while fetching courses."
+        );
+      } else {
+        setErrorMessage("An unknown error occurred.");
+      }
+    }
+>>>>>>> 64ce62dbfc79fc967d1e59bd596d41479f53954b
   };
+
+  // Use useEffect to fetch the courses when the component mounts
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   const periods = [
     "8H-10H",
@@ -85,6 +134,10 @@ const App = () => {
   return (
     <div className="container">
       <h1>Planning of the Week</h1>
+
+      {/* Error Message */}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
+
       <table className="schedule-table">
         <thead>
           <tr>
@@ -98,6 +151,7 @@ const App = () => {
           {Object.keys(schedule).map((day) => (
             <tr key={day}>
               <td>{day}</td>
+<<<<<<< HEAD
               {periods.map((period) => (
                 <td
                   key={period}
@@ -107,6 +161,12 @@ const App = () => {
                       : ""
                   }
                 ></td>
+=======
+              {schedule[day].map((className, index) => (
+                <td key={index} className={className ? "filled" : ""}>
+                  {className || ""} {/* If no class, show a placeholder */}
+                </td>
+>>>>>>> 64ce62dbfc79fc967d1e59bd596d41479f53954b
               ))}
             </tr>
           ))}

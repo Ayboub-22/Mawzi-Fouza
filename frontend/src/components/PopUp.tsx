@@ -2,60 +2,59 @@ import "./PopUp.css";
 import { usePopup } from "./PopupContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react"; 
+import { useState } from "react";
 
 import logo from "../assets/icons/logo.png";
 
-
 function getClassName(isActive: boolean): string {
-  return isActive ? "boutton1 active" : " boutton1 inactive";
+  return isActive ? "boutton1 active" : "boutton1 inactive";
 }
 function getClassName1(isActive: boolean): string {
   return isActive ? "boutton2 inactive" : "boutton2 active";
 }
 
 function PopUp() {
+  const navigate = useNavigate(); // Hook for navigation
+  const [identifier, setIdentifier] = useState(""); // Will be either name or mail depending on the user type
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const navigate = useNavigate(); // Hook pour naviguer vers une autre route
-  const [name,setName]=useState("");
-  const [mail,setEmail]=useState("");
-  const [password,setPassword]=useState("");
-  const [mdp,setMdp]=useState("");
-  const [errorMessage,setErrorMessage]=useState("");
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrorMessage("");
 
-  
+    try {
+      const loginData = isMember
+        ? { mail: identifier, password } // For user login, use mail
+        : { name: identifier, password }; // For admin login, use name
 
-  // const handleSignIn = async (e: React.FormEvent) => {
-  //   e.preventDefault(); // Prevent form from reloading the page
-  
-  //   try {
-  //     // Determine API endpoint based on user role
-  //     const endpoint = isMember ? 'http://localhost:3000/user/login' : 'http://localhost:3000/admin/login';
-  //     // Determine request payload
-  //     const payload = isMember
-  //       ? { mail, mdp } // For members
-  //       : { name, password }; // For staff
-  
-  //     // Send login request to the appropriate endpoint
-  //     const response = await axios.post(endpoint, payload);
-  
-  //     if (response.status === 200) {
-  //       // Successful login
-  //       console.log("Login successful:", response.data);
-  //       const redirectPath = isMember ? "/" : "/Admin/AdminStat";
-  //       navigate(redirectPath); // Redirect based on role
-  //     } else {
-  //       setErrorMessage("Invalid login credentials.");
-  //     }
-  //   } catch (error: any) {
-  //     // // Handle errors
-  //     console.error("Login error:", error.response?.data || error.message);
-  //     setErrorMessage(
-  //       error.response?.data?.message || error.message || "An error occurred during login."
-  //     );
-  //   }
-  // };
-  
+      const loginUrl = isMember
+        ? "http://localhost:3000/user/login" // API for user login
+        : "http://localhost:3000/admin/login"; // API for admin login
+
+      const response = await axios.post(loginUrl, loginData);
+
+      if (response.status === 200) {
+        // Successful login
+        console.log("Login successful:", response.data);
+
+        // Redirect based on user type
+        if (isMember) {
+          closePopup();
+          navigate("/"); // User home page
+        } else {
+          navigate("/Admin/AdminStat"); // Admin dashboard
+        }
+      } else {
+        setErrorMessage("Invalid login credentials.");
+      }
+    } catch (error: any) {
+      console.error("Login error:", error.response?.data || error.message);
+      setErrorMessage(
+        error.response?.data?.message || "An error occurred during login."
+      );
+    }
+  };
 
   const {
     isMember,
@@ -81,7 +80,7 @@ function PopUp() {
           ✕
         </button>
         <div className="Head">
-        <img src={logo} alt="Logo" className="logo" />
+          <img src={logo} alt="Logo" className="logo" />
           <div className="bouttons">
             <a
               className={getClassName(isMember)}
@@ -103,18 +102,27 @@ function PopUp() {
         </div>
         <div className="Form1">
           <h1>Sign in</h1>
-          <p>un message quelcoque sui affiche</p>
-          <form className="sign-in-form">
-            <input onChange={(e)=>setName(e.target.value)} value={name} type="email" id="email" placeholder="mail" required />
 
+=======
+          <p>Un message quelconque qui s'affiche</p>
+          <form className="sign-in-form">
+            <input
+              onChange={(e) => setIdentifier(e.target.value)} // Input for mail or name
+              value={identifier}
+              type="text" // Use text for both mail or name
+              id="identifier"
+              placeholder={isMember ? "Mail" : "Name"} // Adjust placeholder dynamically
+              required
+            />
 
             <input
               type="password"
               id="password"
               placeholder="Password"
               value={password}
-              onChange={(e)=>{setPassword(e.target.value)}}
-
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               required
             />
 
@@ -122,6 +130,9 @@ function PopUp() {
               <input type="checkbox" id="keep-logged-in" />
               <label htmlFor="keep-logged-in">Keep me logged in</label>
             </div>
+            {errorMessage && (
+              <div className="error-message">{errorMessage}</div>
+            )}
 
             {isMember && (
               <div className="create-account">
@@ -137,8 +148,12 @@ function PopUp() {
               </div>
             )}
 
-            <button type="submit" className="submit-button" /*onClick={handleSignIn}*/ >
 
+            <button
+              type="submit"
+              className="submit-button"
+              onClick={handleSignIn}
+            >
               Sign in
             </button>
           </form>
