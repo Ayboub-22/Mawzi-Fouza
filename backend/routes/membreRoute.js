@@ -10,6 +10,7 @@ const sendEmailNotification = require('../utils/emailutil'); // Importer la fonc
 
 // Récupérer la table construite (GET)   pour la page members
 router.get('/', async (req, res) => {
+  
   try {
     // Obtenir la date actuelle pour les calculs
     const today = new Date();
