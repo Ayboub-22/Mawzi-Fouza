@@ -3,6 +3,7 @@ import "./Workout.css";
 type Qualification = {
   text: string;
   imgSrc?: string;
+  text2: string;
 };
 
 type QualsProps = {
@@ -14,22 +15,27 @@ function Workout() {
     {
       text: "Start Now",
       imgSrc: "/Group 156.png",
+      text2: "Start Now",
     },
     {
       text: "Start Now",
       imgSrc: "/Yoga.png",
+      text2: "Start Now",
     },
     {
       text: "Start Now",
       imgSrc: "/Cardio 1.png",
+      text2: "Start Now",
     },
     {
       text: "Start Now",
       imgSrc: "/Cardio 1.png",
+      text2: "Start Now",
     },
     {
       text: "Start Now",
       imgSrc: "/Cardio 1.png",
+      text2: "Start Now",
     },
   ];
 
@@ -40,7 +46,7 @@ function Workout() {
           <div className="Yimage-container">
             <img src={item.imgSrc} alt="Qualification" className="Yimg1" />
             <div className="Yblur-overlay">
-              <div className="Yoverlay-text">Yassine Arfaoui</div>
+              <div className="Yoverlay-text">{item.text2}</div>
             </div>
           </div>
           <button className="YBoutton">{item.text}</button>
