@@ -19,6 +19,8 @@ const PopupOffer: React.FC<PopupOfferProps> = ({show}) => {
 
   const [durée, setDuration] = useState("");
   const [prix, setPrice] = useState("");
+  const [type, setType] = useState("");
+  const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   if (!show) return null; // Ne rien afficher si `show` est false
@@ -32,6 +34,8 @@ const PopupOffer: React.FC<PopupOfferProps> = ({show}) => {
      
       prix: prix,      // Valeur du prix
       durée: durée, // Valeur de la durée
+      description: description,
+      type: type,
       validité: true
     };
 
@@ -43,6 +47,8 @@ const PopupOffer: React.FC<PopupOfferProps> = ({show}) => {
         console.log("Offer added successfully:", response.data);
         setDuration("");
         setPrice("");
+        setDescription("");
+        setType("");
       } else {
         console.log("Failed to add offer.");
         setErrorMessage("Failed to add offer.");
@@ -64,27 +70,40 @@ const PopupOffer: React.FC<PopupOfferProps> = ({show}) => {
         </div>
         <form className="offerform" onSubmit={handleAddOffer}>
           <div className="div_offerform">
-            <div className="label">
+            <div className="form-group">
               <label>Duration:</label>
-            </div>
             <input
               type="number"
               placeholder="Enter duration"
               value={durée}
               onChange={(e) => setDuration(e.target.value)}
-              step="1"
               required
-            />
-            <div className="label">
+            /></div>
+            <div className="form-group">
               <label>Price:</label>
-            </div>
             <input
               type="number"
               placeholder="Enter price"
               value={prix}
               onChange={(e) => setPrice(e.target.value)}
               required
-            />
+            /></div></div>
+          <div className="div_offerform">
+              <div className="form-group">
+                <label>Description:</label>
+                <textarea placeholder="Enter offer description" rows={4} value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required ></textarea>
+              </div>
+              <div className="form-group">
+                <label>Type:</label>
+              <input
+                type="text"
+                placeholder="Enter type"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                required
+              /></div>
           </div>
           {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Affichage des erreurs */}
           <div className="div_addoffer">

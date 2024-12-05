@@ -80,6 +80,85 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Récupérer la table construite (GET) pour la page members
+router.get('/calcul', async (req, res) => {
+  try {
+    // Obtenir la date actuelle pour les calculs
+    const today = new Date();
+
+    // Requête principale
+    const result = await User.findAll({
+      attributes: ['cin', 'name', 'mail', 'tel', 'birth', 'sex', 'mdp'], // Colonnes du modèle User
+      include: [
+        {
+          model: Abonnement,
+          attributes: ['id_abonnement', 'date_debut', 'offreId'], // Colonnes nécessaires
+          include: [
+            {
+              model: Offre,
+              attributes: ['durée'], // Inclure la durée pour calculer la validité
+            },
+          ],
+          required: false, // LEFT OUTER JOIN : inclure les utilisateurs sans abonnement
+        },
+      ],
+    });
+
+    // Transformer les résultats pour créer la table
+    const table = result.map(user => {
+      // Trouver l'abonnement avec l'id_abonnement le plus grand pour cet utilisateur
+      const abonnements = user.Abonnements || [];
+      const latestAbonnement = abonnements.reduce((latest, current) => {
+        return !latest || current.id_abonnement > latest.id_abonnement ? current : latest;
+      }, null);
+
+      // Vérifier si l'abonnement est valide
+      let id_abonnement = 0;
+      let subscriptionStatus = 'expired'; // Par défaut, on considère que l'abonnement est expiré
+      if (latestAbonnement) {
+        const offre = latestAbonnement.Offre; // Récupérer l'offre liée
+        if (offre) {
+          const date_debut = new Date(latestAbonnement.date_debut);
+          const date_fin = new Date(date_debut);
+          date_fin.setMonth(date_fin.getMonth() + offre.durée); // Ajouter la durée en mois
+
+          // Si l'abonnement est valide, inclure son id_abonnement, sinon mettre 0
+          if (date_fin >= today) {
+            id_abonnement = latestAbonnement.id_abonnement;
+            subscriptionStatus = 'active'; // L'abonnement est actif
+          }
+        }
+      }
+
+      // Retourner uniquement les colonnes nécessaires
+      return {
+        cin: user.cin,
+        name: user.name,
+        mail: user.mail,
+        tel: user.tel,
+        birth: user.birth,
+        sex: user.sex,
+        id_abonnement, // Ajouter la colonne id_abonnement calculée
+        subscriptionStatus, // Ajouter l'état de l'abonnement (actif ou expiré)
+      };
+    });
+
+    // Compter les utilisateurs avec subscriptionStatus = 'active'
+    const activeSubscriptionsCount = table.filter((row) => row.subscriptionStatus === 'active').length;
+
+// Retourner la table construite et le nombre d'abonnements actifs
+    res.status(200).json({
+    table,
+    activeSubscriptionsCount, // Ajouter le nombre d'abonnements actifs dans la réponse
+  });
+  } catch (error) {
+    res.status(500).json({
+      message: 'Erreur lors de la construction de la table.',
+      error: error.message,
+    });
+  }
+});
+
 // pour la page subs :table
 router.get('/subs', async (req, res) => {
   try {
