@@ -3,6 +3,7 @@ const { Op } = require('sequelize');
 const Abonnement = require('../models/abonnement.model');
 const Cours=require('../models/cours.model');
 const Reservation=require('../models/reservation.model');
+const User=require('../models/user.model');
 const router = express.Router();
 
 
@@ -75,18 +76,54 @@ router.post('/', async (req, res) => {
     //IL RESTE DES PLACES DONC 
     //CHERCHER LE id_abonnement DE CE USER CONNU PAR userCin1
 
+     // Si il reste des places, chercher l'id_abonnement du user connu par userCin1
+    const user = await User.findOne({
+      where: { cin: userCin1 },
+      include: {
+        model: Abonnement, // Jointure avec la table Abonnement
+        required: true, // Cette option garantit que l'utilisateur possède un abonnement
+        order: [['id_abonnement', 'DESC']], // Trier par id_abonnement décroissant pour obtenir le plus grand
+        limit: 1, // Limiter à 1 résultat (le plus grand)
+      },
+    });
+
+    // Récupérer le id_abonnement le plus grand
+    const id_abonnement = user.Abonnements[0].id_abonnement;
+    console.log('id_abonnement trouvé :', id_abonnement);
 
 
-    // Si la capacité n'est pas atteinte, on peut effectuer la réservation
-    return res.status(200).json({ message: `Réservation possible pour le cours le ${formattedDate} à ${time}.` });
+    const formattedDate1 = new Date(`${formattedDate}T00:00:00Z`); // Date complète avec heure à 00:00:00
+    console.log('formattedDate1:', formattedDate1);
 
-    
-  
-  
-  
-  
-  
-  
+    // Vérifier si une réservation existe déjà pour cet abonnement, cours et date
+    const existingReservation = await Reservation.findOne({
+      where: {
+        id_abonnement: id_abonnement,
+        id: courseId,
+        date_cours: formattedDate1,
+      },
+    });
+    console.log(existingReservation);
+    if (existingReservation) {
+      console.log("d5alt lil 403");
+      return res.status(403).json({
+        error: 'Vous avez déjà réservé ce cours. Merci de l\'attendre.',
+      });
+    }
+
+
+    // Ajouter une ligne dans la table Reservation avec le id_abonnement
+
+    const reservation = await Reservation.create({
+      id:courseId,
+      date:new Date(),
+      date_cours: formattedDate,
+      time: time,
+      id_abonnement: id_abonnement,
+    });
+
+    // Répondre avec un message de succès
+    return res.status(200).json({ message: 'Réservation réussie', reservation });
   
   } catch (error) {
     console.error('Erreur lors de la récupération du cours :', error);

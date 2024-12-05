@@ -250,14 +250,15 @@ router.post('/subs/notify', async (req, res) => {
 
 
 
-//ajouté par linda
-router.get('/reservation', async (req, res) => {
+//ajouté par linda en cliquant sur le bouton booking
+router.post('/reservation', async (req, res) => {
   try {
-    const { cin } = req.query; // Récupérez le CIN de l'utilisateur depuis les paramètres de la requête
+    const { cin } = req.body; // Récupérez le CIN de l'utilisateur depuis les paramètres de la requête
 
     if (!cin) {
       return res.status(400).json({ message: 'CIN est requis.' });
     }
+    console.log(cin);
 
     // Trouver l'utilisateur en fonction du CIN
     const user = await User.findOne({

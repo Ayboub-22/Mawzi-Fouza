@@ -7,6 +7,7 @@ import { PopupProvider } from "./components/PopupContext";
 import PopUp from "./components/PopUp";
 import "./components/PopUp.css";
 import PopUp1 from "./components/PopUp1";
+import { useLocation } from "react-router-dom";
 
 type Schedule1 = {
   img: string;
@@ -28,6 +29,8 @@ type WorkoutSectionProps = {
 };
 
 function App() {
+    const location = useLocation();
+    const userCin1 = location.state?.userCin1;
   const list = [
     {
       title: "Beginner Friendly",
@@ -171,7 +174,7 @@ function App() {
     <>
       <section className="YSection">
         <PopupProvider>
-          <NavBar1 />
+          <NavBar1 userCin1={userCin1}/>
 
           <div className="YDiv1 padd">
             <h1 className="YTitle1">Free Workout Programs</h1>

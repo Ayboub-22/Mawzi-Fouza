@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Planning1.css";
-import { Navigate } from "react-router-dom";
+import { useNavigate , Navigate } from "react-router-dom";
 import PopupReserver from "./popupreserver";
 import axios from "axios";
 
 function Planning1({ userCin1}:any) {
+    const navigate = useNavigate();
 
   //console.log("dans planning 1");
   //console.log(userCin1);
@@ -68,7 +69,7 @@ function Planning1({ userCin1}:any) {
     try{
         const response = await axios.post(`http://localhost:3000/reservation`, { userCin1: userCin1, courseId: courseId, }); 
         if (response.status===200){
-            setErrorMessage("encore dispo");
+            setErrorMessage("booking doone");
         }
       
     }catch(error:any){
@@ -81,6 +82,10 @@ function Planning1({ userCin1}:any) {
                 if (error.response.status === 401){
                     console.log("cours complet");
                     alert("Le cours complet.");
+                }
+                else{
+                    console.log('Vous avez déjà réservé ce cours. Merci de l\'attendre.');
+                    alert("Vous avez déjà réservé ce cours. Merci de l\'attendre.")
                 }
             }
         }
@@ -110,28 +115,33 @@ function Planning1({ userCin1}:any) {
   
     try {
       // Passez le CIN de l'utilisateur à l'API pour vérifier son statut d'adhérent
-      const response = await axios.get(`http://localhost:3000/membre/reservation`, {
-        params: { cin: userCin1 }, // Assurez-vous de passer le CIN dans la requête
-      });
+      const response = await axios.post('http://localhost:3000/membre/reservation', { cin: userCin1 }); // Assurez-vous de passer le CIN dans la requête
   
       const { adherent } = response.data;
   
       if (adherent) {
         setShowPopup(true); // Affichez le popup pour la réservation
       } else {
-        setNavigateTo("/Offers"); // Redirigez vers la page des offres si l'utilisateur n'est pas un adhérent
+        navigate("/Offers1",{ state: { userCin1 } }); // Redirigez vers la page des offres si l'utilisateur n'est pas un adhérent
       }
-    } catch (error) {
+    } catch (error:any) {
+        if (error.response) {
+            if (error.response.status === 400) {
+              console.log("cin introuvable");
+              alert("cin introuvable");
+            }
+        }
       console.error("Erreur lors de la vérification :", error);
       setErrorMessage("Une erreur s'est produite lors de la vérification du statut d'adhésion.");
     }
   };
   
 
-  // Redirect if necessary
-  if (navigateTo) {
-    return <Navigate to={navigateTo} />;
-  }
+  // Redirect if necessary 
+  //J'AI PAS COMPRIS CA FAIT QUOI §§§§§§§§§§§§§§§§§§§§§§§
+//   if (navigateTo) {
+//     return <Navigate to={navigateTo} />;
+//   }
 
   return (
     <div className="container">

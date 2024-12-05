@@ -8,12 +8,12 @@ import Planning1 from "./components/Planning1";
 import { useLocation } from "react-router-dom";
 function App1() {
     const location = useLocation();
-    const userCin = location.state?.userCin;
+    const userCin1 = location.state?.userCin1;
     //console.log(userCin);
   return (
     <div>
       <section className="hero1">
-        <HomePage1 />
+        <HomePage1 userCin1={userCin1} />
       </section>
       <section>
         <Figures />
@@ -25,7 +25,7 @@ function App1() {
         <Classes />
       </section>
       <section className="hero4">
-        <Planning1 userCin1={userCin} />
+        <Planning1 userCin1={userCin1} />
       </section>
       <section className="hero5">
         <Footer />

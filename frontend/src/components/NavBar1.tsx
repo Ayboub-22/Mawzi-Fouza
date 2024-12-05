@@ -4,7 +4,7 @@ import { To, useNavigate } from "react-router-dom";
 import { usePopup } from "./PopupContext";
 import { useLocation } from "react-router-dom";
 
-function NavBar1() {
+function NavBar1({ userCin1}:any) {
   const navigate = useNavigate();
   const location = useLocation();
   const { togglePopup } = usePopup();
@@ -13,7 +13,7 @@ function NavBar1() {
   const handleScrollToSection = (path: To, sectionId: string) => {
     if (location.pathname !== path) {
       // Navigue vers la page souhaitée avant de scroller
-      navigate(path);
+      navigate(path,{ state: { userCin1 } });
       setTimeout(() => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -42,7 +42,7 @@ function NavBar1() {
               className={`nav-link custom-link ${
                 location.pathname === "/espaceuser" ? "active" : ""
               }`}
-              onClick={() => navigate("/espaceuser")}
+              onClick={() => navigate("/espaceuser",{ state: { userCin1 } })}
             >
               Home
             </a>
@@ -60,7 +60,7 @@ function NavBar1() {
               className={`nav-link custom-link ${
                 location.pathname === "/Offers1" ? "active" : ""
               }`}
-              onClick={() => navigate("/Offers1")}
+              onClick={() => navigate("/Offers1",{ state: { userCin1 } })}
             >
               Offers
             </a>
@@ -70,7 +70,7 @@ function NavBar1() {
               className={`nav-link custom-link ${
                 location.pathname === "/Guide1" ? "active" : ""
               }`}
-              onClick={() => navigate("/Guide1")}
+              onClick={() => navigate("/Guide1",{ state: { userCin1 } })}
             >
               Guide
             </a>
@@ -80,7 +80,7 @@ function NavBar1() {
               className={`nav-link custom-link ${
                 location.pathname === "/MiniShop1" ? "active" : ""
               }`}
-              onClick={() => navigate("/MiniShop1")}
+              onClick={() => navigate("/MiniShop1",{ state: { userCin1 } })}
             >
               Mini-Shop
             </a>

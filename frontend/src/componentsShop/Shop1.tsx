@@ -4,12 +4,15 @@ import PopUp from "../components/PopUp";
 import { PopupProvider } from "../components/PopupContext";
 import Products from "./Products";
 import "./Shop.css";
+import { useLocation } from "react-router-dom";
 
-function Shop() {
+function Shop({ userCin1}:any) {
+    //const location = useLocation();
+    //const userCin1 = location.state?.userCin1;
   return (
     <PopupProvider>
       <div className="Shop">
-        <NavBar1 />
+        <NavBar1 userCin1={userCin1}/>
 
         <h1 className="ShopWelcome">WELCOME TO OUR MINI SHOP</h1>
         <p>

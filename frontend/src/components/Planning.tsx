@@ -69,7 +69,7 @@ const App = () => {
   
     try {
       // Passez le CIN de l'utilisateur à l'API pour vérifier son statut d'adhérent
-      const response = await axios.get(`http://localhost:3000/membre/reservation`, {
+      const response = await axios.get('http://localhost:3000/membre/reservation', {
         params: { cin: userCin }, // Assurez-vous de passer le CIN dans la requête
       });
   

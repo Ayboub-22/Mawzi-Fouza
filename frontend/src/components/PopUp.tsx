@@ -55,8 +55,10 @@ function PopUp() {
         }
         // Redirect based on user type
         if (isMember) {
+          let userCin1:any;
+          userCin1=userCin;
           closePopup();
-          navigate("/espaceuser", { state: { userCin } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          navigate("/espaceuser", { state: { userCin1 } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         } else {
           navigate("/Admin/AdminStat"); // Admin dashboard
         }
