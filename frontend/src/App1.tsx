@@ -10,6 +10,8 @@ function App1() {
     const location = useLocation();
     const userCin1 = location.state?.userCin1;
     //console.log(userCin);
+    /*alert("d5alt");
+    alert(userCin1);*/
   return (
     <div>
       <section className="hero1">

@@ -21,12 +21,12 @@ function PopUp() {
   const [userCin, setUserCin] = useState<string | null>(null); // State for storing user ID
 
   // Retrieve stored user ID from localStorage on component mount
-  useEffect(() => {
-    const storedUserCin = localStorage.getItem("userCin");
-    if (storedUserCin) {
-      setUserCin(storedUserCin);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedUserCin = localStorage.getItem("userCin");
+  //   if (storedUserCin) {
+  //     setUserCin(storedUserCin);
+  //   }
+  // }, []);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,18 +47,25 @@ function PopUp() {
         console.log("Login successful:", response.data);
 
         // Retrieve user ID from the response
-        if(isMember){
-        const userCin = response.data.user.cin;
-        setUserCin(userCin); // Store the user ID in state
-        localStorage.setItem("userCin", userCin); // Store the user ID in localStorage
-        console.log("User Cin:", userCin);
-        }
+
+        /******************* */
+        /*if(isMember){
+        const userCintemp = response.data.user.cin;
+        alert(userCintemp);
+        setUserCin(userCintemp); // Store the user ID in state
+        //localStorage.setItem("userCin", userCin); // Store the user ID in localStorage
+        alert("user Cin:aaaa")
+        alert(userCin);
+        }*/
         // Redirect based on user type
         if (isMember) {
-          let userCin1:any;
-          userCin1=userCin;
+          //const userCin1=userCin;
           closePopup();
-          navigate("/espaceuser", { state: { userCin1 } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          //alert(userCin1);
+          /*alert(userCin);*/
+          /*alert("avant de naviger");
+          alert(response.data.user.cin);*/
+          navigate("/espaceuser", { state: { userCin1:response.data.user.cin } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         } else {
           navigate("/Admin/AdminStat"); // Admin dashboard
         }
