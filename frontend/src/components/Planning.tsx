@@ -1,18 +1,15 @@
-
 import React, { useState, useEffect } from "react";
 import "./Planning.css";
 import { Navigate } from "react-router-dom";
 import PopupReserver from "./popupreserver";
-import axios from "axios"; // Pour les requêtes API
+import axios from "axios";
 
 const App = () => {
 
   const [showPopup, setShowPopup] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // État pour la connexion
-  const [navigateTo, setNavigateTo] = useState<string | null>(null); // Gérer la redirection
-  const [userCin, setUserCin] = useState<string | null>(null); // Cin de l'utilisateur
-
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  // État pour la connexion
+  const [navigateTo, setNavigateTo] = useState<string | null>(null);   // Gérer la redirection
+  const [userCin, setUserCin] = useState<string | null>(null);  // Cin de l'utilisateur
   const [schedule, setSchedule] = useState<Record<string, string[]>>({
     Monday: ["", "", "", "", "", "", "", ""],
     Tuesday: ["", "", "", "", "", "", "", ""],
@@ -22,36 +19,32 @@ const App = () => {
     Saturday: ["", "", "", "", "", "", "", ""],
     Sunday: ["", "", "", "", "", "", "", ""],
   });
-
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  // Function to fetch courses from the backend
+  // Fetch user CIN from localStorage on component mount
+  useEffect(() => {
+    const storedCin = localStorage.getItem("userCin");
+    if (storedCin) {
+      setUserCin(storedCin);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  // Fetch courses from backend
   const fetchCourses = async () => {
     try {
-      // Send GET request to fetch courses
       const response = await axios.get("http://localhost:3000/cours/getter");
-
       if (response.status === 200) {
-        // Assuming the response data is in a format where each day has a list of courses
-        const cours = response.data; // Adjust this based on the actual structure of your response
-        setSchedule(cours);
-        console.log("hedha howa");
+        setSchedule(response.data);
       } else {
         setErrorMessage("Failed to fetch courses.");
       }
-    } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        setErrorMessage(
-          error.response?.data?.message ||
-            "An error occurred while fetching courses."
-        );
-      } else {
-        setErrorMessage("An unknown error occurred.");
-      }
+    } catch (error) {
+      setErrorMessage("An error occurred while fetching courses.");
+      console.error("Error fetching courses:", error);
     }
   };
 
-  // Use useEffect to fetch the courses when the component mounts
   useEffect(() => {
     fetchCourses();
   }, []);
@@ -67,53 +60,34 @@ const App = () => {
     "22H-24H",
   ];
 
-  // Fonction de connexion avec gestion du cin
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post("/user/login", {
-        email: "lindachrigui03@gmail.com", // Exemple : remplacer par des données du formulaire
-        password: "lindawski",
-      });
-
-      const { cin } = response.data;
-      localStorage.setItem("cin", cin);
-      setUserCin(cin);
-      setIsLoggedIn(true);
-    } catch (error) {
-      console.error("Erreur lors de la connexion :", error);
-    }
-  };
-
-  // Fonction de déconnexion
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUserCin(null);
-    localStorage.removeItem("cin");
-  };
-
-  // Gestion du clic sur le bouton "Réserver"
+  // Handle reservation button click
   const handleReservation = async () => {
-    const cin = localStorage.getItem("cin");
-    if (!cin) {
+    if (!userCin) {
       alert("Vous devez être connecté pour réserver.");
       return;
     }
-
+  
     try {
-      const response = await axios.get(`/api/isAdherent/${cin}`);
+      // Passez le CIN de l'utilisateur à l'API pour vérifier son statut d'adhérent
+      const response = await axios.get(`http://localhost:3000/membre/reservation`, {
+        params: { cin: userCin }, // Assurez-vous de passer le CIN dans la requête
+      });
+  
       const { adherent } = response.data;
-
+  
       if (adherent) {
-        setShowPopup(true);
+        setShowPopup(true); // Affichez le popup pour la réservation
       } else {
-        setNavigateTo("/offres"); // Rediriger si non adhérent
+        setNavigateTo("/Offers"); // Redirigez vers la page des offres si l'utilisateur n'est pas un adhérent
       }
     } catch (error) {
       console.error("Erreur lors de la vérification :", error);
+      setErrorMessage("Une erreur s'est produite lors de la vérification du statut d'adhésion.");
     }
   };
+  
 
-  // Redirection vers une autre page si nécessaire
+  // Redirect if necessary
   if (navigateTo) {
     return <Navigate to={navigateTo} />;
   }
@@ -122,7 +96,6 @@ const App = () => {
     <div className="container">
       <h1>Planning of the Week</h1>
 
-      {/* Error Message */}
       {errorMessage && <div className="error-message">{errorMessage}</div>}
 
       <table className="schedule-table">
@@ -138,10 +111,9 @@ const App = () => {
           {Object.keys(schedule).map((day) => (
             <tr key={day}>
               <td>{day}</td>
-
               {schedule[day].map((className, index) => (
                 <td key={index} className={className ? "filled" : ""}>
-                  {className || ""} {/* If no class, show a placeholder */}
+                  {className || ""}
                 </td>
               ))}
             </tr>
@@ -149,30 +121,19 @@ const App = () => {
         </tbody>
       </table>
 
-      {/* Bouton de réservation affiché uniquement si connecté */}
       {isLoggedIn && (
         <button type="button" className="book" onClick={handleReservation}>
-          Réserver
+          Booking
         </button>
       )}
 
-      {/* Popup de réservation */}
       {showPopup && (
         <PopupReserver
           onClose={() => setShowPopup(false)}
-          courses={[]} // Remplacer par les données réelles
-          onReserve={() => {
-            setShowPopup(false); // Fermer la popup après réservation
-          }}
+          courses={[]} // Replace with actual data if needed
+          onReserve={() => setShowPopup(false)}
         />
       )}
-
-      {/* Bouton de connexion/déconnexion
-      {!isLoggedIn ? (
-        <button onClick={handleLogin}>Se connecter</button>
-      ) : (
-        <button onClick={handleLogout}>Se déconnecter</button>
-      )} */}
     </div>
   );
 };

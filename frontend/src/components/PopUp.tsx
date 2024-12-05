@@ -2,7 +2,7 @@ import "./PopUp.css";
 import { usePopup } from "./PopupContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import logo from "../assets/icons/logo.png";
 
@@ -18,6 +18,15 @@ function PopUp() {
   const [identifier, setIdentifier] = useState(""); // Will be either name or mail depending on the user type
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [userCin, setUserCin] = useState<string | null>(null); // State for storing user ID
+
+  // Retrieve stored user ID from localStorage on component mount
+  useEffect(() => {
+    const storedUserCin = localStorage.getItem("userCin");
+    if (storedUserCin) {
+      setUserCin(storedUserCin);
+    }
+  }, []);
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,19 +34,25 @@ function PopUp() {
 
     try {
       const loginData = isMember
-        ? { mail: identifier, password } // For user login, use mail
-        : { name: identifier, password }; // For admin login, use name
+        ? { mail: identifier, password } // For user login
+        : { name: identifier, password }; // For admin login
 
       const loginUrl = isMember
-        ? "http://localhost:3000/user/login" // API for user login
-        : "http://localhost:3000/admin/login"; // API for admin login
+        ? "http://localhost:3000/user/login"
+        : "http://localhost:3000/admin/login";
 
       const response = await axios.post(loginUrl, loginData);
 
       if (response.status === 200) {
-        // Successful login
         console.log("Login successful:", response.data);
 
+        // Retrieve user ID from the response
+        if(isMember){
+        const userCin = response.data.user.cin;
+        setUserCin(userCin); // Store the user ID in state
+        localStorage.setItem("userCin", userCin); // Store the user ID in localStorage
+        console.log("User Cin:", userCin);
+        }
         // Redirect based on user type
         if (isMember) {
           closePopup();
@@ -102,8 +117,6 @@ function PopUp() {
         </div>
         <div className="Form1">
           <h1>Sign in</h1>
-
-=======
           <p>Un message quelconque qui s'affiche</p>
           <form className="sign-in-form">
             <input
@@ -162,4 +175,5 @@ function PopUp() {
     </div>
   );
 }
+
 export default PopUp;

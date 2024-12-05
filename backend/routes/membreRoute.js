@@ -3,14 +3,12 @@ const { Op } = require('sequelize'); // Import pour les opérateurs avancés
 const User = require('../models/user.model'); // Modèle User
 const Abonnement = require('../models/abonnement.model'); // Modèle Abonnement
 const Offre = require('../models/offre.model'); // Modèle Offre
-const Notif=require('../models/notif.model');
+const Notif = require('../models/notif.model');
 const router = express.Router();
 const sendEmailNotification = require('../utils/emailutil'); // Importer la fonction utilitaire
 
-
-// Récupérer la table construite (GET)   pour la page members
+// Récupérer la table construite (GET) pour la page members
 router.get('/', async (req, res) => {
-  
   try {
     // Obtenir la date actuelle pour les calculs
     const today = new Date();
@@ -43,6 +41,7 @@ router.get('/', async (req, res) => {
 
       // Vérifier si l'abonnement est valide
       let id_abonnement = 0;
+      let subscriptionStatus = 'expired'; // Par défaut, on considère que l'abonnement est expiré
       if (latestAbonnement) {
         const offre = latestAbonnement.Offre; // Récupérer l'offre liée
         if (offre) {
@@ -53,22 +52,23 @@ router.get('/', async (req, res) => {
           // Si l'abonnement est valide, inclure son id_abonnement, sinon mettre 0
           if (date_fin >= today) {
             id_abonnement = latestAbonnement.id_abonnement;
+            subscriptionStatus = 'active'; // L'abonnement est actif
           }
         }
       }
 
-    //   
-    // Retourner uniquement les colonnes nécessaires
-    return {
-      cin: user.cin,
-      name: user.name,
-      mail: user.mail,
-      tel: user.tel,
-      birth: user.birth,
-      sex: user.sex,
-      id_abonnement, // Ajouter la colonne id_abonnement calculée
-    };
-  });
+      // Retourner uniquement les colonnes nécessaires
+      return {
+        cin: user.cin,
+        name: user.name,
+        mail: user.mail,
+        tel: user.tel,
+        birth: user.birth,
+        sex: user.sex,
+        id_abonnement, // Ajouter la colonne id_abonnement calculée
+        subscriptionStatus, // Ajouter l'état de l'abonnement (actif ou expiré)
+      };
+    });
 
     // Retourner la table construite
     res.status(200).json(table);
@@ -80,7 +80,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//pour la page subs :table
+// pour la page subs :table
 router.get('/subs', async (req, res) => {
   try {
     // Étape 1: Récupérer tous les utilisateurs avec leurs abonnements et offres
@@ -135,13 +135,14 @@ router.get('/subs', async (req, res) => {
           start_date: startDate.toISOString().split('T')[0], // Formater en AAAA-MM-JJ
           end_date: endDate.toISOString().split('T')[0], // Formater en AAAA-MM-JJ
           id_abonnement: latestAbonnement.id_abonnement, // Assurez-vous que ceci est inclus
+          subscriptionStatus: endDate >= new Date() ? 'active' : 'expired', // Ajouter l'état de l'abonnement
         };
       }
 
       return []; // Abonnement non éligible
     });
+    
     console.log("avant etape 3");
-    console.log(results);
 
     // Étape 3: Insérer les id_abonnement dans la table Notif si non existants
     await Promise.all(
@@ -189,6 +190,7 @@ router.get('/subs', async (req, res) => {
           id_offre,
           start_date: startDate,
           end_date: endDate,
+          subscriptionStatus: endDate >= new Date() ? 'active' : 'expired', // Ajouter l'état de l'abonnement
         };
       } else {
         console.error('Subscription or related data is missing:', notif);
@@ -203,68 +205,107 @@ router.get('/subs', async (req, res) => {
   }
 });
 
-//pour la page subs : bouton send notifications 
 // Route pour le bouton "Send Notification"
-
 router.post('/subs/notify', async (req, res) => {
   console.log("j'ai intercepte rqt");
-    try {
-        // Étape 1 : Récupérer les emails avec une jointure
-        const result = await Notif.findAll({
-            where: { notified: false }, // Filtrer les notifications non envoyées
-            include: [
-                {
-                    model: Abonnement,
-                    required: true, // Jointure avec Abonnement
-                    include: [
-                        {
-                            model: User,
-                            required: true, // Jointure avec User
-                            attributes: ['mail'], // Ne récupérer que l'email
-                        },
-                    ],
-                },
-            ],
-        });
-        console.log("fin etape 1");
-        // Étape 2 : Extraire les emails uniques
-        const emails = result.map((notif) => notif.Abonnement.User.mail);
+  try {
+    // Étape 1 : Récupérer les emails avec une jointure
+    const result = await Notif.findAll({
+      where: { notified: false }, // Filtrer les notifications non envoyées
+      include: [
+        {
+          model: Abonnement,
+          required: true, // Jointure avec Abonnement
+          include: [
+            {
+              model: User,
+              required: true, // Jointure avec User
+              attributes: ['mail'], // Ne récupérer que l'email
+            },
+          ],
+        },
+      ],
+    });
+    console.log("fin etape 1");
 
-        if (emails.length === 0) {
-            return res.status(404).json({ message: 'No notifications to send.' });
-        }
-        console.log(emails.length);
-        console.log("fin etape 2");
-        // Étape 3 : Envoyer un email pour chaque destinataire
-        for (const email of emails) {
-            await sendEmailNotification(email);
-        }
-        console.log("fin etape 3");
-        // Étape 4 : Mettre à jour toutes les lignes avec `notified = true`
-        await Notif.update({ notified: true }, { where: { notified: false } });
-
-        res.status(200).json({ message: 'Notifications sent successfully!' });
-        console.log("d=fin de l'etape4");
-    } catch (error) {
-        console.error('Error during notification process:', error);
-        res.status(500).json({ error: 'An error occurred while sending notifications.' });
+    // Étape 2 : Extraire les emails uniques
+    const emails = result.map((notif) => notif.Abonnement.User.mail);
+    console.log(emails);
+    if (emails.length > 0) {
+      // Étape 3 : Envoyer les notifications
+      await sendEmailNotification(emails);
+      console.log('Notifications envoyées');
+      
+      // Mettre à jour la colonne "notified" à true
+      await Notif.update({ notified: true }, { where: { notified: false } });
+      res.status(200).send('Notifications sent successfully.');
+    } else {
+      res.status(200).send('No notifications to send.');
     }
+  } catch (error) {
+    console.error('Error sending notifications:', error);
+    res.status(500).send('An error occurred while sending notifications.');
+  }
 });
 
 
 
+//ajouté par linda
+router.get('/reservation', async (req, res) => {
+  try {
+    const { cin } = req.query; // Récupérez le CIN de l'utilisateur depuis les paramètres de la requête
 
-// router.put('/subs/notify', async (req, res) => {
-//   try {
-//     // Mettre à jour toutes les lignes avec `notified = true`
-//     await Notif.update({ notified: true }, { where: { notified: false } });
+    if (!cin) {
+      return res.status(400).json({ message: 'CIN est requis.' });
+    }
 
-//     res.status(200).json({ message: 'Notifications sent successfully!' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'An error occurred while sending notifications.' });
-//   }
-// });
+    // Trouver l'utilisateur en fonction du CIN
+    const user = await User.findOne({
+      where: { cin },
+      include: [
+        {
+          model: Abonnement,
+          attributes: ['id_abonnement', 'date_debut', 'offreId'],
+          include: [
+            {
+              model: Offre,
+              attributes: ['durée'],
+            },
+          ],
+          required: false,
+        },
+      ],
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Utilisateur non trouvé.' });
+    }
+
+    // Vérifiez si l'utilisateur a un abonnement actif
+    const abonnements = user.Abonnements || [];
+    const latestAbonnement = abonnements.reduce((latest, current) => {
+      return !latest || current.id_abonnement > latest.id_abonnement ? current : latest;
+    }, null);
+
+    let adherent = false;
+    if (latestAbonnement) {
+      const offre = latestAbonnement.Offre;
+      const date_debut = new Date(latestAbonnement.date_debut);
+      const date_fin = new Date(date_debut);
+      date_fin.setMonth(date_fin.getMonth() + offre.durée);
+
+      if (date_fin >= new Date()) {
+        adherent = true;
+      }
+    }
+
+    // Retourner l'état d'adhésion
+    res.status(200).json({ adherent });
+  } catch (error) {
+    console.error("Erreur lors de la vérification du statut d'adhésion :", error);
+    res.status(500).json({ message: 'Erreur lors de la vérification du statut d\'adhésion.' });
+  }
+});
 
 
 module.exports = router;

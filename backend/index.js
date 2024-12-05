@@ -13,17 +13,14 @@ const Article=require('./models/article.model');
 const Cours=require('./models/cours.model');
 const Notif=require('./models/notif.model');
 
-
 const adminRouter=require('./routes/adminRoute');
 const offreRouter = require('./routes/offreRoute');
 const subscriptionRoutes = require('./routes/subsRoute');
-
 const articleRouter=require('./routes/articleRoute');
 const coursRouter=require('./routes/coursRoute');
 const abonnementRouter=require('./routes/abonnementRoute');
 const userRouter=require('./routes/userRoute');
 const membreRouter=require('./routes/membreRoute');
-
 
 app.use(express.json());
 app.use(
