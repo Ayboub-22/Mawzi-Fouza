@@ -50,11 +50,13 @@ router.get('/getter', async (req, res) => {
       const {
         day,
         time,
-        name
+        name,
+        validity
       } = cours;
       // Assuming your model has these fields
-
-      schedule[day][time] = name; // Adjusting to zero-based index
+      if (validity) {
+        schedule[day][time] = name;
+      } // Adjusting to zero-based index
 
     });
 

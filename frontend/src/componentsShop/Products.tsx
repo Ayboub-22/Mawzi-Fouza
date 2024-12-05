@@ -25,7 +25,7 @@ function Products() {
     <div className="Products">
       <ProductList
         cardsData={articles.map((article) => ({
-          image: article.img_path,
+          image: article.img_path.replace("C:\\fakepath\\", ""),
           text: article.name,
           label: article.prix,
         }))}
