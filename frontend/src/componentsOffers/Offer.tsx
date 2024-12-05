@@ -1,44 +1,36 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card from "./Card"; // Assurez-vous que votre composant Card est correctement importé
 import "./Offer.css";
+import { useNavigate } from "react-router-dom";
+import { usePopup } from "../components/PopupContext";
 
-interface card2 {
-  plan: string;
-  prix: string;
-  type: string;
-  info: string;
-  list: string[];
-}
-
-type offersprops = {
-  cards: card1[];
-};
-interface card1 {
-  id_offre: number; // Primary Key, auto-increment
-  durée: number; // Duration (assumed in days, months, etc.)
-  prix: number; // Price with up to two decimal points
-  validite: boolean;
+interface CardData {
+  id_offre: number; // Identifiant unique
+  durée: number; // Durée (en mois par exemple)
+  prix: number; // Prix avec deux décimales
+  validite: boolean; // Statut de validité
 }
 
 function Offer() {
-  const [cards1, setcards] = useState<card1[]>([]);
-  const L = [
+  const { togglePopup } = usePopup();
+  const [cards1, setCards] = useState<CardData[]>([]); // Déclarez l'état pour stocker les données des offres
+  const listItems = [
     "Lorem ipsum dolor sit amet, ",
     "Lorem ipsum dolor sit amet, ",
     "Lorem ipsum dolor sit amet, ",
     "Lorem ipsum dolor sit amet, ",
     "Lorem ipsum dolor sit amet, ",
   ];
-  const plan = "Premium  Plan";
+  const plan = "Premium Plan";
   const info =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ";
 
   useEffect(() => {
-    // Fetch data from the backend
-    fetch("http://localhost:3000/Offre/get") // Update the URL based on your setup
+    // Effectuez une requête pour récupérer les données
+    fetch("http://localhost:3000/Offre/get") // Remplacez l'URL si nécessaire
       .then((response) => response.json())
-      .then((data) => setcards(data))
-      .catch((error) => console.error("Error fetching articles:", error));
+      .then((data) => setCards(data)) // Stockez les données dans l'état
+      .catch((error) => console.error("Error fetching offers:", error));
   }, []);
 
   return (
@@ -46,15 +38,17 @@ function Offer() {
       <div className="msg">JOIN TODAY</div>
 
       <div className="Cards">
-        {cards1.map((item, index) => (
+        {cards1.map((item) => (
+          <div key={item.id_offre} onClick={togglePopup}>
           <Card
-            key={index}
+            key={item.id_offre} // Utilisez un identifiant unique comme clé
             plan={plan}
-            prix={`$${item.prix}`}
-            type={`${item.durée}Month`}
+            prix={`$${item.prix}`} // Format du prix
+            type={`${item.durée} Month`} // Format de la durée
             info={info}
-            list={L}
+            list={listItems} // Liste des caractéristiques
           />
+          </div>
         ))}
       </div>
     </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./Card.css";
 
 interface card1 {
@@ -11,6 +9,7 @@ interface card1 {
 }
 
 const Card = ({ plan, prix, type, info, list }: card1) => {
+ 
   return (
     <div className="plan">
       <div className="inner">
@@ -29,7 +28,7 @@ const Card = ({ plan, prix, type, info, list }: card1) => {
           ))}
         </ul>
         <div className="action">
-          <a className="button" href="#">
+          <a className="button">
             Choose plan
           </a>
         </div>
