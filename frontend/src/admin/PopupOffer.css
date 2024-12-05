@@ -100,8 +100,43 @@ color: #333;
   margin-bottom:10% ;
 }
 .div_offerform{
+  
   margin-top: 7%;
+  display: flex;
+  justify-content: space-between; /* Répartir les champs horizontalement */
+  gap: 30px; /* Augmente l'espace entre les champs sur la même ligne */
+  margin-bottom: 20px; /* Ajoute un espacement vertical entre les lignes */
+
 }
+
 .label{
   margin-bottom: 3%;
+}
+.form-group {
+  flex: 1; /* Les champs prennent chacun 50% de l'espace */
+}
+
+.form-group label {
+  font-size: 16px; /* Taille de police plus grande */
+  color: #333; /* Texte en gris foncé */
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd; /* Bordures légères */
+  border-radius: 10px; /* Coins arrondis */
+  background-color: #f9f9f9; /* Fond légèrement gris */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border: 1px solid #ff2a00; /* Bordure rouge en focus */
+  outline: none;
+  background-color: #fff;
 }

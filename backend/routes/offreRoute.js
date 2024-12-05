@@ -8,12 +8,16 @@ router.post('/addOffer', async (req, res) => {
   const {
     durée,
     prix,
+    description,
+    type,
     validité
   } = req.body;
   try {
     const newOffer = await Offre.create({
       durée,
       prix,
+      description,
+      type,
       validité
     });
     res.status(201).json({
