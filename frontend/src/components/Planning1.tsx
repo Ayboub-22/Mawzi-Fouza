@@ -119,7 +119,7 @@ function Planning1({ userCin1}:any) {
       if (adherent) {
         setShowPopup(true); // Affichez le popup pour la réservation
       } else {
-        setNavigateTo("/Offers"); // Redirigez vers la page des offres si l'utilisateur n'est pas un adhérent
+        setNavigateTo("/Offers1"); // Redirigez vers la page des offres si l'utilisateur n'est pas un adhérent
       }
     } catch (error) {
       console.error("Erreur lors de la vérification :", error);
