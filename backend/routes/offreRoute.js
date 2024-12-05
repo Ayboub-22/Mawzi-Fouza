@@ -30,6 +30,20 @@ router.post('/addOffer', async (req, res) => {
 });
 
 // READ: Get all offers
+router.get('/', async (req, res) => {
+  try {
+    const offers = await Offre.findAll();
+    res.status(200).json(offers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: 'Failed to fetch offers',
+      error
+    });
+  }
+});
+
+// READ: Get all offers
 router.get('/get', async (req, res) => {
   try {
     const offers = await Offre.findAll();
