@@ -118,6 +118,7 @@
       border-radius: 20px;
       margin-left: 5px;
     }
+
     .tab-button.active {
       background: #000;
       color: #fff;

@@ -247,6 +247,10 @@ router.post('/subs/notify', async (req, res) => {
     res.status(500).send('An error occurred while sending notifications.');
   }
 });
+
+
+
+//ajouté par linda
 router.get('/reservation', async (req, res) => {
   try {
     const { cin } = req.query; // Récupérez le CIN de l'utilisateur depuis les paramètres de la requête

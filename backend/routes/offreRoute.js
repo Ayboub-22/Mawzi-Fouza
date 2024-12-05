@@ -30,6 +30,20 @@ router.post('/addOffer', async (req, res) => {
 });
 
 // READ: Get all offers
+router.get('/', async (req, res) => {
+  try {
+    const offers = await Offre.findAll();
+    res.status(200).json(offers);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: 'Failed to fetch offers',
+      error
+    });
+  }
+});
+
+// READ: Get all offers
 router.get('/get', async (req, res) => {
   try {
     const offers = await Offre.findAll();
@@ -44,6 +58,42 @@ router.get('/get', async (req, res) => {
 });
 
 // READ: Get a single offer by ID
+router.get('/:id', async (req, res) => {
+  try {
+    const offer = await Offre.findByPk(id);
+    if (offer) {
+      res.status(200).json(offer);
+    } else {
+      res.status(404).json({ message: 'Offer not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Failed to fetch offer', error });
+  }
+});
+
+router.put('/:id/validity', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const offre = await Offre.findByPk(id);
+    if (!offre) {
+      return res.status(404).json({ message: "Offre introuvable." });
+    }
+
+    // Mettre à jour la validité
+    offre.validité = !offre.validité;
+    await offre.save();
+
+
+    res.status(200).json({ message: "Validité mise à jour avec succès." });
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la mise à jour de la validité.",
+      error: error.message,
+    });
+  }
+});
 
 
 // UPDATE: Update an offer

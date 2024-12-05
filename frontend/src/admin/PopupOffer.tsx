@@ -68,17 +68,18 @@ const PopupOffer: React.FC<PopupOfferProps> = ({show}) => {
               <label>Duration:</label>
             </div>
             <input
-              type="text"
+              type="number"
               placeholder="Enter duration"
               value={durée}
               onChange={(e) => setDuration(e.target.value)}
+              step="1"
               required
             />
             <div className="label">
               <label>Price:</label>
             </div>
             <input
-              type="text"
+              type="number"
               placeholder="Enter price"
               value={prix}
               onChange={(e) => setPrice(e.target.value)}

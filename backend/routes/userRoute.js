@@ -1,7 +1,24 @@
 const express = require('express');
 const User = require('../models/user.model'); // Importer le modèle User
 const router = express.Router();
+
 const { Op } = require('sequelize');
+
+
+// Route pour récupérer tous les utilisateurs (GET)
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.findAll(); // Récupérer tous les utilisateurs
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Erreur lors de la récupération des utilisateurs.',
+      error: error.message,
+    });
+  }
+});
+
+
 
 // Login route
 router.post('/login', async (req, res) => {
@@ -25,12 +42,12 @@ router.post('/login', async (req, res) => {
         message: "Invalid credentials",
       });
     }
-    console.log(user.cin);
+    console.log(user.cin);   //linda  bdelet ala yassine
     
     // Return only the user ID for better security
     res.status(200).json({
       message: "Login successful",
-      user: { cin: user.cin }, // Only send back the user ID            //changement ici
+      user: { cin: user.cin }, // Only send back the user ID            //changement ici linda
     });
   } catch (error) {
     console.error("Server error:", error); // Log the error in more detail
@@ -71,7 +88,7 @@ router.post('/signup', async (req, res) => {
 
     res.status(201).json({
       message: 'User created successfully',
-      user: { id: newUser.id }, // Only send back the new user ID
+      user: { cin: newUser.cin }, // Only send back the new user ID
     });
   } catch (error) {
     console.error(error);
@@ -82,18 +99,6 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// Route pour récupérer tous les utilisateurs (GET)
-router.get('/', async (req, res) => {
-  try {
-    const users = await User.findAll(); // Récupérer tous les utilisateurs
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({
-      message: 'Erreur lors de la récupération des utilisateurs.',
-      error: error.message,
-    });
-  }
-});
 
 // Route pour récupérer un utilisateur par CIN (GET)
 router.get('/:cin', async (req, res) => {
