@@ -29,20 +29,31 @@ const App = () => {
     }
   }, []);
 
-  // Fetch courses from backend
-  const fetchCourses = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/cours/getter");
-      if (response.status === 200) {
-        setSchedule(response.data);
-      } else {
-        setErrorMessage("Failed to fetch courses.");
-      }
-    } catch (error) {
-      setErrorMessage("An error occurred while fetching courses.");
-      console.error("Error fetching courses:", error);
+ // Function to fetch courses from the backend
+ const fetchCourses = async () => {
+  try {
+    // Send GET request to fetch courses
+    const response = await axios.get("http://localhost:3000/cours/getter");
+
+    if (response.status === 200) {
+      // Assuming the response data is in a format where each day has a list of courses
+      const cours = response.data; // Adjust this based on the actual structure of your response
+      setSchedule(cours);
+      console.log("hedha howa");
+    } else {
+      setErrorMessage("Failed to fetch courses.");
     }
-  };
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      setErrorMessage(
+        error.response?.data?.message ||
+          "An error occurred while fetching courses."
+      );
+    } else {
+      setErrorMessage("An unknown error occurred.");
+    }
+  }
+};
 
   useEffect(() => {
     fetchCourses();
@@ -91,10 +102,16 @@ const App = () => {
     return <Navigate to={navigateTo} />;
   }
 
+   // Redirection vers une autre page si nécessaire
+   if (navigateTo) {
+    return <Navigate to={navigateTo} />;
+  }
+
   return (
     <div className="container">
       <h1>Planning of the Week</h1>
 
+      {/* Error Message */}
       {errorMessage && <div className="error-message">{errorMessage}</div>}
 
       <table className="schedule-table">
@@ -110,9 +127,10 @@ const App = () => {
           {Object.keys(schedule).map((day) => (
             <tr key={day}>
               <td>{day}</td>
+
               {schedule[day].map((className, index) => (
                 <td key={index} className={className ? "filled" : ""}>
-                  {className || ""}
+                  {className || ""} {/* If no class, show a placeholder */}
                 </td>
               ))}
             </tr>
@@ -120,21 +138,33 @@ const App = () => {
         </tbody>
       </table>
 
+      {/* Bouton de réservation affiché uniquement si connecté */}
       {isLoggedIn && (
         <button type="button" className="book" onClick={handleReservation}>
-          Booking
+          Réserver
         </button>
       )}
 
+      {/* Popup de réservation */}
       {showPopup && (
         <PopupReserver
           onClose={() => setShowPopup(false)}
-          courses={[]} // Replace with actual data if needed
-          onReserve={() => setShowPopup(false)}
+          courses={[]} // Remplacer par les données réelles
+          onReserve={() => {
+            setShowPopup(false); // Fermer la popup après réservation
+          }}
         />
       )}
+
+      {/* Bouton de connexion/déconnexion
+      {!isLoggedIn ? (
+        <button onClick={handleLogin}>Se connecter</button>
+      ) : (
+        <button onClick={handleLogout}>Se déconnecter</button>
+      )} */}
     </div>
   );
+
 };
 
 export default App;
