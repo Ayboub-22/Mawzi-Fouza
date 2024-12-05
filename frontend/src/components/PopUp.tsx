@@ -7,10 +7,10 @@ import { useState, useEffect } from "react";
 import logo from "../assets/icons/logo.png";
 
 function getClassName(isActive: boolean): string {
-  return isActive ? "boutton1 active" : "boutton1 inactive";
+  return isActive ? "boutton1 active1" : "boutton1 inactive";
 }
 function getClassName1(isActive: boolean): string {
-  return isActive ? "boutton2 inactive" : "boutton2 active";
+  return isActive ? "boutton2 inactive" : "boutton2 active1";
 }
 
 function PopUp() {
@@ -56,7 +56,7 @@ function PopUp() {
         // Redirect based on user type
         if (isMember) {
           closePopup();
-          navigate("/"); // User home page
+          navigate("/espaceuser", { state: { userCin } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         } else {
           navigate("/Admin/AdminStat"); // Admin dashboard
         }
@@ -117,7 +117,7 @@ function PopUp() {
         </div>
         <div className="Form1">
           <h1>Sign in</h1>
-          <p>Un message quelconque qui s'affiche</p>
+          <p>Un message quelconque qui s'affiche</p>         {/* a changer */ }
           <form className="sign-in-form">
             <input
               onChange={(e) => setIdentifier(e.target.value)} // Input for mail or name

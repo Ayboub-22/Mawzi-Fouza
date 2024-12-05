@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
+import App1 from "./App1";
 import Guide from "./Guide";
 import Offers from "./Offers";
 import MiniShop from "./MiniShop";
@@ -10,12 +11,19 @@ import AdminMembers from "./admin/AdminMembers";
 import AdminSubs from "./admin/AdminSubs";
 import AdminProd from "./admin/AdminProd";
 import AdminClasses from "./admin/AdminClasses";
+import Offers1 from "./Offers1";
+import MiniShop1 from "./MiniShop1";
+import Guide1 from "./Guide1";
 
 const Gym: React.FC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/espaceuser" element={<App1 />} />
+        <Route path="/Guide1" element={<Guide1 />} />
+        <Route path="/Offers1" element={<Offers1 />} />
+        <Route path="/MiniShop1" element={<MiniShop1 />} />
         <Route path="/Guide" element={<Guide />} />
         <Route path="/Offers" element={<Offers />} />
         <Route path="/MiniShop" element={<MiniShop />} />

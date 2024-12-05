@@ -12,6 +12,8 @@ const Abonnement=require('./models/abonnement.model');
 const Article=require('./models/article.model');
 const Cours=require('./models/cours.model');
 const Notif=require('./models/notif.model');
+const Reservation=require('./models/reservation.model');
+
 
 const adminRouter=require('./routes/adminRoute');
 const offreRouter = require('./routes/offreRoute');
@@ -21,6 +23,7 @@ const coursRouter=require('./routes/coursRoute');
 const abonnementRouter=require('./routes/abonnementRoute');
 const userRouter=require('./routes/userRoute');
 const membreRouter=require('./routes/membreRoute');
+const reservationRouter=require('./routes/reservationRoute');
 
 app.use(express.json());
 app.use(
@@ -44,7 +47,7 @@ app.use('/cours',coursRouter);
 app.use('/user',userRouter);
 app.use('/abonnement',abonnementRouter);
 app.use('/membre',membreRouter);
-
+app.use('/reservation',reservationRouter);
 
 (async () => {
   try {
@@ -58,6 +61,7 @@ app.use('/membre',membreRouter);
     await Article.sync();
     await Cours.sync(); 
     await Notif.sync();
+    await Reservation.sync();
   
 
     // Start server

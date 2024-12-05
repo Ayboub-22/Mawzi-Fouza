@@ -1,0 +1,30 @@
+.hero1{
+    background-image: url('./assets/images/Background1.png'); 
+    /* background-color: blue; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    padding: 0 !important;
+
+
+}
+
+.hero2{
+
+    /* background-color: blue; */
+
+    min-height: 100vh;
+    padding: 1.8%;
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.hero3{
+
+    background-color: rgba(31,31,31,255);
+
+    min-height: 100vh;
+    padding: 1.8%;
+    padding-left: 4%;
+    padding-right: 4%;
+}

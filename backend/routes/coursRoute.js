@@ -37,12 +37,32 @@ router.post('/addCours', async (req, res) => {
     });
   }
 });
+router.get('/planning',async(req, res) => {
+  try {
+    // Fetch all courses from the database
+    const courses = await Cours.findAll({
+      where: {
+        validity: true, // Condition pour sélectionner uniquement les cours valides
+      },
+    });
+    // Respond with the courses
+    res.status(200).json(courses);
+  } catch (error) {
+    res.status(500).json({
+      message: 'Erreur lors de la récupération des cours.',
+      error: error.message
+    });
+  }
+});
 
 router.get('/getter', async (req, res) => {
   try {
     // Fetch all courses from the database
-    const cours = await Cours.findAll();
-
+    const cours = await Cours.findAll({
+      where: {
+        validity: true, // Condition pour sélectionner uniquement les cours valides
+      },
+    });
     // Initialize an empty schedule
     const schedule = {
       Monday: Array(8).fill(""),
