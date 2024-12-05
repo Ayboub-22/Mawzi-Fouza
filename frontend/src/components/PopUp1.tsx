@@ -37,12 +37,15 @@ function PopUp1() {
 
       if (response.status === 201) {
         console.log("User created successfully:", response.data);
+        const userCin1 = response.data.user.cin;
+        console.log(userCin1);
+        navigate("/espaceuser", { state: { userCin1 } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         setErrorMessage(
           "Signup successful! Please check your email to verify your account."
         );
 
         // Optionally, close the popup here
-        closePopup1();
+        //closePopup1();
       }
     } catch (error: any) {
       console.error("Signup error:", error.response?.data || error.message);
@@ -51,6 +54,7 @@ function PopUp1() {
       );
     }
   };
+
 
   return (
     <div className="PopUp">
@@ -141,7 +145,7 @@ function PopUp1() {
               </a>
             </div>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <button type="submit" className="submit-button">
+            <button type="submit" className="submit-button" onClick={handleSignUp}>
               Sign up
             </button>
           </form>

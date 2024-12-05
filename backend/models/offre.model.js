@@ -23,6 +23,10 @@ const Offre = db.define('Offre', {
     type: DataTypes.TEXT, // Correspond au type TEXT en MySQL
     allowNull: true,      // Correspond à NULL dans la base de données
   },
+  type: {
+    type: DataTypes.STRING(255), // Correspond au type VARCHAR(255) en MySQL
+    allowNull: true,            // Autorise NULL comme dans votre commande ALTER
+  },
 }, {
   tableName: 'offre', // Optional: explicitly specify the table name
   timestamps: false,  // Disable automatic `createdAt` and `updatedAt` fields
