@@ -47,18 +47,18 @@ function PopUp() {
         console.log("Login successful:", response.data);
 
         // Retrieve user ID from the response
-        if(isMember){
-        const userCin = response.data.user.cin;
-        setUserCin(userCin); // Store the user ID in state
-        localStorage.setItem("userCin", userCin); // Store the user ID in localStorage
-        console.log("User Cin:", userCin);
-        }
+
+        /******************************** */
+        // if(isMember){
+        // const userCin = response.data.user.cin;
+        // setUserCin(userCin); // Store the user ID in state
+        // localStorage.setItem("userCin", userCin); // Store the user ID in localStorage
+        // console.log("User Cin:", userCin);
+        // }
         // Redirect based on user type
         if (isMember) {
-          let userCin1:any;
-          userCin1=userCin;
           closePopup();
-          navigate("/espaceuser", { state: { userCin1 } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          navigate("/espaceuser", { state: { userCin1:response.data.user.cin} }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         } else {
           navigate("/Admin/AdminStat"); // Admin dashboard
         }
