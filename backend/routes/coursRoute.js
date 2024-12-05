@@ -4,15 +4,24 @@ const Cours = require('../models/cours.model'); // Importez le modèle Sequelize
 
 // Créer un nouveau cours (POST)
 router.post('/addCours', async (req, res) => {
-  const {
-    name,
-    day,
-    validity,
-    time,
-    capacity
-  } = req.body;
+  const { name, day, validity, time, capacity } = req.body;
 
   try {
+    const existingCours = await Cours.findOne({
+      where: {
+        day,
+        time,
+        validity: true, // On ne vérifie que les cours valides
+      },
+    });
+
+    // Si un cours valide existe déjà, renvoyer une erreur
+    if (existingCours) {
+      return res.status(400).json({
+        message: 'Un cours valide existe déjà pour ce jour et cette heure.',
+      });
+    }
+
     const newCours = await Cours.create({
       name,
       day,
@@ -105,6 +114,58 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+
+//pour le check box de classes
+router.put('/:id/validity', async (req, res) => {
+  const { id } = req.params; // ID du cours à modifier
+  const { validity } = req.body; // Nouvelle valeur de validity
+  console.log(id);
+  console.log(validity );
+  try {
+    console.log("requete in")
+    // Récupérer le cours à mettre à jour
+    const courseToUpdate = await Cours.findByPk(id);
+
+    if (!courseToUpdate) {
+      console.log("makitch class id teeha haka ")
+      return res.status(404).json({ message: 'Cours introuvable.' });
+    }
+
+    // Si la nouvelle validité est FALSE, vérifier les conflits
+    if (validity) {
+      const conflict = await Cours.findOne({
+        where: {
+          day: courseToUpdate.day,
+          time: courseToUpdate.time,
+          validity: true,
+        },
+      });
+
+      // Si un conflit existe, empêcher la mise à jour
+      if (conflict) {
+        return res.status(400).json({
+          message:
+            'Impossible de marquer ce cours comme valide. Un autre cours est déjà valide pour le même jour et la même heure.',
+        });
+      }
+    }
+
+    // Mettre à jour la validité dans la base de données
+    courseToUpdate.validity = validity;
+    await courseToUpdate.save();
+
+    // Réponse de succès
+    return res.status(200).json({
+      message: `La validité du cours a été mise à jour avec succès.`,
+      course: courseToUpdate,
+    });
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour de la validité:', error);
+    return res.status(500).json({
+      message: 'Une erreur est survenue lors de la mise à jour.',
+    });
+  }
+});
 // Mettre à jour un cours (PUT)
 router.put('/:id', async (req, res) => {
   const {

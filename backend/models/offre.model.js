@@ -19,6 +19,10 @@ const Offre = db.define('Offre', {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
+  description: {
+    type: DataTypes.TEXT, // Correspond au type TEXT en MySQL
+    allowNull: true,      // Correspond à NULL dans la base de données
+  },
 }, {
   tableName: 'offre', // Optional: explicitly specify the table name
   timestamps: false,  // Disable automatic `createdAt` and `updatedAt` fields

@@ -25,14 +25,7 @@ const PopupClasses: React.FC<PopupClassesProps> = ({ show }) => {
     e.preventDefault(); // Empêche le rechargement de la page lors de l'envoi du formulaire
 
     // Création de l'objet de l'offre
-    const classData = {
-      name: name,
-      capacity: capacity,
-      day: day,
-      time: time,
-      validity: true,
-    };
-
+    const classData = {name: name,capacity: capacity,day: day,time: time,validity: true,};
     try {
       // Envoi de la requête pour ajouter un cours
       const response = await axios.post(
@@ -46,9 +39,17 @@ const PopupClasses: React.FC<PopupClassesProps> = ({ show }) => {
         setDay("");
         setName("");
         setTime("");
-      } else {
-        console.log("Failed to add class.");
-        setErrorMessage("Failed to add class.");
+      } 
+      else {
+        if (response.status === 400){
+          console.log("il existe deja un cours valide .");
+          setErrorMessage("a class already exists");
+        }
+        else{
+          console.log("Failed to add class.");
+          setErrorMessage("Failed to add class.");
+        }
+        
       }
     } catch (error: any) {
       console.error("Add class error:", error.response?.data || error.message);

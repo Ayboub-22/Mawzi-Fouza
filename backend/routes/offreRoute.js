@@ -42,6 +42,28 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch offer', error });
   }
 });
+router.put('/:id/validity', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const offre = await Offre.findByPk(id);
+    if (!offre) {
+      return res.status(404).json({ message: "Offre introuvable." });
+    }
+
+    // Mettre à jour la validité
+    offre.validité = !offre.validité;
+    await offre.save();
+
+
+    res.status(200).json({ message: "Validité mise à jour avec succès." });
+  } catch (error) {
+    res.status(500).json({
+      message: "Erreur lors de la mise à jour de la validité.",
+      error: error.message,
+    });
+  }
+});
 
 // UPDATE: Update an offer
 router.put('/:id', async (req, res) => {

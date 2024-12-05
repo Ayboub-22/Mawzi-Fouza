@@ -1,30 +1,18 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
+
 import React, { useState, useEffect } from "react";
-import axios from "axios";
->>>>>>> 64ce62dbfc79fc967d1e59bd596d41479f53954b
 import "./Planning.css";
 import { Navigate } from "react-router-dom";
 import PopupReserver from "./popupreserver";
 import axios from "axios"; // Pour les requêtes API
 
 const App = () => {
-<<<<<<< HEAD
+
   const [showPopup, setShowPopup] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // État pour la connexion
   const [navigateTo, setNavigateTo] = useState<string | null>(null); // Gérer la redirection
   const [userCin, setUserCin] = useState<string | null>(null); // Cin de l'utilisateur
 
-  const schedule = {
-    Monday: ["8H-10H", "10H-12H", "14H-16H"],
-    Tuesday: ["12H-14H", "16H-18H"],
-    Wednesday: ["8H-10H", "18H-20H"],
-    Thursday: ["10H-12H", "20H-22H"],
-    Friday: ["14H-16H", "22H-24H"],
-    Saturday: ["16H-18H", "18H-20H"],
-    Sunday: ["10H-12H"],
-=======
+
   const [schedule, setSchedule] = useState<Record<string, string[]>>({
     Monday: ["", "", "", "", "", "", "", ""],
     Tuesday: ["", "", "", "", "", "", "", ""],
@@ -61,7 +49,6 @@ const App = () => {
         setErrorMessage("An unknown error occurred.");
       }
     }
->>>>>>> 64ce62dbfc79fc967d1e59bd596d41479f53954b
   };
 
   // Use useEffect to fetch the courses when the component mounts
@@ -151,22 +138,11 @@ const App = () => {
           {Object.keys(schedule).map((day) => (
             <tr key={day}>
               <td>{day}</td>
-<<<<<<< HEAD
-              {periods.map((period) => (
-                <td
-                  key={period}
-                  className={
-                    schedule[day as keyof typeof schedule].includes(period)
-                      ? "classe"
-                      : ""
-                  }
-                ></td>
-=======
+
               {schedule[day].map((className, index) => (
                 <td key={index} className={className ? "filled" : ""}>
                   {className || ""} {/* If no class, show a placeholder */}
                 </td>
->>>>>>> 64ce62dbfc79fc967d1e59bd596d41479f53954b
               ))}
             </tr>
           ))}

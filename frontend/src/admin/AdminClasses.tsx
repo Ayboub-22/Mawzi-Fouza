@@ -43,6 +43,56 @@ const AdminClasses: React.FC = () => {
     // Logique de déconnexion ici (par exemple vider un token)
     navigate("/"); // Rediriger vers la page d'accueil après la déconnexion
   };
+  // Fonction pour gérer le clic sur la checkbox
+  const handleCheckboxChange = async (id: number, currentValidity: boolean) => {
+    try {
+      // Simuler un appel au back-end pour mettre à jour la validité
+      const updatedValidity = !currentValidity;
+      console.log(updatedValidity);
+      console.log(id);
+
+      // Envoyer la requête PUT au back-end
+    const response = await axios.put(
+      `http://localhost:3000/cours/${id}/validity`,
+      { validity: updatedValidity }
+    );
+
+      // Mettre à jour l'état localement pour l'instant
+      setClasses((prevClasses) =>
+        prevClasses.map((classItem) =>
+          classItem.id === id
+            ? { ...classItem, validity: updatedValidity }
+            : classItem
+        )
+      );
+
+      console.log(response.data.message);
+
+    } catch (error: any) {
+      console.error("Erreur lors de la mise à jour :", error);
+  
+      // Si l'erreur est liée à un conflit (code 400)
+      if (error.response && error.response.status === 400) {
+        alert(
+          error.response.data.message ||
+            "Un conflit empêche la mise à jour de ce cours."
+        );
+      } else {
+        alert(
+          "Une erreur est survenue lors de la mise à jour. Veuillez réessayer."
+        );
+      }
+  
+      // Rétablir l'état précédent en cas d'échec
+      setClasses((prevClasses) =>
+        prevClasses.map((classItem) =>
+          classItem.id === id
+            ? { ...classItem, validity: currentValidity }
+            : classItem
+        )
+      );
+    }
+  };
 
   return (
     <div className="admin-container">
@@ -84,7 +134,9 @@ const AdminClasses: React.FC = () => {
                     <input
                       type="checkbox"
                       checked={classItem.validity}
-                      readOnly
+                      onChange={() =>
+                        handleCheckboxChange(classItem.id, classItem.validity)
+                      }
                     />
                   </td>
                 </tr>

@@ -10,6 +10,7 @@ const sendEmailNotification = require('../utils/emailutil'); // Importer la fonc
 
 // Récupérer la table construite (GET)   pour la page members
 router.get('/', async (req, res) => {
+  
   try {
     // Obtenir la date actuelle pour les calculs
     const today = new Date();
@@ -140,6 +141,7 @@ router.get('/subs', async (req, res) => {
       return []; // Abonnement non éligible
     });
     console.log("avant etape 3");
+    console.log(results);
 
     // Étape 3: Insérer les id_abonnement dans la table Notif si non existants
     await Promise.all(
