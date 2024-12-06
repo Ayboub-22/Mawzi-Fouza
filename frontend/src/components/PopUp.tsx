@@ -66,6 +66,7 @@ function PopUp() {
           /*alert("avant de naviger");
           alert(response.data.user.cin);*/
           navigate("/espaceuser", { state: { userCin1:response.data.user.cin } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         } else {
           navigate("/Admin/AdminStat"); // Admin dashboard
         }

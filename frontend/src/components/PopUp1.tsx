@@ -64,7 +64,7 @@ function PopUp1() {
           onClick={closePopup1}
           aria-label="Close popup"
         >
-          ✕
+          X
         </button>
         <div className="Head">
           <img src={logo} alt="Logo" className="logo" />
@@ -85,7 +85,7 @@ function PopUp1() {
                 required
               />
               <input
-                type="text"
+                type="number"
                 placeholder="Enter your CIN"
                 value={cin}
                 onChange={(e) => setCin(e.target.value)}
@@ -116,13 +116,17 @@ function PopUp1() {
                 onChange={(e) => setTel(e.target.value)}
                 required
               />
-              <input
-                type="text"
-                placeholder="Sex"
+              <select
                 value={sex}
                 onChange={(e) => setSex(e.target.value)}
                 required
-              />
+              >
+                <option value="" disabled>
+                  Select Sex
+                </option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+              </select>
             </div>
             <div className="birthdate-sex">
               <input
