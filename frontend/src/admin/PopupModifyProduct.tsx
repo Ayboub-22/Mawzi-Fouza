@@ -22,6 +22,7 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
     categorie: "",
     prix: "",
     designation: "",
+    img_path:"",
   });
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
         categorie: product.categorie || "",
         prix: product.prix || "",
         designation: product.designation || "",
+        img_path: product.img_path || "",
       });
     }
   }, [product]);
@@ -46,6 +48,7 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
       name === "category" ? "categorie" :
       name === "price" ? "prix" :
       name === "description" ? "designation" :
+      name === "img_path" ? "img_path" :
       name;
 
     setFormData((prev) => ({ ...prev, [mappedName]: value }));
@@ -60,7 +63,7 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
     }
 
     try {
-      const response = await axios.put(`http://localhost:3000/article/${product.id}`,formData);
+      const response = await axios.put('http://localhost:3000/article/${product.id}',formData);
       if (response.status === 200) {
         console.log("Article updated successfully:", response.data);
       } else {
@@ -124,7 +127,14 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
               ></textarea>
             </div>
           </div>
-
+          <div className="form-row">
+            <div className="form-group">
+              <label>Image:</label>
+              <input type="file" accept="image/*" value={formData.img_path}
+              onChange={handleInputChange}
+              required />
+            </div>
+          </div>
           <div className="button-container">
             <button type="submit" className="add-product-button1">
               Modify Product
