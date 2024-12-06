@@ -1,14 +1,15 @@
 const nodemailer = require('nodemailer');
+require ('dotenv').config();
 
 async function sendEmailNotification(email) {
     // Configuration de Nodemailer
     const transporter = nodemailer.createTransport({
-      host: 'ssl0.ovh.net',  // Utilisez le serveur SMTP de Mailgun
+      host: 'serv6.zenhosting.info',  // Utilisez le serveur SMTP de Mailgun
       port: 465,                 // Port SMTP (587 pour TLS)
       secure: true,             // Utilisez false pour TLS
       auth: {
         user: 'hela.zouch@optimaje.com', // Remplacez par votre utilisateur Mailgun
-        pass: '98656920h',     // Remplacez par votre mot de passe Mailgun ou votre clé API
+        pass: 'Optima*mail2024-2025!!',     // Remplacez par votre mot de passe Mailgun ou votre clé API
       },
     });
 

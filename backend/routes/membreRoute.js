@@ -317,17 +317,15 @@ router.post('/subs/notify', async (req, res) => {
       
       // Mettre à jour la colonne "notified" à true
       await Notif.update({ notified: true }, { where: { notified: false } });
-      res.status(200).send('Notifications sent successfully.');
+      res.status(200).json({message:'Notifications sent successfully.'});
     } else {
-      res.status(200).send('No notifications to send.');
+      res.status(200).json({message:'No notifications to send.'});
     }
   } catch (error) {
     console.error('Error sending notifications:', error);
     res.status(500).send('An error occurred while sending notifications.');
   }
 });
-
-
 
 //ajouté par linda en cliquant sur le bouton booking
 router.post('/reservation', async (req, res) => {

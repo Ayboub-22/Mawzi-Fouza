@@ -117,7 +117,7 @@ const AdminClasses: React.FC = () => {
                 <th>ID_CLASSES</th>
                 <th>NAME</th>
                 <th>DAY</th>
-                <th>TIME</th>
+                <th>SESSION N°</th>
                 <th>CAPACITY</th>
                 <th>VALIDITY</th>
               </tr>

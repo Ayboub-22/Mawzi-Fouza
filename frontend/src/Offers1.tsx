@@ -15,7 +15,7 @@ function Offers() {
     <section className="YPage1">
       <PopupProvider>
         <NavBar1 userCin1={userCin1}/>
-        <Offer1 />
+        <Offer1 userCin1={userCin1} />
         <Footer />
         <PopUp />
         <PopUp1 />

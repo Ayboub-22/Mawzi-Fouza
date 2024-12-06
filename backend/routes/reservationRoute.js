@@ -134,7 +134,7 @@ router.post('/', async (req, res) => {
 
 
 
-router.get('/course-participation', async (req, res) => {
+router.get('/rate', async (req, res) => {
   try {
     // Exécution de la requête pour récupérer les réservations avec la jointure sur la table Cours
     const courses = await Cours.findAll({
@@ -172,6 +172,7 @@ router.get('/course-participation', async (req, res) => {
     res.status(200).json(finalResults);
 
   } catch (error) {
+    console.log("erreur dans back ");
     // Gestion des erreurs en cas de problème
     console.error('Erreur lors de la récupération des réservations et des cours :', error);
   }

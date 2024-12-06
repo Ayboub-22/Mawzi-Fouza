@@ -50,7 +50,9 @@ router.get('/', async (req, res) => {
 // READ: Get all offers
 router.get('/get', async (req, res) => {
   try {
-    const offers = await Offre.findAll();
+    const offers = await Offre.findAll({where: {
+      validité: true,  
+    },});
     res.status(200).json(offers);
   } catch (error) {
     console.error(error);

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import "./Offer.css";
 import Popuppaiement from "./popuppaiement";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface card1 {
   id_offre: number;
@@ -10,7 +11,12 @@ interface card1 {
   validite: boolean;
 }
 
-function Offer() {
+function Offer({ userCin1}:any) {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [idOffre, setIdOffre] = useState<number | null>(null); // État pour stocker id_offre
+
   const [cards1, setcards] = useState<card1[]>([]);
   const [isPopupOpen, setIsPopupOpen] = useState(false); // État pour gérer la popup
   const [selectedCard, setSelectedCard] = useState<card1 | null>(null); // L'offre sélectionnée pour la popup
@@ -40,7 +46,7 @@ function Offer() {
 
       <div className="Cards">
         {cards1.map((item) => (
-          <div key={item.id_offre} onClick={() => openPopup(item)}>
+          <div key={item.id_offre} onClick={() => {setIdOffre(item.id_offre); openPopup(item)}}>
             <Card
               plan="Premium Plan"
               prix={`$${item.prix}`}
@@ -52,7 +58,12 @@ function Offer() {
         ))}
       </div>
 
-      {isPopupOpen && <Popuppaiement onClose={closePopup} />}
+      {isPopupOpen && 
+      <Popuppaiement 
+        onClose={closePopup}
+        userCin1={userCin1} 
+        id_offre={idOffre}
+      />}
       
     </div>
   );

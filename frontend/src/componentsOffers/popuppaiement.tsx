@@ -2,22 +2,58 @@ import React, { useState } from "react";
 import logo from "../components/logo.png";
 import "./popuppaiement.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 interface PopupProps {
   onClose: () => void; // Fonction pour fermer la popup principale
+  userCin1:any;
+  id_offre:any;
 }
 
-const Popup: React.FC<PopupProps> = ({ onClose }) => {
+const Popup: React.FC<PopupProps> = ({ onClose ,userCin1,id_offre }) => {
   const navigate = useNavigate();
   const [number, setNumber] = useState("");
   const [code, setCode] = useState("");
   const [showSuccessPopup, setShowSuccessPopup] = useState(false); // État pour la popup de succès
 
   // Gérer le clic sur le bouton "Pay"
-  const handlePayment = () => {
+  const handlePayment = async () => {
     // Vérifiez si les champs sont remplis avant de valider
     if (number.length === 8 && code.length === 4) {
-      setShowSuccessPopup(true); // Affiche la popup de succès
+
+
+      //ICI JE VAIS VERIFIER SI LE MEMBRE DONT LE CIN EST 
+      //userCin1 est adherent ou non 
+
+      try {
+        // Passez le CIN de l'utilisateur à l'API pour vérifier son statut d'adhérent
+        const response = await axios.post('http://localhost:3000/membre/reservation', { cin: userCin1 }); // Assurez-vous de passer le CIN dans la requête
+    
+        const { adherent } = response.data;
+    
+        if (adherent) {
+          alert("vous avez deja un abonnement qui est encore valide");
+         // Affichez le popup vous avez deja un abonnement valide et puis fermerture des 2 popups
+         onClose();
+        } else {
+          const today=new Date();
+          try{
+          const response1 = await axios.post('http://localhost:3000/abonnement/acceptReservation', { 
+            date_debut: today, 
+            userId: userCin1, 
+            offreId: id_offre  
+          });
+          setShowSuccessPopup(true);
+        }
+        catch(error:any){
+          alert("une erreur s'est produite lors de l'ajout de l'offre");
+        }
+        }
+      } catch (error:any) {
+        //alert("erreur lors de la verification de adherent ou non");
+        console.error("Erreur lors de la vérification :", error);
+      }
+
     } else {
       alert("Please fill the form correctly.");
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2'; 
 import "./AdminStat.css"
 import {
@@ -17,14 +17,32 @@ import axios from 'axios'; // Import d'axios pour les requêtes HTTP
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const CourseStats: React.FC = () => {
-  const courseData = [
+  const [courseData, setCourseData] = useState<{ course: string; participation: number }[]>([]); // State pour les données du backend
+  const [isLoading, setIsLoading] = useState<boolean>(true); // State pour gérer le chargement
+  const [error, setError] = useState<string | null>(null); // State pour gérer les erreurs
 
-    { course: "Danse Orientale", participation: 80 },
-    { course: "Body Pump", participation: 70 },
-    { course: "Cross Training", participation: 95 },
-    { course: "Body Combat", participation: 60 },
-    { course: "Six Pack", participation: 85 }
-  ];
+  useEffect(() => {
+    // Fonction pour récupérer les données depuis l'API
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/reservation/rate'); // Appel à l'API
+        const data = response.data.map((item: { courseName: string; reservationCount: number }) => ({
+          course: item.courseName,
+          participation: item.reservationCount,
+        }));
+        console.log(data);
+        setCourseData(data); // Mise à jour des données
+        setIsLoading(false); // Fin du chargement
+      } catch (error) {
+        setError('Erreur lors du chargement des données.'); // Gestion des erreurs
+        setIsLoading(false); // Fin du chargement même en cas d'erreur
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(courseData);
+
   const labels = courseData.map(course => course.course);
   const data = courseData.map(course => course.participation);
 

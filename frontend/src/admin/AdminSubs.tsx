@@ -40,7 +40,7 @@ const AdminSubs: React.FC = () => {
         console.log(response.status);
         // Vérifier si la réponse est correcte (statut 200)
         if (response.status === 200) {
-            alert('Notifications envoyées avec succès!'); // Afficher une confirmation
+            alert(`${response.data.message}`); // Afficher une confirmation
             navigate(0); // Recharger la page
         }
     } catch (error) {

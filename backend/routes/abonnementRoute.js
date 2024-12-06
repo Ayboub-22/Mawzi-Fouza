@@ -155,4 +155,28 @@ router.get('/user/:userId/active', async (req, res) => {
   }
 });
 
+
+// Créer un nouvel abonnement (POST) suite a cliquer a offre
+router.post('/acceptReservation', async (req, res) => {
+  const { date_debut, userId, offreId } = req.body;
+
+  try {
+    // Créer un nouvel abonnement
+    const nouvelAbonnement = await Abonnement.create({ date_debut, userId, offreId });
+    res.status(201).json(nouvelAbonnement);
+
+  } catch(error) {
+    res.status(500).json({
+      message: 'Erreur lors de la création de l\'abonnement.',
+      error: error.message
+    });
+  }
+});
+
+
+
+
+
+
+
 module.exports = router;
