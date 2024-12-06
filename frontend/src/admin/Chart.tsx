@@ -12,7 +12,7 @@ import {
   ChartOptions,
   CartesianScaleOptions
 } from 'chart.js';
-
+import axios from 'axios'; // Import d'axios pour les requêtes HTTP
 // Enregistrement des composants nécessaires de Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -24,9 +24,7 @@ const CourseStats: React.FC = () => {
     { course: "Cross Training", participation: 95 },
     { course: "Body Combat", participation: 60 },
     { course: "Six Pack", participation: 85 }
-
   ];
-
   const labels = courseData.map(course => course.course);
   const data = courseData.map(course => course.participation);
 

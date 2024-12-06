@@ -3,6 +3,7 @@ const {
 } = require('sequelize');
 const db = require('../db'); // Importez votre instance Sequelize
 
+
 const Cours = db.define('Cours', {
   id: {
     type: DataTypes.INTEGER,

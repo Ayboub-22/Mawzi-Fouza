@@ -57,6 +57,7 @@ router.post('/', async (req, res) => {
 
   //CHERCHER S'IL Y A DES PLACES DANS CE COURS 
     console.log("commencer le truc de capacite");
+
     // Vérifier le nombre de réservations déjà effectuées pour ce cours, date et heure
     const reservationsCount = await Reservation.count({
       where: {
@@ -129,80 +130,53 @@ router.post('/', async (req, res) => {
     console.error('Erreur lors de la récupération du cours :', error);
     return res.status(500).json({ error: 'Erreur serveur' });
   }
-
-  
-
-
-
- 
-
-
-
-
-  //si il reste des places chercher le id_abonnement le plus grand de ce user connu
-  //par son userCin1 et ajouter une ligne dans table reservation
-
-
-
-
 })
 
 
 
-
-
-/*router.get('/isAdherent/:cin', async (req, res) => {
+router.get('/course-participation', async (req, res) => {
   try {
-    const { cin } = req.params;
-    const today = new Date();
-
-    const user = await User.findOne({
-      where: { cin },
+    // Exécution de la requête pour récupérer les réservations avec la jointure sur la table Cours
+    const courses = await Cours.findAll({
+      attributes:['id', 'name', 'day' , 'validity', 'time', 'capacity'],
       include: [
         {
-          model: Abonnement,
-          attributes: ['id_abonnement', 'date_debut', 'offreId'],
-          include: [
-            {
-              model: Offre,
-              attributes: ['durée'],
-            },
-          ],
+          model: Reservation, // Jointure avec la table Cours
+          attributes:['id_reservation','id_abonnement','id','date','date_cours','time'], // Récupérer les colonnes 'id' et 'name' de la table Cours
+          required: false,
         },
       ],
     });
+    // Transformation : Regrouper par 'name' unique et compter les réservations
+    const groupedResults = courses.reduce((acc, course) => {
+      const courseName = course.name;
+      const reservationCount = course.Reservations.length;
 
-    if (!user) {
-      return res.status(404).json({ adherent: false, message: "Utilisateur non trouvé." });
-    }
-
-    // Vérifier le statut d'adhérent
-    const latestAbonnement = user.Abonnements?.reduce((latest, current) => {
-      return !latest || current.id_abonnement > latest.id_abonnement ? current : latest;
-    }, null);
-
-    let adherent = false;
-    if (latestAbonnement) {
-      const offre = latestAbonnement.Offre;
-      if (offre) {
-        const date_debut = new Date(latestAbonnement.date_debut);
-        const date_fin = new Date(date_debut);
-        date_fin.setMonth(date_fin.getMonth() + offre.durée);
-
-        if (date_fin >= today) {
-          adherent = true;
-        }
+      if (!acc[courseName]) {
+        acc[courseName] = { courseName, reservationCount: 0 };
       }
-    }
+      acc[courseName].reservationCount += reservationCount;
 
-    res.status(200).json({ adherent });
+      return acc;
+    }, {});
+
+    const groupedResultsArray = Object.values(groupedResults); //convertir l'objet en Array 
+
+    // Tri par ordre décroissant selon reservationCount
+    const sortedResults = groupedResultsArray.sort((a, b) => b.reservationCount - a.reservationCount);
+
+    // Limitation aux 5 premières lignes
+    const finalResults = sortedResults.slice(0, 5);
+
+    // Retourner les résultats
+    res.status(200).json(finalResults);
+
   } catch (error) {
-    res.status(500).json({
-      adherent: false,
-      message: 'Erreur lors de la vérification du statut d’adhérent.',
-      error: error.message,
-    });
+    // Gestion des erreurs en cas de problème
+    console.error('Erreur lors de la récupération des réservations et des cours :', error);
   }
-});*/
+  
+});
+
 
 module.exports = router;
