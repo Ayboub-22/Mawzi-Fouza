@@ -14,6 +14,7 @@ interface CardListProps {
 }
 
 const ProductList: React.FC<CardListProps> = ({ cardsData, title }) => {
+  cardsData.map((card, index) => console.log(card.image));
   return (
     <div className="ProductList">
       <h1>{title}</h1>
@@ -23,7 +24,7 @@ const ProductList: React.FC<CardListProps> = ({ cardsData, title }) => {
             <img src={card.image} alt="card" />
             <div className="card-content">
               <p>{card.text}</p>
-              <div className="card-label">{card.label}</div>
+              <div className="card-label">{card.label}DT</div>
             </div>
           </div>
         ))}
