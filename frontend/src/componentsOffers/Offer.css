@@ -5,21 +5,23 @@
     flex-wrap: wrap;
     width :90%;
     margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 1%;
     
     
 }
 
-.msg{
+.OffersTitle{
     font-family: Signika;
-font-size: 46px;
-font-weight: 700;
-line-height: 77.62px;
-text-align: center;
-text-decoration-skip-ink: none;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 77.62px;
+    text-align: center;
+    text-decoration-skip-ink: none;
 
 }
 .Offer{
     margin-top:20px;
-    margin-bottom:60px;
-    min-height: 80vh;
+    min-height: 65vh;
 }
+

@@ -1,58 +1,66 @@
+@font-face {
+    font-family: 'OutfitRegular';
+    src: url('../assets/fonts/Outfit/static/Outfit-Regular.ttf') format('truetype');
+}
+
 .Footer{
-    
+    padding-top:2%;
+    padding-bottom: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: #1F1F1F;
     width: 100%;
+    font-family:OutfitRegular;
+
 }
 
-.Msg1{
-    margin-left:5%;
-    width: 18%;
+.FooterLeft{
+    width: 30%;
     height: auto;
     display: flex;
     flex-direction: column;
+    
 
 }
-.Msg2{
-    width: 28%;
+.FooterMid{
+    width: 30%;
     height: auto;
     height: auto;
     display: flex;
     flex-direction: column;
-    margin-left:24%;
+    align-items: center;
 
 
 }
-.Msg2 img{margin-top: 4%;
-    margin-left: 4%;
+.FooterMid img{
+    margin-top: 4%;
     
     height: 10vh;
     width:10vw;
 }
-.Msg3{
-    width: 28%;
+.FooterRight{
+    width: 30%;
+    padding-left: 5%;
     height: auto;
-    margin-right: 2%;
-    margin-left: 7%;
 }
 
 .Msg11{
     color: #FFFFFF;
 
-    font-family: Saira Condensed;
 font-size: 32px;
 font-weight: 700;
 line-height: 46.7px;
 text-align: left;
+margin-bottom: 2%;
 
 }
 
 .Msg12{
     color: #FFFFFF;
-    font-family: Saira Condensed;
     font-size: 18px;
     font-weight: 400;
     line-height: 28.33px;
@@ -66,9 +74,8 @@ span{
 }
 .Msg21{
     color: #FFFFFF;
-    font-family: Poppins;
-font-size: 14px;
-font-weight: 600;
+font-size: 15px;
+font-weight: 400;
 line-height: 20px;
 margin-top: 5%;
 margin-left: 3%;
@@ -95,9 +102,8 @@ margin-left: 3%;
     margin-top: 1.5%;
     margin-left: 4%;
     color: #FFFFFF;
-    font-family: Poppins;
-font-size: 13px;
-font-weight: 600;
+font-size: 17px;
+font-weight: 400;
 line-height: 20px;
 }
 .Msg32{

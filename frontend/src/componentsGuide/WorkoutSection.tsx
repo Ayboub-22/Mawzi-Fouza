@@ -1,6 +1,12 @@
 import Schedule from "./Schedule";
 import "./Schedule.css";
-
+import "./WorkoutSection.css";
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 type Schedule1 = {
   img: string;
   date: string;
@@ -42,7 +48,13 @@ function WorkoutSection({
           ))}
         </div>
       </div>
-      <img className="Yimg2" src={imgSrc} />
+      <img
+        className="Yimg2"
+        src="/Message 21.png"
+        alt="Workout"
+        onClick={scrollToTop} // Add this onClick handler
+        style={{ cursor: "pointer" }} // Make it look clickable
+      />{" "}
     </section>
   );
 }

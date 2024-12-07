@@ -1,16 +1,22 @@
+<<<<<<< HEAD
+=======
+@font-face {
+    font-family: 'OutfitSemiBold';
+    src: url('../assets/fonts/Outfit/static/Outfit-SemiBold.ttf') format('truetype');
+}
+>>>>>>> 8441e470dfb72a196367d3bddc98a986e9e5c4f5
 
 
 .YBoutton {
-   font-weight: 600;
-   font-family: outfit;
+   font-family: OutfitSemiBold;
    background-color: transparent;
    margin-top: 8%;
-   border-radius: 30px;
+   border-radius: 15px;
    border-color: #FF2A00;
-   border-width: 1px;
+   border-width: 1.5px;
    width: 170px;
    height: 40px;
-   font-size: 14px;
+   font-size: 17px;
 }
 
 .YWorkout1{
@@ -21,7 +27,7 @@
     
     
 }
-.YDiv3{
+.YWorkouts{
     display: flex;
     flex-direction: row;
     justify-content: space-between;

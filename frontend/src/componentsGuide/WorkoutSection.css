@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'OutfitRegular';
+    src: url('../assets/fonts/Outfit/static/Outfit-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OutfitBold';
+    src: url('../assets/fonts/Outfit/static/Outfit-Bold.ttf') format('truetype');
+}
+
+.YPar1{
+    font-size: 19px;
+    font-family: OutfitRegular;
+}
+
+.YTitle2{
+    font-family: OutfitBold;
+}
