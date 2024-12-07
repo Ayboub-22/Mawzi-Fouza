@@ -49,22 +49,11 @@ function PopUp() {
         // Retrieve user ID from the response
 
         /******************* */
-        /*if(isMember){
-        const userCintemp = response.data.user.cin;
-        alert(userCintemp);
-        setUserCin(userCintemp); // Store the user ID in state
-        //localStorage.setItem("userCin", userCin); // Store the user ID in localStorage
-        alert("user Cin:aaaa")
-        alert(userCin);
-        }*/
+        
         // Redirect based on user type
         if (isMember) {
           //const userCin1=userCin;
           closePopup();
-          //alert(userCin1);
-          /*alert(userCin);*/
-          /*alert("avant de naviger");
-          alert(response.data.user.cin);*/
           navigate("/espaceuser", { state: { userCin1:response.data.user.cin } }); // User home page               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         } else {

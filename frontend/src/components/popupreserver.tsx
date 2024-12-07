@@ -20,6 +20,7 @@ interface PopupReserverProps {
 const PopupReserver: React.FC<PopupReserverProps> = ({ onClose, onReserve }) => {
   const [courses, setCourses] = useState<Course[]>([]); // État pour stocker les cours
   const [selectedCourse, setSelectedCourse] = useState<number | null>(null);
+  const [showErrorPopup, setShowErrorPopup] = useState(false); // State for error popup
   const navigate = useNavigate();
   const handleRefresh = () => {
     navigate(0); // Recharger la page actuelle
@@ -29,7 +30,7 @@ const PopupReserver: React.FC<PopupReserverProps> = ({ onClose, onReserve }) => 
       onReserve(selectedCourse);
       onClose();           //helaaaaaa***********
     } else {
-      alert("Veuillez sélectionner un cours avant de réserver.");
+      setShowErrorPopup(true);
     }
     
   };
@@ -83,7 +84,22 @@ const PopupReserver: React.FC<PopupReserverProps> = ({ onClose, onReserve }) => 
           </button>
         </div>
       </div>
+      {/* Error Popup */}
+      {showErrorPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content popup-error">
+            <button
+              className="close-button"
+              onClick={() => setShowErrorPopup(false)}
+            >
+              X
+            </button>
+            <h2>Please select a course before booking!</h2>
+          </div>
+        </div>
+      )}
     </div>
+    
   );
 };
 

@@ -9,6 +9,7 @@ const AdminSubs: React.FC = () => {
 
   // État pour stocker les abonnements récupérés
   const [subscriptions, setSubscriptions] = useState<any[]>([]);
+  const [showErrorPopup, setShowErrorPopup] = useState(false); // State for error popup
 
   // Fonction pour récupérer les abonnements depuis l'API
   const fetchSubscriptions = async () => {
@@ -22,7 +23,7 @@ const AdminSubs: React.FC = () => {
       setSubscriptions(data); // Mettre à jour l'état avec les abonnements récupérés
     } catch (error) {
       console.error(error);
-      alert("Erreur lors de la récupération des abonnements");
+      setShowErrorPopup(true);
     }
   };
 
@@ -49,56 +50,6 @@ const AdminSubs: React.FC = () => {
         alert('Une erreur est survenue lors de l\'envoi des notifications.');
     }
 };
-
-
-
-
-
-  // Fonction pour envoyer un e-mail de notification d'expiration
-  // const sendExpirationEmail = async (subscription: any) => {
-  //   try {
-  //     const response = await fetch('/send-subscription-notification', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         name: subscription.name,
-  //         email: subscription.email,
-  //         expirationDate: subscription.end_date,
-  //       }),
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error('Error sending email');
-  //     }
-  //     alert(`Notification sent to ${subscription.email}`);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
-  // // Fonction pour vérifier les abonnements expirant dans une semaine
-  // const checkSubscriptionExpirations = () => {
-  //   const oneWeekLater = new Date();
-  //   oneWeekLater.setDate(oneWeekLater.getDate() + 7);
-
-  //   const expiringSubscriptions = subscriptions.filter((sub) => {
-  //     const expirationDate = new Date(sub.end_date);
-  //     return expirationDate <= oneWeekLater && expirationDate > new Date();
-  //   });
-
-  //   return expiringSubscriptions;
-  // };
-
-  // // Fonction pour gérer les notifications par e-mail
-  // const handleNotifications = () => {
-  //   const expiringSubscriptions = checkSubscriptionExpirations();
-
-  //   // Envoi des e-mails aux abonnements qui expirent dans 7 jours
-  //   expiringSubscriptions.forEach((sub) => {
-  //     sendExpirationEmail(sub);
-  //   });
-  // };
 
   return (
     <div className="admin-container">
@@ -152,6 +103,20 @@ const AdminSubs: React.FC = () => {
           <button className="add-offer-button" onClick={handleNotif}>Send Notification</button>
         </div>
       </div>
+      {/* Error Popup */}
+      {showErrorPopup && (
+        <div className="popup-overlay">
+          <div className="popup-content popup-error">
+            <button
+              className="close-button"
+              onClick={() => setShowErrorPopup(false)}
+            >
+              X
+            </button>
+            <h2>Error retrieving subscriptions!</h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

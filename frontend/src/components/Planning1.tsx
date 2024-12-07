@@ -1,19 +1,38 @@
 import React, { useState, useEffect } from "react";
 import "./Planning1.css";
-import { useNavigate , Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PopupReserver from "./popupreserver";
 import axios from "axios";
 
-function Planning1({ userCin1}:any) {
-    const navigate = useNavigate();
+interface PopupProps {
+  onClose: () => void;
+  message: string;
+}
 
-  //console.log("dans planning 1");
-  //console.log(userCin1);
+interface Schedule {
+  [key: string]: string[];
+}
+
+// Error Popup Component
+const ErrorPopup: React.FC<PopupProps> = ({ onClose, message }) => {
+  return (
+    <div className="popup-overlay" onClick={onClose}>
+      <div className="popup1" onClick={(e) => e.stopPropagation()}>
+        <button className="close-button" onClick={onClose}>
+          X
+        </button>
+        <h2>{message}</h2>
+      </div>
+    </div>
+  );
+};
+
+function Planning1({ userCin1 }: { userCin1: string }) {
+  const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-  //const [isLoggedIn, setIsLoggedIn] = useState(false);  // État pour la connexion
-  const [navigateTo, setNavigateTo] = useState<string | null>(null);   // Gérer la redirection
-  //const [userCin, setUserCin] = useState<string | null>(null);  // Cin de l'utilisateur
-  const [schedule, setSchedule] = useState<Record<string, string[]>>({
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // Updated to trigger the error popup
+  const [schedule, setSchedule] = useState<Schedule>({
     Monday: ["", "", "", "", "", "", "", ""],
     Tuesday: ["", "", "", "", "", "", "", ""],
     Wednesday: ["", "", "", "", "", "", "", ""],
@@ -22,16 +41,17 @@ function Planning1({ userCin1}:any) {
     Saturday: ["", "", "", "", "", "", "", ""],
     Sunday: ["", "", "", "", "", "", "", ""],
   });
-  const [errorMessage, setErrorMessage] = useState<string>("");
 
-  //Fetch user CIN from localStorage on component mount
-//   useEffect(() => {
-//     const storedCin = localStorage.getItem("userCin");
-//     if (storedCin) {
-//       setUserCin(storedCin);
-//       setIsLoggedIn(true);
-//     }
-//   }, []);
+  const periods = [
+    "8H-10H",
+    "10H-12H",
+    "12H-14H",
+    "14H-16H",
+    "16H-18H",
+    "18H-20H",
+    "20H-22H",
+    "22H-24H",
+  ];
 
   // Fetch courses from backend
   const fetchCourses = async () => {
@@ -52,102 +72,61 @@ function Planning1({ userCin1}:any) {
     fetchCourses();
   }, []);
 
-  const periods = [
-    "8H-10H",
-    "10H-12H",
-    "12H-14H",
-    "14H-16H",
-    "16H-18H",
-    "18H-20H",
-    "20H-22H",
-    "22H-24H",
-  ];
-
+  // Handle reservation confirmation
   const handleReservation1 = async (courseId: number) => {
-    console.log("hello je suis la je suis sur que c'est un adherant");
-    console.log(courseId);
-    try{
-        const response = await axios.post(`http://localhost:3000/reservation`, { userCin1: userCin1, courseId: courseId, }); 
-        if (response.status===200){
-            setErrorMessage("booking doone");
+    try {
+      const response = await axios.post(`http://localhost:3000/reservation`, {
+        userCin1: userCin1,
+        courseId: courseId,
+      });
+      if (response.status === 200) {
+        setShowSuccessPopup(true); // Show success popup
+      }
+    } catch (error: any) {
+      if (error.response) {
+        let errorMsg = "";
+        switch (error.response.status) {
+          case 400:
+            errorMsg = "The course has already passed, you can't book!";
+            break;
+          case 401:
+            errorMsg = "The course is complete!";
+            break;
+          default:
+            errorMsg = "You have already booked this course. Thank you for waiting!";
         }
-      
-    }catch(error:any){
-        if (error.response) {
-            if (error.response.status === 400) {
-              console.log("cours passé déjà");
-              alert("Le cours est déjà passé, vous ne pouvez pas réserver.");
-            }
-            else{
-                if (error.response.status === 401){
-                    console.log("cours complet");
-                    alert("Le cours complet.");
-                }
-                else{
-                    console.log('Vous avez déjà réservé ce cours. Merci de l\'attendre.');
-                    alert("Vous avez déjà réservé ce cours. Merci de l\'attendre.")
-                }
-            }
-        }
-        else{
-        console.error("ici ", error);
-        setErrorMessage("a reformuler plus tard ");
-        }
+        setErrorMessage(errorMsg); // Show error message in popup
+      } else {
+        console.error("Unexpected error:", error);
+        setErrorMessage("An unexpected error occurred. Please try again.");
+      }
     }
-
-    //ici il faut verifier a partir de la table reservation si il ya encore une place disponible ou non 
-        //donc il faut recupere le id du cours a partir de popupreserver
-
-  }
-
-
-
+  };
 
   // Handle reservation button click
   const handleReservation = async () => {
-    console.log("en cliquant sur reserver");
-    console.log(userCin1);
-
-    // if (!userCin) {
-    //   alert("Vous devez être connecté pour réserver.");
-    //   return;
-    // }
-  
     try {
-      // Passez le CIN de l'utilisateur à l'API pour vérifier son statut d'adhérent
-      const response = await axios.post('http://localhost:3000/membre/reservation', { cin: userCin1 }); // Assurez-vous de passer le CIN dans la requête
-  
+      const response = await axios.post("http://localhost:3000/membre/reservation", { cin: userCin1 });
       const { adherent } = response.data;
-  
+
       if (adherent) {
-        setShowPopup(true); // Affichez le popup pour la réservation
+        setShowPopup(true); // Show reservation popup
       } else {
-        navigate("/Offers1",{ state: { userCin1 } }); // Redirigez vers la page des offres si l'utilisateur n'est pas un adhérent
+        navigate("/Offers1", { state: { userCin1 } }); // Redirect to offers page if not a member
       }
-    } catch (error:any) {
-        if (error.response) {
-            if (error.response.status === 400) {
-              console.log("cin introuvable");
-              alert("cin introuvable");
-            }
-        }
-      console.error("Erreur lors de la vérification :", error);
-      setErrorMessage("Une erreur s'est produite lors de la vérification du statut d'adhésion.");
+    } catch (error: any) {
+      if (error.response?.status === 400) {
+        setErrorMessage("CIN not found!");
+      } else {
+        console.error("Error during membership check:", error);
+        setErrorMessage("An error occurred during the membership check.");
+      }
     }
   };
-  
-
-  // Redirect if necessary 
-  //J'AI PAS COMPRIS CA FAIT QUOI §§§§§§§§§§§§§§§§§§§§§§§
-//   if (navigateTo) {
-//     return <Navigate to={navigateTo} />;
-//   }
 
   return (
     <div className="container">
       <h1>Planning of the Week</h1>
-
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
 
       <table className="schedule-table">
         <thead>
@@ -173,8 +152,8 @@ function Planning1({ userCin1}:any) {
       </table>
 
       <button type="button" className="book" onClick={handleReservation}>
-          Booking
-        </button>
+        Booking
+      </button>
 
       {showPopup && (
         <PopupReserver
@@ -182,8 +161,24 @@ function Planning1({ userCin1}:any) {
           onReserve={handleReservation1}
         />
       )}
+
+      {showSuccessPopup && (
+        <div className="popup-overlay" onClick={() => setShowSuccessPopup(false)}>
+          <div className="popup1" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={() => setShowSuccessPopup(false)}>X</button>
+            <h2>Booking done!</h2>
+          </div>
+        </div>
+      )}
+
+      {errorMessage && (
+        <ErrorPopup
+          message={errorMessage}
+          onClose={() => setErrorMessage(null)}
+        />
+      )}
     </div>
   );
-};
+}
 
 export default Planning1;

@@ -50,7 +50,6 @@ const Popup: React.FC<PopupProps> = ({ onClose ,userCin1,id_offre }) => {
         }
         }
       } catch (error:any) {
-        //alert("erreur lors de la verification de adherent ou non");
         console.error("Erreur lors de la vérification :", error);
       }
 
