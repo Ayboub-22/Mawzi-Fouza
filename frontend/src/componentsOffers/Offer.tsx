@@ -57,7 +57,7 @@ function Offer() {
   ];
   return (
     <div className="Offer">
-      <div className="msg">JOIN TODAY</div>
+      <div className="OffersTitle">JOIN TODAY</div>
       <div className="Cards">
         {cards.map((item, index) => (
           <Card

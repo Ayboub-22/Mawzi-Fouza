@@ -24,12 +24,12 @@ const App = () => {
   ];
 
   return (
-    <div className="container">
+    <div className="Planning-container">
       <h1>Planning of the Week</h1>
       <table className="schedule-table">
         <thead>
           <tr>
-            <th>Day</th>
+            <th className="Day"> </th>
             {periods.map((period) => (
               <th key={period}>{period}</th>
             ))}
@@ -41,9 +41,13 @@ const App = () => {
               <td>{day}</td>
               {periods.map((period) => (
                 <td
-                key={period}
-                className={schedule[day as keyof typeof schedule].includes(period) ? "classe" : ""}
-              ></td>
+                  key={period}
+                  className={
+                    schedule[day as keyof typeof schedule].includes(period)
+                      ? "classe"
+                      : ""
+                  }
+                ></td>
               ))}
             </tr>
           ))}

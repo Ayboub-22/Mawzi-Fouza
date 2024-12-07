@@ -1,26 +1,40 @@
-.container {
-  margin: 20px auto;
-  max-width: 1000px;
+@font-face {
+  font-family: 'SignikaMedium';
+  src: url('../assets/fonts/Signika/static/Signika-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'SignikaBold';
+  src: url('../assets/fonts/Signika/static/Signika-Bold.ttf') format('truetype');
+}
+
+
+
+
+.Planning-container {
+  margin: 5% auto;
+  max-width: 75%;
   text-align: center;
   color: #1F1F1F;
 }
 
-h1 {
+.Planning-container h1 {
   font-size: 63px;
   color: #1F1F1F;
   margin-bottom: 24px;
   text-decoration: none;
-  font-family: 'Signika', sans-serif;
+  font-family: 'SignikaBold', sans-serif;
   text-align: center;
-  font-style: oblique;
+
 }
+
 
 
 .schedule-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: Arial, sans-serif;
+  font-family: SignikaMedium, sans-serif;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .schedule-table th,
@@ -34,9 +48,15 @@ h1 {
   color: white;
 }
 
-.schedule-table td {
-  height: 40px;
+.schedule-table .Day{
+  border: 0;
+  background-color:white ;
 }
+
+.schedule-table td {
+  height: 50px;
+}
+
 
 .schedule-table tr:nth-child(even) {
   background-color: #f9f9f9;
