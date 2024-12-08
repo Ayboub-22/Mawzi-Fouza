@@ -11,26 +11,46 @@ function Products() {
     categorie: string;
     img_path: string;
   }
-  const [articles, setArticles] = useState<Article[]>([]);
+
+  const [groupedArticles, setGroupedArticles] = useState<
+    Record<string, Article[]>
+  >({});
 
   useEffect(() => {
-    // Fetch data from the backend
-    fetch("http://localhost:3000/article/") // Update the URL based on your setup
+    // Récupérer les articles depuis le backend
+    fetch("http://localhost:3000/article/") // Remplacez l'URL selon votre configuration
       .then((response) => response.json())
-      .then((data) => setArticles(data))
+      .then((data: Article[]) => {
+        // Grouper les articles par catégorie
+        const grouped = data.reduce((acc, article) => {
+          if (!acc[article.categorie]) {
+            acc[article.categorie] = [];
+          }
+          acc[article.categorie].push(article);
+          return acc;
+        }, {} as Record<string, Article[]>);
+        setGroupedArticles(grouped);
+      })
       .catch((error) => console.error("Error fetching articles:", error));
-  }, []); // Empty dependency array to run once on component mount
+  }, []); // Exécuté une fois au montage
 
   return (
     <div className="Products">
-      <ProductList
-        cardsData={articles.map((article) => ({
-          image: article.img_path.replace("C:\\fakepath\\", ""),
-          text: article.name,
-          label: article.prix,
-        }))}
-        title="Dynamic Product List"
-      />
+      <h2>Explore Our Products</h2>
+      {Object.entries(groupedArticles).map(([category, articles]) => (
+        <div key={category} className="ProductCategory">
+          {" "}
+          {/* Titre de la catégorie */}
+          <ProductList
+            cardsData={articles.map((article) => ({
+              image: article.img_path.replace("C:\\fakepath\\", ""),
+              text: article.name,
+              label: `${article.prix}`, // Affichage du prix formaté
+            }))}
+            title={` ${category}`} // Titre dynamique
+          />
+        </div>
+      ))}
     </div>
   );
 }
