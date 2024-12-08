@@ -14,6 +14,7 @@ import AdminClasses from "./admin/AdminClasses";
 import Offers1 from "./Offers1";
 import MiniShop1 from "./MiniShop1";
 import Guide1 from "./Guide1";
+import Prog from "./Programs";
 
 const Gym: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const Gym: React.FC = () => {
         <Route path="/" element={<App />} />
         <Route path="/espaceuser" element={<App1 />} />
         <Route path="/Guide1" element={<Guide1 />} />
+        <Route path="/prog" element={<Prog />} />
         <Route path="/Offers1" element={<Offers1 />} />
         <Route path="/MiniShop1" element={<MiniShop1 />} />
         <Route path="/Guide" element={<Guide />} />

@@ -36,7 +36,7 @@ function Products() {
 
   return (
     <div className="Products">
-      <h2>Explore Our Products</h2>
+      {/* <h2>Explore Our Products</h2> */}
       {Object.entries(groupedArticles).map(([category, articles]) => (
         <div key={category} className="ProductCategory">
           {" "}

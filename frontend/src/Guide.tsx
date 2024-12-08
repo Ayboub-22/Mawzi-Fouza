@@ -33,22 +33,22 @@ function App() {
       title: "Beginner Friendly",
       description:
         "New to fitness? Start with these beginner-friendly programs! These offer shorter time commitments and low-impact options to help ease you into your fitness journey.",
-      buttonText: "1938+ People Tried",
+      buttonText: "340+ People Tried",
       ScheduleData: [
         {
-          img: "/Image27.png",
+          img: "/beg1.jpg",
           date: "14 days",
           period: "20-40mins",
           message: "2023 Get Abs Challenge",
         },
         {
-          img: "/Image22.png",
+          img: "/beg2.jpg",
           date: "14 days",
           period: "20-40mins",
           message: "Beginner Cardio Routine",
         },
         {
-          img: "/Image28.png",
+          img: "/beg3.jpg",
           date: "14 days",
           period: "20-40mins",
           message: "Total Body Strength Training",
@@ -60,7 +60,7 @@ function App() {
       title: "Intermediate",
       description:
         "Ready to take your fitness to the next level? These intermediate programs are designed for those who have built a basic level of fitness and are ready for a more challenging routine.",
-      buttonText: "2500+ People Tried",
+      buttonText: "400+ People Tried",
       ScheduleData: [
         {
 
@@ -80,19 +80,19 @@ function App() {
 //           date: "14 days",
 //           period: "20-40mins",
 //           message: "2023 Get Abs Challenge",
-          img: "/Image27.png",
+          img: "/inter1.jpg",
           date: "30 days",
           period: "30-60mins",
           message: "Intermediate Strength Training",
         },
         {
-          img: "/Image27.png",
+          img: "/inter2.jpg",
           date: "30 days",
           period: "30-60mins",
           message: "Cardio Blast Challenge",
         },
         {
-          img: "/Image27.png",
+          img: "/inter3.jpg",
           date: "30 days",
           period: "30-60mins",
           message: "Flexibility & Mobility Program",
@@ -104,7 +104,7 @@ function App() {
       title: "Advanced",
       description:
         "Push your limits with these advanced programs! Perfect for experienced fitness enthusiasts looking for high-intensity routines to maximize performance and results.",
-      buttonText: "3000+ People Tried",
+      buttonText: "300+ People Tried",
       ScheduleData: [
         {
         //   img: "/Image37.png",
@@ -124,19 +124,19 @@ function App() {
         //   period: "20-40mins",
         //   message: "2023 Get Abs Challenge",
 
-          img: "/Image27.png",
+          img: "/adv1.jpg",
           date: "60 days",
           period: "45-75mins",
           message: "Advanced HIIT Challenge",
         },
         {
-          img: "/Image27.png",
+          img: "/adv2.jpg",
           date: "60 days",
           period: "45-75mins",
           message: "Strength & Power Training",
         },
         {
-          img: "/Image27.png",
+          img: "/adv3.jpg",
           date: "60 days",
           period: "45-75mins",
           message: "Ultimate Endurance Program",

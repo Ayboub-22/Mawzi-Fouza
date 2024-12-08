@@ -16,10 +16,10 @@ export const absWorkoutForBeginners = [
               lifting your shoulders off the ground while keeping your neck
               relaxed.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Basic Crunches"
-            />
+            /> */}
           </>
         ),
       },
@@ -33,10 +33,10 @@ export const absWorkoutForBeginners = [
               Perform 3 sets of 20-30 seconds, ensuring your body forms a
               straight line from shoulders to knees.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Plank (Knees Down)"
-            />
+            /> */}
           </>
         ),
       },
@@ -49,7 +49,7 @@ export const absWorkoutForBeginners = [
               10-12 reps, keeping your legs straight and lowering them slowly
               without letting your lower back lift off the ground.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Leg Raises" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Leg Raises" /> */}
           </>
         ),
       },
@@ -62,7 +62,7 @@ export const absWorkoutForBeginners = [
               coordination. Perform 3 sets of 8-10 reps per side, focusing on
               keeping your back flat against the floor.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Dead Bug" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Dead Bug" /> */}
           </>
         ),
       },
@@ -82,10 +82,10 @@ export const absWorkoutForBeginners = [
               sets of 10-12 reps per side, focusing on controlled movements and
               keeping your core engaged.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Bicycle Crunches"
-            />
+            /> */}
           </>
         ),
       },
@@ -98,10 +98,10 @@ export const absWorkoutForBeginners = [
               core and cardiovascular fitness. Perform 3 sets of 20-30 seconds,
               moving your knees towards your chest at a steady pace.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Mountain Climbers"
-            />
+            /> */}
           </>
         ),
       },
@@ -114,10 +114,10 @@ export const absWorkoutForBeginners = [
               stability. Perform 2 sets of 15-20 seconds per side, keeping your
               body in a straight line from shoulder to knees.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Side Plank (Knees Down)"
-            />
+            /> */}
           </>
         ),
       },
@@ -130,10 +130,10 @@ export const absWorkoutForBeginners = [
               sets of 15-20 seconds, keeping your legs straight and alternating
               quick, small kicks while engaging your core.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Flutter Kicks"
-            />
+            /> */}
           </>
         ),
       },
@@ -153,10 +153,10 @@ export const absWorkoutForBeginners = [
               20-30 seconds, focusing on keeping your body in a straight line
               and engaging your core.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Standard Plank"
-            />
+            /> */}
           </>
         ),
       },
@@ -169,7 +169,7 @@ export const absWorkoutForBeginners = [
               3 sets of 8-10 reps per side, ensuring you extend your opposite
               arm and leg while keeping your core engaged.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Bird Dog" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Bird Dog" /> */}
           </>
         ),
       },
@@ -182,7 +182,7 @@ export const absWorkoutForBeginners = [
               Perform 3 sets of 12-15 reps per side, focusing on controlled
               movements and engaging your core.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Heel Taps" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Heel Taps" /> */}
           </>
         ),
       },
@@ -195,10 +195,10 @@ export const absWorkoutForBeginners = [
               sets of 10-12 seconds, lifting your arms and legs off the ground
               simultaneously and holding the position.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Superman Hold"
-            />
+            /> */}
           </>
         ),
       },
@@ -218,10 +218,10 @@ export const absWorkoutForBeginners = [
               core. Perform 2 sets of 10 reps, moving slowly between the two
               positions while breathing deeply.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Cat-Cow Stretch"
-            />
+            /> */}
           </>
         ),
       },
@@ -234,7 +234,7 @@ export const absWorkoutForBeginners = [
               mobility. Perform 3 sets of 12 reps, tilting your pelvis upward
               and flattening your back against the floor.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Pelvic Tilts" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Pelvic Tilts" /> */}
           </>
         ),
       },
@@ -247,7 +247,7 @@ export const absWorkoutForBeginners = [
               the pose for 3 sets of 20-30 seconds, focusing on deep breathing
               and stretching your arms forward.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Child's Pose" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Child's Pose" /> */}
           </>
         ),
       },
@@ -260,10 +260,10 @@ export const absWorkoutForBeginners = [
               core. Hold the stretch for 3 sets of 20-30 seconds, keeping your
               back straight and reaching towards your toes.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Seated Forward Fold"
-            />
+            /> */}
           </>
         ),
       },
@@ -287,7 +287,7 @@ export const strengthAndConditionning = [
               ensuring you maintain proper form and control throughout the
               movement to target the chest and arms effectively.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Bench Press" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Bench Press" /> */}
           </>
         ),
       },
@@ -301,7 +301,7 @@ export const strengthAndConditionning = [
               motion and controlled movement to fully activate your upper back
               and biceps.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Pull-Ups" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Pull-Ups" /> */}
           </>
         ),
       },
@@ -315,10 +315,10 @@ export const strengthAndConditionning = [
               stability and controlled movement to target the shoulders and
               triceps.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Overhead Press"
-            />
+            /> */}
           </>
         ),
       },
@@ -331,10 +331,10 @@ export const strengthAndConditionning = [
               in the lats and upper back. Perform 4 sets of 8-10 reps per arm,
               focusing on pulling with your back muscles rather than your arms.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Dumbbell Rows"
-            />
+            /> */}
           </>
         ),
       },
@@ -355,10 +355,10 @@ export const strengthAndConditionning = [
               reps, focusing on explosive hip thrusts and keeping your core
               engaged throughout the movement.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Kettlebell Swings"
-            />
+            /> */}
           </>
         ),
       },
@@ -372,7 +372,7 @@ export const strengthAndConditionning = [
               jumping with both legs and landing softly to minimize impact on
               your joints.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Box Jumps" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Box Jumps" /> */}
           </>
         ),
       },
@@ -386,7 +386,7 @@ export const strengthAndConditionning = [
               reps, moving quickly through the entire movement for maximum
               conditioning.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Burpees" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Burpees" /> */}
           </>
         ),
       },
@@ -400,7 +400,7 @@ export const strengthAndConditionning = [
               seconds, alternating waves as fast as possible to challenge both
               your cardiovascular system and muscles.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Battle Ropes" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Battle Ropes" /> */}
           </>
         ),
       },
@@ -420,7 +420,7 @@ export const strengthAndConditionning = [
               strength. Perform 4 sets of 5-8 reps, focusing on proper form and
               depth to engage the quads, hamstrings, and glutes effectively.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Squats" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Squats" /> */}
           </>
         ),
       },
@@ -434,7 +434,7 @@ export const strengthAndConditionning = [
               sets of 5-8 reps, ensuring you keep your back straight and lift
               with your legs and hips.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Deadlifts" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Deadlifts" /> */}
           </>
         ),
       },
@@ -448,7 +448,7 @@ export const strengthAndConditionning = [
               12 reps per leg, focusing on deep lunges and maintaining
               stability.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Lunges" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Lunges" /> */}
           </>
         ),
       },
@@ -462,7 +462,7 @@ export const strengthAndConditionning = [
               on the full range of motion and squeezing at the top of the
               movement.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Calf Raises" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Calf Raises" /> */}
           </>
         ),
       },
@@ -482,10 +482,10 @@ export const strengthAndConditionning = [
               5 sets of 500 meters, focusing on maintaining a strong, steady
               pace to improve both strength and cardiovascular endurance.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Rowing Machine"
-            />
+            /> */}
           </>
         ),
       },
@@ -498,7 +498,7 @@ export const strengthAndConditionning = [
               cardiovascular fitness and coordination. Perform 4 sets of 1
               minute, aiming for consistent, quick jumps.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Jump Rope" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Jump Rope" /> */}
           </>
         ),
       },
@@ -511,7 +511,7 @@ export const strengthAndConditionning = [
               shoulders, and triceps. Perform 3 sets of 20 reps, focusing on
               maintaining proper form and range of motion.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Push-Ups" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Push-Ups" /> */}
           </>
         ),
       },
@@ -525,7 +525,7 @@ export const strengthAndConditionning = [
               focusing on keeping your body in a straight line while engaging
               your core.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Plank" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Plank" /> */}
           </>
         ),
       },
@@ -549,7 +549,7 @@ export const HIIT = [
               endurance. Perform 3 sets of 30 seconds work with 15 seconds of
               rest between sets.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Jump Squats" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Jump Squats" /> */}
           </>
         ),
       },
@@ -563,7 +563,7 @@ export const HIIT = [
               and endurance. Perform 3 sets of 30 seconds work, followed by 15
               seconds of rest between sets.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Burpees" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Burpees" /> */}
           </>
         ),
       },
@@ -594,7 +594,7 @@ export const HIIT = [
               seconds of rest. Focus on proper form to maximize muscle
               activation.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Push-Ups" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Push-Ups" /> */}
           </>
         ),
       },
@@ -608,7 +608,7 @@ export const HIIT = [
               position for 30 seconds, followed by 15 seconds of rest. Perform 3
               sets.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Plank" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Plank" /> */}
           </>
         ),
       },
@@ -628,7 +628,7 @@ export const HIIT = [
               glutes, and calves while improving explosive power. Perform 3 sets
               of 30 seconds work, followed by 15 seconds rest between sets.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Box Jumps" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Box Jumps" /> */}
           </>
         ),
       },
@@ -641,10 +641,10 @@ export const HIIT = [
               lower abs. Perform 3 sets of 30 seconds work, alternating sides,
               with 15 seconds of rest between sets.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Bicycle Crunches"
-            />
+            /> */}
           </>
         ),
       },
@@ -657,10 +657,10 @@ export const HIIT = [
               hamstrings, and glutes while improving coordination and balance.
               Perform 3 sets of 30 seconds work, followed by 15 seconds rest.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Jumping Lunges"
-            />
+            /> */}
           </>
         ),
       },
@@ -673,7 +673,7 @@ export const HIIT = [
               glutes, and core while also improving lateral movement. Perform 3
               sets of 30 seconds work, followed by 15 seconds rest between sets.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Skater Jumps" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Skater Jumps" /> */}
           </>
         ),
       },
@@ -686,10 +686,10 @@ export const HIIT = [
               while improving stability. Perform 3 sets of 30 seconds work,
               alternating shoulder taps, with 15 seconds rest between sets.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Plank with Shoulder Taps"
-            />
+            /> */}
           </>
         ),
       },
@@ -710,10 +710,10 @@ export const HIIT = [
               followed by 40 seconds of rest. Perform 8 sets to maximize
               conditioning.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Sprint Intervals"
-            />
+            /> */}
           </>
         ),
       },
@@ -726,10 +726,10 @@ export const HIIT = [
               and core while improving cardiovascular endurance. Perform 3 sets
               of 30 seconds work, followed by 15 seconds of rest.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Jumping Jacks"
-            />
+            /> */}
           </>
         ),
       },
@@ -743,7 +743,7 @@ export const HIIT = [
               push-up, rotate into a side plank position for added challenge.
               Perform 3 sets of 30 seconds work, followed by 15 seconds of rest.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Push-Up to T" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Push-Up to T" /> */}
           </>
         ),
       },
@@ -756,7 +756,7 @@ export const HIIT = [
               endurance and engaging the core. Perform 3 sets of 30 seconds
               work, followed by 15 seconds of rest.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="High Knees" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="High Knees" /> */}
           </>
         ),
       },
@@ -769,7 +769,7 @@ export const HIIT = [
               lower back. Hold the plank position for 30 seconds, followed by 15
               seconds of rest. Perform 3 sets to challenge your core stability.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Plank" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Plank" /> */}
           </>
         ),
       },
@@ -801,7 +801,7 @@ export const bodyweight = [
               focusing on maintaining proper form and full range of motion for
               maximum activation.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Push-Ups" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Push-Ups" /> */}
           </>
         ),
       },
@@ -814,7 +814,7 @@ export const bodyweight = [
               perform dips, use parallel bars or a bench, and aim for 3 sets of
               12 reps. Maintain good form to fully engage the target muscles.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Dips" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Dips" /> */}
           </>
         ),
       },
@@ -828,10 +828,10 @@ export const bodyweight = [
               alternating tapping each shoulder while maintaining a stable plank
               position.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Plank Shoulder Taps"
-            />
+            /> */}
           </>
         ),
       },
@@ -844,7 +844,7 @@ export const bodyweight = [
               targets the triceps. Perform 3 sets of 15 reps, ensuring full
               range of motion for optimal activation.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Tricep Dips" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Tricep Dips" /> */}
           </>
         ),
       },
@@ -865,7 +865,7 @@ export const bodyweight = [
               sets of 20 reps, focusing on proper depth and form for full
               engagement of the muscles.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Squats" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Squats" /> */}
           </>
         ),
       },
@@ -878,10 +878,10 @@ export const bodyweight = [
               the quads, hamstrings, and glutes. Perform 3 sets of 12 reps per
               leg to improve balance and symmetry in the legs.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Bulgarian Split Squats"
-            />
+            /> */}
           </>
         ),
       },
@@ -894,10 +894,10 @@ export const bodyweight = [
               sets of 15 reps, focusing on squeezing the glutes at the top of
               the movement for maximum activation.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Glute Bridges"
-            />
+            /> */}
           </>
         ),
       },
@@ -910,10 +910,10 @@ export const bodyweight = [
               quads, glutes, and hamstrings. Perform 3 sets of 20 reps,
               alternating legs, for increased strength and balance.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Walking Lunges"
-            />
+            /> */}
           </>
         ),
       },
@@ -933,10 +933,10 @@ export const bodyweight = [
               shoulders, and legs. Perform 4 sets of 30 seconds, focusing on
               quick movements while maintaining a stable plank position.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Mountain Climbers"
-            />
+            /> */}
           </>
         ),
       },
@@ -949,7 +949,7 @@ export const bodyweight = [
               20 reps, focusing on slow, controlled movements for optimal muscle
               engagement.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Leg Raises" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Leg Raises" /> */}
           </>
         ),
       },
@@ -962,10 +962,10 @@ export const bodyweight = [
               obliques and abs. Perform 3 sets of 30 reps, focusing on a full
               rotation and proper form for maximum benefit.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Bicycle Crunches"
-            />
+            /> */}
           </>
         ),
       },
@@ -979,7 +979,7 @@ export const bodyweight = [
               the entire movement to improve both muscular endurance and
               cardiovascular fitness.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Burpees" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Burpees" /> */}
           </>
         ),
       },
@@ -1012,7 +1012,7 @@ export const pushpulllegs = [
               Perform 4 sets of 8-10 reps, focusing on a controlled motion for
               maximum muscle activation.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Bench Press" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Bench Press" /> */}
           </>
         ),
       },
@@ -1027,10 +1027,10 @@ export const pushpulllegs = [
               controlled movements. This will improve shoulder strength and
               size.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Dumbbell Shoulder Press"
-            />
+            /> */}
           </>
         ),
       },
@@ -1045,7 +1045,7 @@ export const pushpulllegs = [
               sets of 12 reps. Ensure a full range of motion to fully activate
               the triceps.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Tricep Dips" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Tricep Dips" /> */}
           </>
         ),
       },
@@ -1059,10 +1059,10 @@ export const pushpulllegs = [
               to perform 3 sets of 12 reps. This exercise helps build shoulder
               width, which is key for improving your overall physique.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Lateral Raises"
-            />
+            /> */}
           </>
         ),
       },
@@ -1084,7 +1084,7 @@ export const pushpulllegs = [
               6-8 reps, ensuring you maintain proper form to avoid injury and
               maximize results.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Deadlifts" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Deadlifts" /> */}
           </>
         ),
       },
@@ -1098,7 +1098,7 @@ export const pushpulllegs = [
               size in the upper body. Aim for 4 sets of 8-10 reps, using full
               range of motion for each rep to engage the back muscles fully.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Pull-Ups" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Pull-Ups" /> */}
           </>
         ),
       },
@@ -1112,7 +1112,7 @@ export const pushpulllegs = [
               back thickness. Perform 4 sets of 8 reps, focusing on pulling the
               barbell towards the lower chest while maintaining a neutral spine.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Barbell Rows" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Barbell Rows" /> */}
           </>
         ),
       },
@@ -1126,7 +1126,7 @@ export const pushpulllegs = [
               12 reps using a controlled motion. This exercise is perfect for
               building muscle in the arms.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Bicep Curls" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Bicep Curls" /> */}
           </>
         ),
       },
@@ -1147,7 +1147,7 @@ export const pushpulllegs = [
               and glutes. Do 4 sets of 8-10 reps, ensuring proper depth and form
               to engage the muscles fully and minimize the risk of injury.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Squats" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Squats" /> */}
           </>
         ),
       },
@@ -1161,7 +1161,7 @@ export const pushpulllegs = [
               per leg. Lunges help address any muscle imbalances and improve
               coordination in the lower body.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Lunges" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Lunges" /> */}
           </>
         ),
       },
@@ -1175,7 +1175,7 @@ export const pushpulllegs = [
               Perform 3 sets of 12 reps using a controlled motion, focusing on
               the stretch and contraction of the hamstrings.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Leg Curls" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Leg Curls" /> */}
           </>
         ),
       },
@@ -1189,7 +1189,7 @@ export const pushpulllegs = [
               reps, focusing on a full range of motion for optimal calf
               development.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Calf Raises" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Calf Raises" /> */}
           </>
         ),
       },
@@ -1210,10 +1210,10 @@ export const pushpulllegs = [
               controlled tempo. This exercise helps improve the definition and
               size of the upper chest.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Incline Dumbbell Press"
-            />
+            /> */}
           </>
         ),
       },
@@ -1227,10 +1227,10 @@ export const pushpulllegs = [
               sets of 12 reps, focusing on slow, controlled movements to fully
               activate the pectoral muscles.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Dumbbell Chest Flys"
-            />
+            /> */}
           </>
         ),
       },
@@ -1244,10 +1244,10 @@ export const pushpulllegs = [
               to press the dumbbells or barbell overhead while maintaining
               proper posture.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Overhead Shoulder Press"
-            />
+            /> */}
           </>
         ),
       },
@@ -1261,10 +1261,10 @@ export const pushpulllegs = [
               on the cable machine. This exercise helps improve tricep strength
               and muscle definition.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Tricep Pushdowns"
-            />
+            /> */}
           </>
         ),
       },
@@ -1285,7 +1285,7 @@ export const pushpulllegs = [
               making sure to maintain a flat back and pull the barbell toward
               your torso.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Barbell Rows" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Barbell Rows" /> */}
           </>
         ),
       },
@@ -1299,10 +1299,10 @@ export const pushpulllegs = [
               upper back muscles. This exercise helps improve posture and back
               strength.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Lat Pulldowns"
-            />
+            /> */}
           </>
         ),
       },
@@ -1316,7 +1316,7 @@ export const pushpulllegs = [
               squeezing the shoulder blades together at the peak of the
               movement.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Face Pulls" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Face Pulls" /> */}
           </>
         ),
       },
@@ -1330,7 +1330,7 @@ export const pushpulllegs = [
               12 reps, focusing on using a controlled tempo for optimal muscle
               activation.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Hammer Curls" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Hammer Curls" /> */}
           </>
         ),
       },
@@ -1354,7 +1354,7 @@ export const fullBodyStrength = [
               8-10 reps, ensuring proper form and depth to fully engage the
               muscles in your legs and core.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Squats" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Squats" /> */}
           </>
         ),
       },
@@ -1368,7 +1368,7 @@ export const fullBodyStrength = [
               keeping your feet flat on the floor and maintaining a controlled
               movement to maximize muscle engagement.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Bench Press" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Bench Press" /> */}
           </>
         ),
       },
@@ -1382,7 +1382,7 @@ export const fullBodyStrength = [
               reps, focusing on keeping your back straight and engaging your
               hips and legs to lift the weight.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Deadlifts" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Deadlifts" /> */}
           </>
         ),
       },
@@ -1396,7 +1396,7 @@ export const fullBodyStrength = [
               full range of motion and engaging the back muscles as you pull
               yourself up.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Pull-Ups" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Pull-Ups" /> */}
           </>
         ),
       },
@@ -1410,7 +1410,7 @@ export const fullBodyStrength = [
               30-45 seconds each time, focusing on keeping your body in a
               straight line while engaging your core.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Plank" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Plank" /> */}
           </>
         ),
       },
@@ -1431,7 +1431,7 @@ export const fullBodyStrength = [
               focusing on a controlled movement and full range of motion to
               maximize leg development.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Leg Press" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Leg Press" /> */}
           </>
         ),
       },
@@ -1445,10 +1445,10 @@ export const fullBodyStrength = [
               ensuring your core is engaged for stability while pressing the
               weight overhead.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Overhead Press"
-            />
+            /> */}
           </>
         ),
       },
@@ -1461,7 +1461,7 @@ export const fullBodyStrength = [
               particularly the lats and upper back. Perform 3 sets of 8-10 reps,
               focusing on pulling with your back muscles rather than your arms.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Barbell Rows" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Barbell Rows" /> */}
           </>
         ),
       },
@@ -1474,10 +1474,10 @@ export const fullBodyStrength = [
               Perform 3 sets of 10-12 reps, focusing on controlled movement and
               proper form to maximize bicep engagement.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Dumbbell Bicep Curls"
-            />
+            /> */}
           </>
         ),
       },
@@ -1491,10 +1491,10 @@ export const fullBodyStrength = [
               your torso fully while keeping your feet off the ground for added
               intensity.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Russian Twists"
-            />
+            /> */}
           </>
         ),
       },
@@ -1515,7 +1515,7 @@ export const fullBodyStrength = [
               focusing on a deep lunge and maintaining stability throughout the
               movement.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Lunges" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Lunges" /> */}
           </>
         ),
       },
@@ -1528,10 +1528,10 @@ export const fullBodyStrength = [
               targets the upper chest and shoulders. Perform 3 sets of 10 reps,
               ensuring controlled movement while pressing the dumbbells up.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Incline Dumbbell Press"
-            />
+            /> */}
           </>
         ),
       },
@@ -1544,10 +1544,10 @@ export const fullBodyStrength = [
               back. Perform 3 sets of 10 reps, ensuring you keep your back
               straight and hips pushed back throughout the movement.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Romanian Deadlifts"
-            />
+            /> */}
           </>
         ),
       },
@@ -1561,10 +1561,10 @@ export const fullBodyStrength = [
               sets of 12 reps, focusing on controlled lifting and lowering of
               the dumbbells.
             </p>
-            <img
+            {/* <img
               src="https://via.placeholder.com/800x400"
               alt="Dumbbell Lateral Raises"
-            />
+            /> */}
           </>
         ),
       },
@@ -1577,7 +1577,7 @@ export const fullBodyStrength = [
               Perform 3 sets of 15 reps, focusing on lifting your legs with
               control and engaging your core throughout the movement.
             </p>
-            <img src="https://via.placeholder.com/800x400" alt="Leg Raises" />
+            {/* <img src="https://via.placeholder.com/800x400" alt="Leg Raises" /> */}
           </>
         ),
       },

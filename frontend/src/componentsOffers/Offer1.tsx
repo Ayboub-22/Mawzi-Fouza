@@ -9,6 +9,8 @@ interface card1 {
   durée: number;
   prix: number;
   validite: boolean;
+  description: string; // Description contenant une phrase suivie de privilèges
+  type: string; // Type d'offre
 }
 
 function Offer({ userCin1}:any) {
@@ -45,17 +47,26 @@ function Offer({ userCin1}:any) {
       <div className="OffersTitle">JOIN TODAY</div>
 
       <div className="Cards">
-        {cards1.map((item) => (
+        {cards1.map((item) => {
+          // Extraire la phrase et les privilèges depuis la description
+          const [phrase, privileges] = item.description.split(":");
+          const listItems = privileges ? privileges.split(",") : [];
+
+          // Convertir `prix` en nombre si nécessaire
+          const prix =
+            typeof item.prix === "string" ? parseFloat(item.prix) : item.prix;
+          return(
           <div key={item.id_offre} onClick={() => {setIdOffre(item.id_offre); openPopup(item)}}>
             <Card
-              plan="Premium Plan"
-              prix={`$${item.prix}`}
-              type={`${item.durée} Month`}
-              info="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-              list={["Lorem", "ipsum", "dolor", "sit", "amet"]}
+              key={item.id_offre} // Utilisez un identifiant unique comme clé
+              plan={item.type} // Utiliser l'attribut "type" pour le plan
+              prix={`$${prix.toFixed(2)}`} // Format du prix
+              type={`${item.durée} Month`} // Format de la durée
+              info={phrase} // Utiliser la phrase comme description
+              list={listItems} // Utiliser les privilèges comme liste
             />
-          </div>
-        ))}
+          </div>);
+        })}
       </div>
 
       {isPopupOpen && 
