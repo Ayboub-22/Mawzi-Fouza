@@ -73,7 +73,7 @@ const PopupReserver: React.FC<PopupReserverProps> = ({ onClose, onReserve }) => 
           </option>
           {courses.map((course) => (
             <option key={course.id} value={course.id}>
-              {course.name} ({course.day} session {course.time})
+              {course.name} ({course.day} session {course.time+1})
             </option>
           ))}
         </select>

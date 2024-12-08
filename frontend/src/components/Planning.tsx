@@ -93,15 +93,15 @@ const App = () => {
   }
 
   return (
-    <div className="container">
+    <div className="Planning-container">
       <h1>Planning of the Week</h1>
 
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      {/* {errorMessage && <div className="error-message">{errorMessage}</div>} */}
 
       <table className="schedule-table">
         <thead>
           <tr>
-            <th>Day</th>
+            <th className="Day"></th>
             {periods.map((period) => (
               <th key={period}>{period}</th>
             ))}

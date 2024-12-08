@@ -75,6 +75,7 @@ router.put('/:id', async (req, res) => {
       categorie,
       img_path
     } = req.body;
+    console.log(img_path);
     const article = await Article.findByPk(req.params.id);
     if (!article) {
       return res.status(404).json({

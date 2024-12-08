@@ -1,0 +1,68 @@
+@font-face {
+  font-family: 'OutfitBold';
+  src: url('../assets/fonts/Outfit/static/Outfit-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'OutfitRegular';
+  src: url('../assets/fonts/Outfit/static/Outfit-Regular.ttf') format('truetype');
+}
+
+
+
+.Programcontainer {
+    display: flex;
+    height: 90vh;
+    width: 100%;
+    padding: 3%;
+  }
+  
+  .left-panel {
+    width: 50%;
+    padding: 20px;
+    background-color:#1F1F1F;
+    height: 100%;
+  }
+  
+  .left-panel .Programtitle {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color:#F5F5F5;
+    text-align: center;
+    font-family: OutfitBold;
+  }
+
+  .left-panel ul{
+    color:#F5F5F5;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-family: OutfitRegular;
+    margin-top: 5%;
+    line-height: 200%;
+  }
+
+  .left-panel li.active {
+    font-weight: bold;
+    /*color: #FF2A00;*/
+    background-color: #FF2A00;
+  }
+  
+  .left-panel p {
+    margin-top: 3%;
+    font-size: 1.2rem;
+    color: #b1aeae;
+    font-family: OutfitRegular;
+
+  }
+  .right-panel .SectionGuide{
+    font-size: larger;
+  }
+  .right-panel {
+    
+    padding: 20px;
+    width: 70%;
+    overflow-y: scroll;
+    height: 100%;
+   
+  }
+  

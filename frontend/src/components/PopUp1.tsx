@@ -23,6 +23,8 @@ function PopUp1() {
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage("");
+    if(cin.length===8 && tel.length===8 && (sex=='F' || sex=='M') && (birth !== ""))
+    {
 
     try {
       const response = await axios.post("http://localhost:3000/user/signup", {
@@ -53,6 +55,12 @@ function PopUp1() {
         error.response?.data?.message || "An error occurred during signup."
       );
     }
+  }
+  else{
+    setErrorMessage(
+      "Please fill the form correctly"
+    );
+  }
   };
 
 
@@ -88,6 +96,7 @@ function PopUp1() {
                 type="number"
                 placeholder="Enter your CIN"
                 value={cin}
+                maxLength={8}
                 onChange={(e) => setCin(e.target.value)}
                 required
               />
@@ -110,7 +119,8 @@ function PopUp1() {
             </div>
             <div className="birt">
               <input
-                type="tel"
+                type="number"
+                maxLength={8}
                 placeholder="Contact Number"
                 value={tel}
                 onChange={(e) => setTel(e.target.value)}

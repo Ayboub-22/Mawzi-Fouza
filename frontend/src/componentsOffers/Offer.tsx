@@ -1,29 +1,20 @@
 import { useEffect, useState } from "react";
 import Card from "./Card"; // Assurez-vous que votre composant Card est correctement importé
 import "./Offer.css";
-import { useNavigate } from "react-router-dom";
 import { usePopup } from "../components/PopupContext";
 
 interface CardData {
   id_offre: number; // Identifiant unique
   durée: number; // Durée (en mois par exemple)
-  prix: number; // Prix avec deux décimales
+  prix: number | string; // Prix (peut être une chaîne ou un nombre)
   validite: boolean; // Statut de validité
+  description: string; // Description contenant une phrase suivie de privilèges
+  type: string; // Type d'offre
 }
 
 function Offer() {
   const { togglePopup } = usePopup();
   const [cards1, setCards] = useState<CardData[]>([]); // Déclarez l'état pour stocker les données des offres
-  const listItems = [
-    "Lorem ipsum dolor sit amet, ",
-    "Lorem ipsum dolor sit amet, ",
-    "Lorem ipsum dolor sit amet, ",
-    "Lorem ipsum dolor sit amet, ",
-    "Lorem ipsum dolor sit amet, ",
-  ];
-  const plan = "Premium Plan";
-  const info =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ";
 
   useEffect(() => {
     // Effectuez une requête pour récupérer les données
@@ -35,21 +26,30 @@ function Offer() {
 
   return (
     <div className="Offer">
-      <div className="msg">JOIN TODAY</div>
-
+      <div className="OffersTitle">JOIN TODAY</div>
       <div className="Cards">
-        {cards1.map((item) => (
-          <div key={item.id_offre} onClick={togglePopup}>
-          <Card
-            key={item.id_offre} // Utilisez un identifiant unique comme clé
-            plan={plan}
-            prix={`$${item.prix}`} // Format du prix
-            type={`${item.durée} Month`} // Format de la durée
-            info={info}
-            list={listItems} // Liste des caractéristiques
-          />
-          </div>
-        ))}
+        {cards1.map((item) => {
+          // Extraire la phrase et les privilèges depuis la description
+          const [phrase, privileges] = item.description.split(":");
+          const listItems = privileges ? privileges.split(",") : [];
+
+          // Convertir `prix` en nombre si nécessaire
+          const prix =
+            typeof item.prix === "string" ? parseFloat(item.prix) : item.prix;
+
+          return (
+            <div key={item.id_offre} onClick={togglePopup}>
+              <Card
+                key={item.id_offre} // Utilisez un identifiant unique comme clé
+                plan={item.type} // Utiliser l'attribut "type" pour le plan
+                prix={`$${prix.toFixed(2)}`} // Format du prix
+                type={`${item.durée} Month`} // Format de la durée
+                info={phrase} // Utiliser la phrase comme description
+                list={listItems} // Utiliser les privilèges comme liste
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

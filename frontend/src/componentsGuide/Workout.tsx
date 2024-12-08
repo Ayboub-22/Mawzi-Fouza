@@ -1,9 +1,9 @@
 import "./Workout.css";
-
+import { usePopup } from "../components/PopupContext";
 type Qualification = {
   text: string;
   imgSrc?: string;
-  text2: string;
+  name: string; // Added name field
 };
 
 type QualsProps = {
@@ -11,45 +11,47 @@ type QualsProps = {
 };
 
 function Workout() {
+  const { togglePopup } = usePopup();
   const qualifications = [
     {
       text: "Start Now",
       imgSrc: "/Group 156.png",
-      text2: "Start Now",
+      name: " Full Body Strength Training", // Added name
     },
     {
       text: "Start Now",
       imgSrc: "/Yoga.png",
-      text2: "Start Now",
+      name: "Push/Pull/Legs Split", // Added name
+    },
+    {
+      text: "Start Now",
+      imgSrc: "/bodyweight.png",
+      name: "Bodyweight Workout", // Added name
+    },
+    {
+      text: "Start Now",
+      imgSrc: "/hit.png",
+      name: "HIIT Workout", // Added name
     },
     {
       text: "Start Now",
       imgSrc: "/Cardio 1.png",
-      text2: "Start Now",
-    },
-    {
-      text: "Start Now",
-      imgSrc: "/Cardio 1.png",
-      text2: "Start Now",
-    },
-    {
-      text: "Start Now",
-      imgSrc: "/Cardio 1.png",
-      text2: "Start Now",
+      name: "Strength and Conditioning", // Added name
     },
   ];
 
   return (
-    <div className="YDiv3">
+    <div className="YWorkouts">
       {qualifications.map((item, index) => (
         <div key={index} className="YWorkout1">
           <div className="Yimage-container">
             <img src={item.imgSrc} alt="Qualification" className="Yimg1" />
             <div className="Yblur-overlay">
-              <div className="Yoverlay-text">{item.text2}</div>
+              <div className="Yoverlay-text">{item.name}</div>{" "}
+              {/* Use dynamic name */}
             </div>
           </div>
-          <button className="YBoutton">{item.text}</button>
+          <button className="YBoutton" onClick={togglePopup}>{item.text} </button>
         </div>
       ))}
     </div>

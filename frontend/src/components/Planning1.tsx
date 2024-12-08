@@ -131,7 +131,7 @@ function Planning1({ userCin1 }: { userCin1: string }) {
       <table className="schedule-table">
         <thead>
           <tr>
-            <th>Day</th>
+            <th className="Day"></th>
             {periods.map((period) => (
               <th key={period}>{period}</th>
             ))}

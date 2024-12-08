@@ -116,7 +116,7 @@ function PopUp() {
         </div>
         <div className="Form1">
           <h1>Sign in</h1>
-          <p>Un message quelconque qui s'affiche</p>         {/* a changer */ }
+          {/* <p>Un message quelconque qui s'affiche</p>        */ } 
           <form className="sign-in-form">
             <input
               onChange={(e) => setIdentifier(e.target.value)} // Input for mail or name
@@ -138,10 +138,10 @@ function PopUp() {
               required
             />
 
-            <div className="keep-logged-in">
-              <input type="checkbox" id="keep-logged-in" />
-              <label htmlFor="keep-logged-in">Keep me logged in</label>
-            </div>
+             <div className="keep-logged-in">
+              {/* <input type="checkbox" id="keep-logged-in" />
+              <label htmlFor="keep-logged-in">Keep me logged in</label> */}
+            </div> 
             {errorMessage && (
               <div className="error-message">{errorMessage}</div>
             )}

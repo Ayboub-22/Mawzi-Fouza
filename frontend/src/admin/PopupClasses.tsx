@@ -113,17 +113,17 @@ const PopupClasses: React.FC<PopupClassesProps> = ({ show }) => {
               </select>
             </div>
             <div className="form-group">
-              <label>Time:</label>
+              <label>Session N°:</label>
               <input
                 type="number"
-                placeholder="Enter a number (1 to 8)"
+                placeholder="Enter a number (0 to 7)"
                 value={time}
                 onChange={(e) =>
                   setTime(e.target.value ? parseInt(e.target.value) : "")
                 }
                 required
-                min={1}
-                max={8}
+                min={0}
+                max={7}
               />
             </div>
           </div>

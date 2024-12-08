@@ -1,5 +1,13 @@
 
+@font-face {
+    font-family: 'OutfitRegular';
+    src: url('../assets/fonts/Outfit/static/Outfit-Regular.ttf') format('truetype');
+}
 
+@font-face {
+    font-family: 'OutfitBold';
+    src: url('../assets/fonts/Outfit/static/Outfit-Bold.ttf') format('truetype');
+}
 .YSection{
     background-color: #EEEEEE !important;
     height :auto;
@@ -19,32 +27,27 @@
 
 
 .YTitle1{
-    color: #FF2A00 !important  ;
+    color: #170101!important  ;
     text-align: center;
     margin-bottom: 2%;
-    font-family: outfit;
-    font-weight: 300;
-}
-.YTitle1{
-    margin-bottom: 2%;
-    font-family: outfit;
-    font-weight: 300;
+    font-family: OutfitBold;
+
 }
 .Ypar1{
-    font-family: outfit;
+    font-family: OutfitRegular;
     font-weight: 150;
+    
 }
 .YBoutton1 {
     color: #FDF2F2;
     background-color: #170101;
     border-radius: 30px;
-    border-color: #FFED00;
     border-width: 1px;
     width: 170px;
     height: 40px;
     font-size: 14px;
-    font-family: Outfit;
-    font-size: 14px;
+    font-family: OutfitRegular;
+    font-size: 15px;
     
     text-align: center;
 

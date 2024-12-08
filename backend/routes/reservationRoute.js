@@ -57,12 +57,14 @@ router.post('/', async (req, res) => {
 
   //CHERCHER S'IL Y A DES PLACES DANS CE COURS 
     console.log("commencer le truc de capacite");
-
+    const formattedDateTime = `${formattedDate}T00:00:00.000Z`;
+    console.log(formattedDateTime);
+    console.log("apres formattedDateTime");
     // Vérifier le nombre de réservations déjà effectuées pour ce cours, date et heure
     const reservationsCount = await Reservation.count({
       where: {
         id: courseId,
-        date_cours: formattedDate,
+        date_cours: formattedDateTime,
         time: time,
       },
     });

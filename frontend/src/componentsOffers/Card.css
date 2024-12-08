@@ -1,9 +1,8 @@
 .plan {
   border-radius: 16px;
-  
   padding: 10px;
-  background-color: transparent;
-  max-width: 25vw;
+  max-width: 300px;
+  height: auto;
   transition: background-color 0.4s, color 0.4s;
   min-width: 200px;
 }
@@ -55,6 +54,8 @@
   margin-top: 2%;
   color: #808080;
   font-size: 12px;
+  text-align: justify;
+  padding-right: 1%;
 }
 
 .plan .features {
@@ -69,9 +70,8 @@
   color: #808080;
   list-style: none;
   position: relative;
-   /* Adjust space to fit the logo */
+  font-size: 100%;
 
-  /* Add the logo as a custom bullet */
 }
 
 .plan .action {
@@ -91,6 +91,7 @@
   padding: 0.425em 0.75em;
   text-decoration: none;
   transition: background-color 0.4s, color 0.4s;
+  margin-top: 1%;
 }
 
 .plan:hover .button {
@@ -127,4 +128,66 @@
   background-image: url('./Tick.png'); /* Replace with your logo path */
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+
+
+
+@media (min-width: 1500px) {
+  .plan {
+    max-width: 350px;
+  }
+
+  .plan .pricing1 {
+
+    font-size: 35px;
+    line-height: 34px;
+  }
+  
+
+  
+.plan .titl {
+  font-size: 17px;
+  line-height: 19px;
+}
+.plan .info {
+
+  font-size: 15px;
+}
+.plan .features li {
+  font-size: 116%;
+
+}
+
+}
+
+
+@media (min-width: 1800px) {
+  .plan {
+    max-width: 400px;
+  }
+
+  .plan .pricing1 {
+
+    font-size: 40px;
+    line-height: 38px;
+  }
+
+  .plan .titl {
+    font-size: 19px;
+    line-height: 21px;
+  }
+  .plan .info {
+
+    font-size: 18px;
+  }
+
+  .plan .features li {
+    font-size: 133%;
+  
+  }
+
+
+  
+  
 }
