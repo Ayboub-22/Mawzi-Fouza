@@ -1,5 +1,276 @@
 // src/workoutData.ts
 
+export const absWorkoutForBeginners = [
+  {
+    day: "Day 1: Core Activation",
+    description:
+      "Day 1 focuses on activating your core muscles with beginner-friendly exercises. These movements will help you build a strong foundation and improve your core stability.",
+    sections: [
+      {
+        title: "Basic Crunches",
+        content: (
+          <>
+            <p>
+              Crunches are a simple yet effective way to target the upper
+              abdominal muscles. Perform 3 sets of 12-15 reps, focusing on
+              lifting your shoulders off the ground while keeping your neck
+              relaxed.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Basic Crunches"
+            />
+          </>
+        ),
+      },
+      {
+        title: "Plank (Knees Down)",
+        content: (
+          <>
+            <p>
+              The knee-down plank is a beginner-friendly variation that
+              activates your core while reducing strain on your lower back.
+              Perform 3 sets of 20-30 seconds, ensuring your body forms a
+              straight line from shoulders to knees.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Plank (Knees Down)"
+            />
+          </>
+        ),
+      },
+      {
+        title: "Leg Raises",
+        content: (
+          <>
+            <p>
+              Leg raises target the lower abdominal muscles. Perform 3 sets of
+              10-12 reps, keeping your legs straight and lowering them slowly
+              without letting your lower back lift off the ground.
+            </p>
+            <img src="https://via.placeholder.com/800x400" alt="Leg Raises" />
+          </>
+        ),
+      },
+      {
+        title: "Dead Bug",
+        content: (
+          <>
+            <p>
+              The dead bug exercise strengthens your core while improving
+              coordination. Perform 3 sets of 8-10 reps per side, focusing on
+              keeping your back flat against the floor.
+            </p>
+            <img src="https://via.placeholder.com/800x400" alt="Dead Bug" />
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    day: "Day 2: Dynamic Core Work",
+    description:
+      "Day 2 introduces dynamic movements to further engage your core and improve strength. These exercises also help enhance overall body control.",
+    sections: [
+      {
+        title: "Bicycle Crunches",
+        content: (
+          <>
+            <p>
+              Bicycle crunches target the upper and oblique muscles. Perform 3
+              sets of 10-12 reps per side, focusing on controlled movements and
+              keeping your core engaged.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Bicycle Crunches"
+            />
+          </>
+        ),
+      },
+      {
+        title: "Mountain Climbers",
+        content: (
+          <>
+            <p>
+              Mountain climbers are a full-body exercise that challenges your
+              core and cardiovascular fitness. Perform 3 sets of 20-30 seconds,
+              moving your knees towards your chest at a steady pace.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Mountain Climbers"
+            />
+          </>
+        ),
+      },
+      {
+        title: "Side Plank (Knees Down)",
+        content: (
+          <>
+            <p>
+              The side plank variation targets the obliques and improves core
+              stability. Perform 2 sets of 15-20 seconds per side, keeping your
+              body in a straight line from shoulder to knees.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Side Plank (Knees Down)"
+            />
+          </>
+        ),
+      },
+      {
+        title: "Flutter Kicks",
+        content: (
+          <>
+            <p>
+              Flutter kicks are great for targeting the lower abs. Perform 3
+              sets of 15-20 seconds, keeping your legs straight and alternating
+              quick, small kicks while engaging your core.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Flutter Kicks"
+            />
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    day: "Day 3: Stability and Endurance",
+    description:
+      "Day 3 focuses on building core stability and endurance with isometric holds and controlled movements.",
+    sections: [
+      {
+        title: "Standard Plank",
+        content: (
+          <>
+            <p>
+              The standard plank strengthens your entire core. Perform 3 sets of
+              20-30 seconds, focusing on keeping your body in a straight line
+              and engaging your core.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Standard Plank"
+            />
+          </>
+        ),
+      },
+      {
+        title: "Bird Dog",
+        content: (
+          <>
+            <p>
+              The bird dog exercise improves core stability and balance. Perform
+              3 sets of 8-10 reps per side, ensuring you extend your opposite
+              arm and leg while keeping your core engaged.
+            </p>
+            <img src="https://via.placeholder.com/800x400" alt="Bird Dog" />
+          </>
+        ),
+      },
+      {
+        title: "Heel Taps",
+        content: (
+          <>
+            <p>
+              Heel taps target the obliques and improve lateral core strength.
+              Perform 3 sets of 12-15 reps per side, focusing on controlled
+              movements and engaging your core.
+            </p>
+            <img src="https://via.placeholder.com/800x400" alt="Heel Taps" />
+          </>
+        ),
+      },
+      {
+        title: "Superman Hold",
+        content: (
+          <>
+            <p>
+              The superman hold strengthens your lower back and core. Perform 3
+              sets of 10-12 seconds, lifting your arms and legs off the ground
+              simultaneously and holding the position.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Superman Hold"
+            />
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    day: "Day 4: Active Recovery",
+    description:
+      "Day 4 focuses on active recovery with light stretching and core-friendly movements to improve mobility and flexibility.",
+    sections: [
+      {
+        title: "Cat-Cow Stretch",
+        content: (
+          <>
+            <p>
+              The cat-cow stretch improves spine flexibility and activates your
+              core. Perform 2 sets of 10 reps, moving slowly between the two
+              positions while breathing deeply.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Cat-Cow Stretch"
+            />
+          </>
+        ),
+      },
+      {
+        title: "Pelvic Tilts",
+        content: (
+          <>
+            <p>
+              Pelvic tilts engage your lower abs and improve lower back
+              mobility. Perform 3 sets of 12 reps, tilting your pelvis upward
+              and flattening your back against the floor.
+            </p>
+            <img src="https://via.placeholder.com/800x400" alt="Pelvic Tilts" />
+          </>
+        ),
+      },
+      {
+        title: "Child's Pose",
+        content: (
+          <>
+            <p>
+              Child’s pose stretches your lower back and relaxes your core. Hold
+              the pose for 3 sets of 20-30 seconds, focusing on deep breathing
+              and stretching your arms forward.
+            </p>
+            <img src="https://via.placeholder.com/800x400" alt="Child's Pose" />
+          </>
+        ),
+      },
+      {
+        title: "Seated Forward Fold",
+        content: (
+          <>
+            <p>
+              The seated forward fold stretches your hamstrings, lower back, and
+              core. Hold the stretch for 3 sets of 20-30 seconds, keeping your
+              back straight and reaching towards your toes.
+            </p>
+            <img
+              src="https://via.placeholder.com/800x400"
+              alt="Seated Forward Fold"
+            />
+          </>
+        ),
+      },
+    ],
+  },
+];
+
 export const strengthAndConditionning = [
   {
     day: "Day 1: Strength (Upper Body)",
@@ -1312,310 +1583,4 @@ export const fullBodyStrength = [
       },
     ],
   },
-];
-
-export const workoutProgram1 = [
-  {
-    day: "Day 1: Upper Body",
-    description: "This is Day 1, focused on upper body exercises.",
-    sections: [
-      {
-        title: "Warm Up",
-        content: (
-          <>
-            <p>
-              Start with a 5-minute warm-up. This helps to get the blood flowing
-              and prepares your muscles for the workout ahead.
-            </p>
-            <img src="https://via.placeholder.com/800x400" alt="Warm Up" />
-          </>
-        ),
-      },
-      {
-        title: "Push Ups",
-        content: (
-          <>
-            <p>Do 3 sets of 12 push-ups, focusing on form.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Push Ups" />
-          </>
-        ),
-      },
-      {
-        title: "Dumbbell Rows",
-        content: (
-          <>
-            <p>
-              Perform 3 sets of 10 dumbbell rows, targeting the back muscles.
-            </p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Dumbbell Rows"
-            />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    day: "Day 2: Lower Body",
-    description: "This is Day 2, focusing on lower body exercises.",
-    sections: [
-      {
-        title: "Squats",
-        content: (
-          <>
-            <p>Do 4 sets of 15 squats to strengthen your legs and glutes.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Squats" />
-          </>
-        ),
-      },
-      {
-        title: "Lunges",
-        content: (
-          <>
-            <p>Perform 3 sets of 12 lunges per leg.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Lunges" />
-          </>
-        ),
-      },
-      {
-        title: "Leg Press",
-        content: (
-          <>
-            <p>
-              Complete 3 sets of 10 leg presses to target your quads and
-              hamstrings.
-            </p>
-            <img src="https://via.placeholder.com/800x400" alt="Leg Press" />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    day: "Day 3: Full Body",
-    description: "This is Day 3, focusing on full body exercises.",
-    sections: [
-      {
-        title: "Deadlifts",
-        content: (
-          <>
-            <p>Do 3 sets of 12 deadlifts for full body strength.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Deadlifts" />
-          </>
-        ),
-      },
-      {
-        title: "Lunges",
-        content: (
-          <>
-            <p>
-              Perform 3 sets of 15 lunges per leg for leg and glute strength.
-            </p>
-            <img src="https://via.placeholder.com/800x400" alt="Lunges" />
-          </>
-        ),
-      },
-      {
-        title: "Jump Squats",
-        content: (
-          <>
-            <p>Do 4 sets of 20 jump squats for explosiveness.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Jump Squats" />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    day: "Day 4: Core and Cardio",
-    description: "This is Day 4, focusing on core and cardio exercises.",
-    sections: [
-      {
-        title: "Mountain Climbers",
-        content: (
-          <>
-            <p>Perform 4 sets of 20 mountain climbers.</p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Mountain Climbers"
-            />
-          </>
-        ),
-      },
-      {
-        title: "Plank",
-        content: (
-          <>
-            <p>Hold a plank for 3 sets of 1 minute each.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Plank" />
-          </>
-        ),
-      },
-      {
-        title: "Jumping Jacks",
-        content: (
-          <>
-            <p>Do 3 sets of 30 jumping jacks.</p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Jumping Jacks"
-            />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    day: "Day 5: Upper Body",
-    description: "This is Day 5, focusing on the upper body again.",
-    sections: [
-      {
-        title: "Bicep Curls",
-        content: (
-          <>
-            <p>Do 3 sets of 12 bicep curls using dumbbells or a barbell.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Bicep Curls" />
-          </>
-        ),
-      },
-      {
-        title: "Triceps Dips",
-        content: (
-          <>
-            <p>Perform 3 sets of 12 triceps dips on a bench.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Triceps Dips" />
-          </>
-        ),
-      },
-      {
-        title: "Shoulder Press",
-        content: (
-          <>
-            <p>Do 3 sets of 10 shoulder presses with dumbbells or a barbell.</p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Shoulder Press"
-            />
-          </>
-        ),
-      },
-    ],
-  },
-  // Add more days here...
-];
-
-export const workoutProgram2 = [
-  {
-    day: "Day 1: Full Body",
-    description: "This is Day 1, a full body workout.",
-    sections: [
-      {
-        title: "Squats",
-        content: (
-          <>
-            <p>Perform 3 sets of 15 squats.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Squats" />
-          </>
-        ),
-      },
-      {
-        title: "Deadlifts",
-        content: (
-          <>
-            <p>Do 4 sets of 12 deadlifts.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Deadlifts" />
-          </>
-        ),
-      },
-      {
-        title: "Lunges",
-        content: (
-          <>
-            <p>Do 3 sets of 15 lunges per leg.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Lunges" />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    day: "Day 2: Core and Cardio",
-    description: "This is Day 2, focused on core and cardio exercises.",
-    sections: [
-      {
-        title: "Mountain Climbers",
-        content: (
-          <>
-            <p>Perform 4 sets of 20 mountain climbers.</p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Mountain Climbers"
-            />
-          </>
-        ),
-      },
-      {
-        title: "Plank",
-        content: (
-          <>
-            <p>Hold a plank for 3 sets of 1 minute each.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Plank" />
-          </>
-        ),
-      },
-      {
-        title: "Jumping Jacks",
-        content: (
-          <>
-            <p>Do 3 sets of 30 jumping jacks.</p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Jumping Jacks"
-            />
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    day: "Day 3: Upper Body Strength",
-    description: "This is Day 3, focusing on upper body strength exercises.",
-    sections: [
-      {
-        title: "Push Ups",
-        content: (
-          <>
-            <p>Do 3 sets of 12 push-ups.</p>
-            <img src="https://via.placeholder.com/800x400" alt="Push Ups" />
-          </>
-        ),
-      },
-      {
-        title: "Dumbbell Rows",
-        content: (
-          <>
-            <p>Do 3 sets of 10 dumbbell rows.</p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Dumbbell Rows"
-            />
-          </>
-        ),
-      },
-      {
-        title: "Overhead Press",
-        content: (
-          <>
-            <p>Perform 3 sets of 12 overhead presses.</p>
-            <img
-              src="https://via.placeholder.com/800x400"
-              alt="Overhead Press"
-            />
-          </>
-        ),
-      },
-    ],
-  },
-  // Add more days here...
 ];
