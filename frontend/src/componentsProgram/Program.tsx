@@ -17,7 +17,7 @@ interface OfferProps {
   workoutProgram: Day[];
 }
 
-const Offer: React.FC<OfferProps> = ({ title, workoutProgram }) => {
+const Program: React.FC<OfferProps> = ({ title, workoutProgram }) => {
   const [selectedDay, setSelectedDay] = useState(1);
 
   return (
