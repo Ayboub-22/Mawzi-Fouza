@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 const getDayIndex = (day) => {
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday'];
   return days.indexOf(day);
 };
 

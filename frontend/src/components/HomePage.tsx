@@ -10,7 +10,7 @@ function HomePage() {
       <div>
         <NavBar />
       </div>
-      <div>
+      <div >
         <h1>Welcome to our website!</h1>
       </div>
 
