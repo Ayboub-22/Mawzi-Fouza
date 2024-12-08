@@ -73,7 +73,7 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
       console.error("Update article error:", error.response?.data || error.message);
     }
   };
-
+  console.log(formData);
   return (
     <div className="popup-overlay">
       <div className="popup-content">
@@ -130,9 +130,20 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
           <div className="form-row">
             <div className="form-group">
               <label>Image:</label>
-              <input type="file" accept="image/*" value={formData.img_path}
+              {/* <input type="file" accept="image/*" value={formData.img_path}
               onChange={handleInputChange}
-              required />
+              required /> */}
+              <input                 //min houni
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) {
+                    setFormData((prev) => ({ ...prev, img_path: `C:\\fakepath\\${file.name}` }));
+                  }
+                }}
+                required
+              />              {/*il hounii */}
             </div>
           </div>
           <div className="button-container">
