@@ -8,10 +8,7 @@ function WhyChooseUs() {
       <div className="title">
         <h1>Why Choose Us</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+        we combine expert guidance, tailored programs, and a supportive community to help you achieve your goals effectively. Trust us to provide the tools, knowledge, and motivation you need to succeed.
         </p>
       </div>
       <div className="content">
@@ -19,22 +16,22 @@ function WhyChooseUs() {
           {/* Call QualsContent component 4 times with different props */}
           <QualsContent
             title="Trainer Qualifications"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            description="Our certified trainers bring years of experience and personalized attention to every workout session."
             imageSrc="dumbell.png"
           />
           <QualsContent
             title="Nutrition Experts"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            description="We offer tailored meal plans and guidance from licensed nutritionists to keep you on track."
             imageSrc="dumbell.png"
           />
           <QualsContent
             title="Personalized Programs"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            description="Every program is designed to fit your unique goals, lifestyle, and fitness level."
             imageSrc="dumbell.png"
           />
           <QualsContent
             title="Community Support"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."
+            description="Join a like-minded community that motivates and encourages you every step of the way."
             imageSrc="dumbell.png"
           />
         </div>

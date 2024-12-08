@@ -80,7 +80,7 @@ const Popup: React.FC<PopupProps> = ({ onClose ,userCin1,id_offre }) => {
             <div className="form-group">
               <label htmlFor="cardNumber">Card number (8 numbers)</label>
               <input
-                type="text"
+                type="number"
                 id="cardNumber"
                 maxLength={8}
                 placeholder="12345678"

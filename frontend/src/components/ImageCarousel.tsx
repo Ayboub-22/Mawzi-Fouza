@@ -9,12 +9,13 @@ interface ImageData {
 
 const ImageCarousel: React.FC = () => {
   const images: ImageData[] = [
-    { src: "image1.png", text: "Text 1" },
-    { src: "image2.png", text: "Text 2" },
-    { src: "image1.png", text: "Text 3" },
-    { src: "image1.png", text: "Text 4" },
-    { src: "image1.png", text: "Text 5" },
-    { src: "image1.png", text: "Text 6" },
+    { src: "kickboxing.jpg", text: "Kick Boxing" },
+    { src: "natation.png", text: "Swimming" },
+    { src: "gymnastique.jpg", text: "Gymnastic" },
+    { src: "Bodypump.jpg", text: "Body Pump" },
+    { src: "bodycombat.jpeg", text: "Body Combat" },
+    { src: "crosstraining.jpg", text: "Cross Training" },
+    { src: "yoga1.png", text: "YOGA" },
   ];
 
   const [centerIndex, setCenterIndex] = useState(1);

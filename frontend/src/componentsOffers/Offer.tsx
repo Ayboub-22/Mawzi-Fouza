@@ -35,12 +35,7 @@ function Offer() {
 
   return (
     <div className="Offer">
-<<<<<<< HEAD
-      <div className="msg">JOIN TODAY</div>
-
-=======
       <div className="OffersTitle">JOIN TODAY</div>
->>>>>>> 8441e470dfb72a196367d3bddc98a986e9e5c4f5
       <div className="Cards">
         {cards1.map((item) => (
           <div key={item.id_offre} onClick={togglePopup}>

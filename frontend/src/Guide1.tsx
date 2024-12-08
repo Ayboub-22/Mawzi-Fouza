@@ -1,5 +1,5 @@
 import NavBar1 from "./components/NavBar1";
-import Workout from "./componentsGuide/Workout";
+import Workout1 from "./componentsGuide/workout1";
 import "./Guide.css";
 import WorkoutSection from "./componentsGuide/WorkoutSection";
 import Footer from "./components/Footer";
@@ -178,7 +178,7 @@ function App() {
 
           <div className="YDiv1 padd">
             <h1 className="YTitle1">Free Workout Programs</h1>
-            <Workout />
+            <Workout1 />
           </div>
           <img className="Yimg2" src="/Message 21.png" alt="Workout" />
 

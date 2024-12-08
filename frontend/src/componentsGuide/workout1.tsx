@@ -1,5 +1,5 @@
-import "./Workout.css";
-import { usePopup } from "../components/PopupContext";
+import "./Workout1.css";
+
 type Qualification = {
   text: string;
   imgSrc?: string;
@@ -11,7 +11,6 @@ type QualsProps = {
 };
 
 function Workout() {
-  const { togglePopup } = usePopup();
   const qualifications = [
     {
       text: "Start Now",
@@ -51,7 +50,7 @@ function Workout() {
               {/* Use dynamic name */}
             </div>
           </div>
-          <button className="YBoutton" onClick={togglePopup}>{item.text} </button>
+          <button className="YBoutton">{item.text} </button>
         </div>
       ))}
     </div>

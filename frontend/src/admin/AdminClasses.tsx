@@ -19,6 +19,8 @@ const AdminClasses: React.FC = () => {
   const navigate = useNavigate();
   const [classes, setClasses] = useState<Course[]>([]); // État pour stocker les cours
   const [showPopup, setShowPopup] = useState(false);
+  const [showPopup1, setShowPopup1] = useState(false);
+  
 
   const handleOpenPopup = () => setShowPopup(true);
 
@@ -57,6 +59,7 @@ const AdminClasses: React.FC = () => {
       { validity: updatedValidity }
     );
 
+
       // Mettre à jour l'état localement pour l'instant
       setClasses((prevClasses) =>
         prevClasses.map((classItem) =>
@@ -73,10 +76,7 @@ const AdminClasses: React.FC = () => {
   
       // Si l'erreur est liée à un conflit (code 400)
       if (error.response && error.response.status === 400) {
-        alert(
-          error.response.data.message ||
-            "Un conflit empêche la mise à jour de ce cours."
-        );
+        setShowPopup1(true);             
       } else {
         alert(
           "Une erreur est survenue lors de la mise à jour. Veuillez réessayer."
@@ -156,8 +156,23 @@ const AdminClasses: React.FC = () => {
           </ScheduleProvider>
         </div>
       </div>
+      {showPopup1 && (
+    <div className="popup-overlay">
+      <div className="popup-content popup-error">
+        <button
+          className="close-button"
+          onClick={() => setShowPopup1(false)}
+        >
+          X
+        </button>
+        <h2>It is impossible to mark this course as valid. Another course is already valid for the same day and time.</h2>
+      </div>
     </div>
+  )}
+    </div>
+    
   );
+  
 };
 
 export default AdminClasses;

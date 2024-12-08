@@ -149,7 +149,6 @@ router.put('/:id/validity', async (req, res) => {
     const courseToUpdate = await Cours.findByPk(id);
 
     if (!courseToUpdate) {
-      console.log("makitch class id teeha haka ")
       return res.status(404).json({ message: 'Cours introuvable.' });
     }
 
@@ -167,7 +166,7 @@ router.put('/:id/validity', async (req, res) => {
       if (conflict) {
         return res.status(400).json({
           message:
-            'Impossible de marquer ce cours comme valide. Un autre cours est déjà valide pour le même jour et la même heure.',
+            'It is impossible to mark this course as valid. Another course is already valid for the same day and time.',
         });
       }
     }

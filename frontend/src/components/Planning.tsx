@@ -96,12 +96,12 @@ const App = () => {
     <div className="Planning-container">
       <h1>Planning of the Week</h1>
 
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
+      {/* {errorMessage && <div className="error-message">{errorMessage}</div>} */}
 
       <table className="schedule-table">
         <thead>
           <tr>
-            <th className="Day"> </th>
+            <th className="Day"></th>
             {periods.map((period) => (
               <th key={period}>{period}</th>
             ))}
@@ -111,20 +111,10 @@ const App = () => {
           {Object.keys(schedule).map((day) => (
             <tr key={day}>
               <td>{day}</td>
-              {/*{schedule[day].map((className, index) => (
-              //   <td key={index} className={className ? "filled" : ""}>
-              //     {className || ""}
-              //   </td> */}
-
-              {periods.map((period) => (
-                <td
-                  key={period}
-                  className={
-                    schedule[day as keyof typeof schedule].includes(period)
-                      ? "classe"
-                      : ""
-                  }
-                ></td>
+              {schedule[day].map((className, index) => (
+                <td key={index} className={className ? "filled" : ""}>
+                  {className || ""}
+                </td>
               ))}
             </tr>
           ))}

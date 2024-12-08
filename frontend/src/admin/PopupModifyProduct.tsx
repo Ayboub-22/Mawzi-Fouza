@@ -33,7 +33,7 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
         categorie: product.categorie || "",
         prix: product.prix || "",
         designation: product.designation || "",
-        img_path: product.img_path || "",
+        img_path: product.img_path,
       });
     }
   }, [product]);
@@ -63,7 +63,7 @@ const PopupModifyProduct: React.FC<PopupModifyProductProps> = ({ show, product }
     }
 
     try {
-      const response = await axios.put('http://localhost:3000/article/${product.id}',formData);
+      const response = await axios.put(`http://localhost:3000/article/${product.id}`,formData);
       if (response.status === 200) {
         console.log("Article updated successfully:", response.data);
       } else {

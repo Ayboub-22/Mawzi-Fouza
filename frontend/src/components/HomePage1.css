@@ -1,0 +1,55 @@
+
+@font-face {
+    font-family: 'OutfitLight';
+    src: url('../assets/fonts/Outfit/static/Outfit-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OutfitBold';
+    src: url('../assets/fonts/Outfit/static/Outfit-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'OutfitRegular';
+    src: url('../assets/fonts/Outfit/static/Outfit-Regular.ttf') format('truetype');
+}
+
+.HomeTitle h2{
+    font-size: 87px;
+    font-family: OutfitLight;
+}
+
+.HomeTitle h1{
+    font-size: 78px;
+    font-family: OutfitBold;
+    font-style: normal;
+    text-align: left;
+}
+.HomeTitle p{
+    font-size: 18px;
+    font-family: OutfitRegular;
+    text-align: justify;
+    width: 80%;
+}
+
+.HomeTitle{
+    padding-left: 4%;
+    width: 45%;
+    margin-top: 14%;
+}
+
+
+@media (min-width: 1800px) {
+    .HomeTitle h2{
+        font-size: 101px;
+    }
+    .HomeTitle h1{
+        font-size: 101px;
+
+    }
+
+    .HomeTitle p{
+        font-size: 21px;
+
+    }
+  }

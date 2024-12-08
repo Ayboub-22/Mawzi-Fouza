@@ -16,7 +16,7 @@ function HomePage() {
         <p>
           Being physically active can improve your brain health, help manage
           weight, reduce the risk of disease, strengthen bones and muscles, and
-          improve your ability to do everyday activities. Adults who si
+          improve your ability to do everyday activities. 
         </p>
       </div>
 
