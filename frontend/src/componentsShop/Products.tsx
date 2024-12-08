@@ -45,7 +45,7 @@ function Products() {
             cardsData={articles.map((article) => ({
               image: article.img_path.replace("C:\\fakepath\\", ""),
               text: article.name,
-              label: `$${article.prix}`, // Affichage du prix formaté
+              label: `${article.prix}`, // Affichage du prix formaté
             }))}
             title={` ${category}`} // Titre dynamique
           />
